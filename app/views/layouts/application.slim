@@ -1,0 +1,7 @@
+doctype html
+html
+  head
+    = render partial: "shared/head"
+body
+	= yield
+	= javascript_include_tag "application"
