@@ -1,0 +1,32 @@
+.main
+
+  section.intro
+    video autoplay="" loop="loop"
+      source src="intro.mp4" type="video/mp4"
+      / intro1.jpg
+    
+    .columns
+      .column.white
+      .column.white
+      .column.white
+      .column.white
+      h1.slogan
+        | Арт-резиденция «Коллектив» — воркшопы с международными специалистами в уникальной среде Никола-Ленивца.
+
+  section.fullPage
+    .columns
+      .column
+      .column
+      .column
+      .column
+    .workshopList
+      = render partial: 'workshop'
+
+  header.header
+    nav.navigation
+      .logo= image_tag 'logo.svg'
+      .menuButton
+        span.menuButtonBar
+        span.menuButtonBar
+        span.menuButtonBar
+    nav.menu

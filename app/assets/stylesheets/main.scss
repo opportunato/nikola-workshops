@@ -1,0 +1,58 @@
+.main {
+  @include respond-to(tablet) {
+    padding: 0 $padding/2;
+  }
+}
+
+.columns {
+  max-width: 980px;
+  position: fixed;
+  left: 0; right: 0; top: 0; bottom: 0;
+  width: 100%;
+  margin: 0 auto;
+  z-index: 0;
+}
+
+.slogan {
+  position: absolute;
+  z-index: 999;
+  top: 40%;
+  width: 50%;
+  color: white;
+}
+
+.intro {
+  position: fixed;
+  left: 0; right: 0; top: 0;
+}
+
+.column {
+  border-right: 1px solid $color-black;
+  opacity: .1;
+  width: 25%;
+  height: 100%;
+  display: inline-block;
+  vertical-align: top;
+  &:first-child { border-left: 1px solid $color-black; }
+  &.white {
+    border-right: 1px solid white;
+    &:first-child { border-left: 1px solid white; }
+  }
+}
+
+.fullPage {
+  position: relative;
+  background: white;
+}
+
+video, object {
+  top:0; bottom: 0; right: 0;
+  position: absolute;
+  left: 50%;
+  display: block;
+  @include translateX(-50%);
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+}

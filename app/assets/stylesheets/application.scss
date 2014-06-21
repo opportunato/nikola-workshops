@@ -2,8 +2,12 @@
 @include global-reset();
 
 @import "variables.scss";
-// @import "fonts/*";
 @import "mixins.scss";
+@import "main.scss";
+@import "typo.scss";
+@import "workshop.scss";
+@import "menu.scss";
+// @import "fonts/*";
 
 @import "defaults.scss";
 
