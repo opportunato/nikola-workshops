@@ -12,9 +12,20 @@
     position: absolute;
     top: 25%;
     width: 50%;
-    p, ul {
+    p {
       font-size: 1.2em;
-      margin-bottom: $margin/2;
     }
   }
 }
+
+.accommodation {
+  margin: 0 auto;
+  max-width: 980px;
+  padding: 100px 0;
+  p, ul {
+    font-size: 1.2em;
+    margin-bottom: $margin;
+  }
+}
+
+.imageAccommodation img { display: block; width: 100%; }
