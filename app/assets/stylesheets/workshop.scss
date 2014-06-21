@@ -1,7 +1,10 @@
 .workshopList {
+  position: relative;
   .workshopWrapper {
     border-bottom: 4px solid $color-black;
     padding: $padding 0;
+    cursor: pointer;
+    &:hover { background: #eee; }
     &:last-child { border-bottom: 0; }
     .workshop {
       max-width: 980px;
@@ -12,7 +15,7 @@
       width: 50%;
       display: inline-block;
       vertical-align: middle;
-      padding-right: $padding;
+      padding-right: $padding*2;
     }
     .host {
       width: 25%;

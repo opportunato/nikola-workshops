@@ -10,6 +10,7 @@ $(".fullPage").css({
 $(window).resize(function() {
   vph = $(window).height();
   $(".intro").height(vph);
+  $(".kazarma").height(vph);
   if ($(window).width() > 1) {
     return $(".fullPage").css({
       marginTop: vph
@@ -24,6 +25,8 @@ $(window).resize(function() {
 $('.menuButton').on('click', function(e) {
   $('.header').toggleClass('opened');
 });
+
+$(".kazarma").height(vph);
 
 // $(".intro").height(vph);
 // if ($(window).width() > 1024) {

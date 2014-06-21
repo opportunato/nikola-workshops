@@ -1,0 +1,20 @@
+.kazarma {
+  background: image_url('kazarma.jpg') no-repeat center center $color-black;     
+  @include background-size(cover);
+  color: white;
+  .wrapper {
+    margin: 0 auto;
+    max-width: 980px;
+    position: relative;
+    height: 100%;
+  }
+  .copy {
+    position: absolute;
+    top: 25%;
+    width: 50%;
+    p, ul {
+      font-size: 1.2em;
+      margin-bottom: $margin/2;
+    }
+  }
+}
