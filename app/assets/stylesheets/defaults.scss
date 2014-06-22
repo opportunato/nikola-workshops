@@ -26,3 +26,8 @@ input {
 .clear {
   clear: both;
 }
+
+a {
+  color: $color-green;
+  &:hover { color: $color-red; }
+}

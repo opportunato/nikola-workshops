@@ -8,7 +8,34 @@
 }
 
 .footer {
-  height: 500px;
+  position: relative;
+  margin: 0 auto;
+  max-width: 980px;
+  padding: 100px 0;
+  h1 { 
+    margin-bottom: $margin;
+    @include respond-to(tabletvertical) {
+      padding-left: $padding/2;
+    }
+  }
+  p {
+    font-size: 2em;
+    margin-bottom: $margin;
+    line-height: 1.4;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+    font-weight: 300;
+    @include respond-to(tabletvertical) {
+      padding-left: $padding/2;
+    }
+    .more { 
+      margin-left: $margin/3;
+    }
+    .phone, .email {
+      color: $color-green;
+      margin-left: $margin/3;
+    }
+    &.block { margin-bottom: $margin/3; }
+  }
 }
 
 .partners {
@@ -20,7 +47,7 @@
     padding: 100px 0;
   }
   h1 {
-    margin-bottom: $margin;
+    margin-bottom: $margin*2;
     @include respond-to(tabletvertical) {
       padding-left: $padding/2;
     }

@@ -26,6 +26,10 @@ $('.menuButton').on('click', function(e) {
   $('.headroom').toggleClass('opened');
 });
 
+$('.menu').on('click', function(e) {
+  $('.headroom').toggleClass('opened');
+});
+
 $(".kazarma").height(vph);
 
 
