@@ -11,4 +11,5 @@
 // about supported directives.
 //
 //= require jquery
+//= require headroom.js
 //= require_tree .

@@ -2,7 +2,55 @@
   @if $media == tablet {
     @media only screen and (max-width: $break-tablet) {@content; }
   }
-  // @else if $media == tablet {
-  //   @media only screen and (max-width: $break-tablet) {@content; }
-  // }
+  @else if $media == tabletvertical {
+    @media only screen and (max-width: $break-tablet - 1) {@content; }
+  }
 }
+
+@mixin keyframes( $animationName ) {
+  @-webkit-keyframes $animationName {
+    @content;
+  }
+  @-moz-keyframes $animationName {
+    @content;
+  }
+  @-o-keyframes $animationName {
+    @content;
+  }
+  @keyframes $animationName {
+    @content;
+  }
+  @-ms-keyframes  $animationName {
+    @content;
+  }
+}
+
+@mixin animation($str) {
+  -webkit-animation: #{$str};
+}
+
+@include keyframes(arrow) {
+  0%      { @include translateY(0px); @include opacity(1); }
+  50%     { @include translateY(10px); @include opacity(.5); }
+  100%    { @include translateY(0px); @include opacity(1); }
+}
+
+// @include keyframes(arrow-apperance) {
+//   0%      { @include translateY(200%); }
+//   90%     { @include translateY(0%); }
+//   100%    { @include translateY(0%); }
+// }
+
+@include keyframes(slogan) {
+  0%      { @include opacity(0); }
+  75%      { @include opacity(0); }
+  100%    { @include opacity(1); }
+}
+
+.arrowDown {
+  @include animation(arrow 1200ms infinite);
+}
+
+// .slogan {
+//   @include animation(slogan 1200ms);
+// }

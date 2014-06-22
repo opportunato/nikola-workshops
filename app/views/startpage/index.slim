@@ -3,7 +3,6 @@
   section.intro
     video autoplay="" loop="loop"
       source src="intro.mp4" type="video/mp4"
-      / intro1.jpg
     
     .columns
       .column.white
@@ -12,6 +11,7 @@
       .column.white
       h1.slogan
         | Арт-резиденция «Коллектив» — воркшопы с международными специалистами в уникальной среде Никола-Ленивца.
+      .arrowDown =image_tag 'arrow_down.svg'
 
   section.fullPage
     .columns
@@ -28,17 +28,41 @@
           p Это арт-объект и действующий хостел, где есть все необходимое для творчества и жизни: рабочее пространство, спальные места, wi-fi, бар, зона для отдыха, баня, душевые, столовая, музыкальная студия, велосипеды, парковка для машин.
     .accommodation
       h1 На время воркшопов резиденты размещаются в комнатах по четыре человека.
-      h1 В стоимость воркшопа включены:
-      ul
-        li образовательная программа
-        li место в комнате
-        li трехразовое питание
-      p Заезд — в понедельник до обеда, выезд — в воскресенье после обеда.
+      h2 В стоимость воркшопа включены:
+      h2 
+        span.number 01 
+        span образовательная программа
+      h2 
+        span.number 02 
+        span место в комнате
+      h2 
+        span.number 03 
+        span трехразовое питание
+      h2 Заезд — в понедельник до обеда, выезд — в воскресенье после обеда.
     .imageAccommodation= image_tag 'accomodation.jpg'
     .partners
-      h1 Партнеры
+      .wrapper
+        .columns
+          .column
+          .column
+          .column
+          .column
+        h1 Партнеры
+        .logo.nl
+          a[href='http://nikola-lenivets.com/' target='_blank']
+            =image_tag 'nl.png'
+        .logo.tnp
+          a[href='http://theoryandpractice.ru/' target='_blank']
+            =image_tag 'tnp.svg'
+        .logo.fl
+          a[href='http://www.fairlane.ru/' target='_blank']
+            =image_tag 'fairlane.svg'
+        .logo.fm
+          a[href='http://radiofollow.me/' target='_blank']
+            =image_tag 'fm.png'
+    .footer
 
-  header.header
+  header
     nav.navigation
       .logo= image_tag 'logo.svg'
       .menuButton

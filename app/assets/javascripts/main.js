@@ -23,27 +23,21 @@ $(window).resize(function() {
 });
 
 $('.menuButton').on('click', function(e) {
-  $('.header').toggleClass('opened');
+  $('.headroom').toggleClass('opened');
 });
 
 $(".kazarma").height(vph);
 
-// $(".intro").height(vph);
-// if ($(window).width() > 1024) {
-//   $(".fullPage").css({
-//     marginTop: vph
-//   });
-// }
-// $(window).resize(function() {
-//   vph = $(window).height();
-//   $(".intro").height(vph);
-//   if ($(window).width() > 1024) {
-//     return $(".fullPage").css({
-//       marginTop: vph
-//     });
-//   } else {
-//     return $(".fullPage").css({
-//       marginTop: 0
-//     });
-//   }
-// });
+
+$('.arrowDown').on('click', function(e) {
+  return $('html, body').animate({
+    scrollTop: $(".fullPage").offset().top
+  }, 400);
+});
+
+// grab an element
+var myElement = document.querySelector("header");
+// construct an instance of Headroom, passing the element
+var headroom  = new Headroom(myElement);
+// initialise
+headroom.init(); 

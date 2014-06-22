@@ -1,34 +1,68 @@
-.main {
-  @include respond-to(tablet) {
-    padding: 0 $padding/2;
-  }
-}
-
 .columns {
   max-width: 980px;
-  position: fixed;
+  position: absolute;
   left: 0; right: 0; top: 0; bottom: 0;
   width: 100%;
   margin: 0 auto;
   z-index: 0;
 }
 
-.slogan {
-  position: absolute;
-  z-index: 999;
-  top: 40%;
-  width: 50%;
-  color: white;
+.footer {
+  height: 500px;
 }
 
 .partners {
   background: $color-green;
-  height: 400px;
+  position: relative;
+  .wrapper {
+    margin: 0 auto;
+    max-width: 980px;
+    padding: 100px 0;
+  }
+  h1 {
+    margin-bottom: $margin;
+    @include respond-to(tabletvertical) {
+      padding-left: $padding/2;
+    }
+  }
+  .logo {
+    display: inline-block;
+    vertical-align: middle;
+    width: 25%;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+  .fm img { width: 100px; }
+  .nl img { width: 112px; }
+  .tnp img { width: 62px; }
+  .fl img { width: 80px; }
+}
+
+.slogan {
+  position: absolute;
+  z-index: 999;
+  top: 40%;
+  width: 46%;
+  color: white;
+  @include respond-to(tabletvertical) {
+    padding-left: $padding/2;
+  }
+}
+
+.arrowDown {
+  position: absolute;
+  z-index: 999;
+  bottom: 5%;
+  left: 50%;
+  margin-left: -32px;
+  cursor: pointer;
 }
 
 .intro {
   position: fixed;
   left: 0; right: 0; top: 0;
+  background: $color-green;
 }
 
 .column {
@@ -47,6 +81,7 @@
 
 .fullPage {
   position: relative;
+  z-index: 2;
   background: white;
 }
 
@@ -60,4 +95,5 @@ video, object {
   min-height: 100%;
   width: auto;
   height: auto;
+  opacity: .9;
 }
