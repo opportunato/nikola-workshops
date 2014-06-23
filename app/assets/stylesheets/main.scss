@@ -33,6 +33,7 @@
     .phone, .email {
       color: $color-green;
       margin-left: $margin/3;
+      &:hover { color: $color-red;}
     }
     &.block { margin-bottom: $margin/3; }
   }
