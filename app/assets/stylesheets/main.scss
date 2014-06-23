@@ -1,0 +1,126 @@
+.columns {
+  max-width: 980px;
+  position: absolute;
+  left: 0; right: 0; top: 0; bottom: 0;
+  width: 100%;
+  margin: 0 auto;
+  z-index: 0;
+}
+
+.footer {
+  position: relative;
+  margin: 0 auto;
+  max-width: 980px;
+  padding: 100px 0;
+  h1 { 
+    margin-bottom: $margin;
+    @include respond-to(tabletvertical) {
+      padding-left: $padding/2;
+    }
+  }
+  p {
+    font-size: 2em;
+    margin-bottom: $margin;
+    line-height: 1.4;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+    font-weight: 300;
+    @include respond-to(tabletvertical) {
+      padding-left: $padding/2;
+    }
+    .more { 
+      margin-left: $margin/3;
+    }
+    .phone, .email {
+      color: $color-green;
+      margin-left: $margin/3;
+    }
+    &.block { margin-bottom: $margin/3; }
+  }
+}
+
+.partners {
+  background: $color-green;
+  position: relative;
+  .wrapper {
+    margin: 0 auto;
+    max-width: 980px;
+    padding: 100px 0;
+  }
+  h1 {
+    margin-bottom: $margin*2;
+    @include respond-to(tabletvertical) {
+      padding-left: $padding/2;
+    }
+  }
+  .logo {
+    display: inline-block;
+    vertical-align: middle;
+    width: 25%;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+  .fm img { width: 100px; }
+  .nl img { width: 112px; }
+  .tnp img { width: 62px; }
+  .fl img { width: 80px; }
+}
+
+.slogan {
+  position: absolute;
+  z-index: 999;
+  top: 40%;
+  width: 46%;
+  color: white;
+  @include respond-to(tabletvertical) {
+    padding-left: $padding/2;
+  }
+}
+
+.arrowDown {
+  position: absolute;
+  z-index: 999;
+  bottom: 5%;
+  left: 50%;
+  margin-left: -32px;
+  cursor: pointer;
+}
+
+.intro {
+  position: fixed;
+  left: 0; right: 0; top: 0;
+  background: $color-green;
+}
+
+.column {
+  border-right: 1px solid $color-black;
+  opacity: .1;
+  width: 25%;
+  height: 100%;
+  display: inline-block;
+  vertical-align: top;
+  &:first-child { border-left: 1px solid $color-black; }
+  &.white {
+    border-right: 1px solid white;
+    &:first-child { border-left: 1px solid white; }
+  }
+}
+
+.fullPage {
+  position: relative;
+  z-index: 2;
+  background: white;
+}
+
+video, object {
+  top:0; bottom: 0; right: 0;
+  position: absolute;
+  left: 50%;
+  display: block;
+  @include translateX(-50%);
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  opacity: .9;
+}

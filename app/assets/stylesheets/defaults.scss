@@ -1,0 +1,33 @@
+html, body { 
+  min-width: 100%;
+  min-height: 100%;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+  font-weight: 300;
+  word-wrap: break-word;
+  -webkit-overflow-scrolling: touch;
+  min-height: 650px;
+}
+
+body {
+  -webkit-overflow-scrolling: touch;
+  color: $color-black;
+  font-size: $font-size;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  @include box-sizing(border-box);
+}
+
+input {
+  -webkit-border-radius: 0;
+}
+
+.clear {
+  clear: both;
+}
+
+a {
+  color: $color-green;
+  &:hover { color: $color-red; }
+}

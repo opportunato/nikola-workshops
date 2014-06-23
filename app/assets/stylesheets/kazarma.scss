@@ -1,0 +1,52 @@
+.kazarma {
+  background: image_url('kazarma.jpg') no-repeat center center $color-black;     
+  @include background-size(cover);
+  color: white;
+  .wrapper {
+    margin: 0 auto;
+    max-width: 980px;
+    position: relative;
+    height: 100%;
+  }
+  .copy {
+    position: absolute;
+    top: 25%;
+    width: 50%;
+    @include respond-to(tabletvertical) {
+      padding-left: $padding/2;
+    }
+    p {
+      font-size: 1.2em;
+    }
+  }
+}
+
+.accommodation {
+  position: relative;
+  margin: 0 auto;
+  max-width: 980px;
+  padding: 100px 0;
+  h1 { 
+    margin-bottom: $margin; 
+    width: 82%;
+    @include respond-to(tabletvertical) {
+      padding-left: $padding/2;
+    }
+  }
+  p {
+    font-size: 2em;
+    margin-bottom: $margin;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+    font-weight: 300;
+    @include respond-to(tabletvertical) {
+      padding-left: $padding/2;
+    }
+    .number {
+      color: $color-green;
+      font-weight: 900;
+      font-size: 1.2em;
+    }
+  }
+}
+
+.imageAccommodation img { display: block; width: 100%; }

@@ -1,0 +1,60 @@
+.workshopList {
+  position: relative;
+  .workshopWrapper {
+    @include transition(all 0.6s);
+    border-bottom: 4px solid $color-black;
+    padding: $padding 0;
+    cursor: pointer;
+    &.past {
+      background: #eee;
+      opacity: .6;
+    }
+    &:hover { 
+      background: $color-green;
+      .date { color: white; }
+    }
+    &:last-child { border-bottom: 0; }
+    .workshop {
+      max-width: 980px;
+      width: 100%;
+      margin: 0 auto;
+    }
+    .title {
+      width: 50%;
+      display: inline-block;
+      vertical-align: middle;
+      padding-right: $padding*2;
+    }
+    .host {
+      width: 25%;
+      display: inline-block;
+      vertical-align: middle;
+      .image {
+        display: inline-block;
+        vertical-align: middle;
+        width: 80px;
+        margin-right: $margin/3;
+        img { 
+          display: block;
+          border-radius: 100%;
+          width: 100%;
+        }
+      }
+      .name {
+        font-size: 1.2em;
+        display: inline-block;
+        vertical-align: middle;
+      }
+    }
+    .date {
+      font-size: 1.2em;
+      color: $color-green;
+      width: 25%;
+      display: inline-block;
+      vertical-align: middle;
+      @include respond-to(tabletvertical) {
+        padding-left: $padding/2;
+      }
+    }
+  }
+}

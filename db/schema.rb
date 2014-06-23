@@ -42,5 +42,4 @@ ActiveRecord::Schema.define(version: 20140620174506) do
   end
 
   add_index "workshops", ["start_date"], name: "index_workshops_on_start_date", using: :btree
-
 end

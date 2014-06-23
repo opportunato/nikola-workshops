@@ -2,8 +2,13 @@
 @include global-reset();
 
 @import "variables.scss";
-// @import "fonts/*";
 @import "mixins.scss";
+@import "main.scss";
+@import "typo.scss";
+@import "workshop.scss";
+@import "menu.scss";
+@import "kazarma.scss";
+// @import "fonts/*";
 
 @import "ng-quick-date.css";
 @import "ng-quick-date-default-theme.css";
