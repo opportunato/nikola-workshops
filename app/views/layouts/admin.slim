@@ -1,0 +1,7 @@
+doctype html
+html[ng-app="nikolaWorkshopsAdmin"]
+  head
+    = render partial: "shared/head"
+  body
+    = yield
+    = javascript_include_tag "admin"

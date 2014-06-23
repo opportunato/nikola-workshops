@@ -1,0 +1,6 @@
+ru:
+  admin:
+    workshops:
+      index:
+        title: Название
+        add: Добавить воркшоп

@@ -1,0 +1,16 @@
+ru:
+  workshop:
+    title: Название
+    headline: Подзаголовок
+    description: Описание
+    program: Программа
+    list: Список
+    price: Цена
+    buy_link: Ссылка на покупку билетов
+    start_date: Дата начала
+    end_date: Дата окончания
+    is_published: Показывать на главной
+  host:
+    name: Имя
+    description: Описание
+    link: Ссылка

@@ -1,0 +1,52 @@
+.panel-body
+  form novalidate=""
+    a href="{{workshopsUrl}}/" = t("workshop.list")
+    .form-element
+      label = t("workshop.title")
+      input[ng-model="currentWorkshop.title"]
+    .form-element
+      label = t("workshop.headline")
+      input[ng-model="currentWorkshop.headline"]
+    .form-element
+      label = t("workshop.description")
+      textarea[ng-model="currentWorkshop.description"]
+    .form-element
+      label = t("workshop.program")
+      textarea[ng-model="currentWorkshop.program"]
+    .form-element
+      label = t("workshop.price")
+      input[ng-model="currentWorkshop.price"]
+    .form-element
+      label = t("workshop.buy_link")
+      input[ng-model="currentWorkshop.buyLink"]
+    .form-element
+      label = t("workshop.start_date")
+      quick-datepicker[ng-model="currentWorkshop.startDate"]
+    .form-element
+      label = t("workshop.end_date")
+      quick-datepicker[ng-model="currentWorkshop.endDate"]
+    .hosts[ng-controller="hostsCtrl"]
+      .panel-body[ng-repeat="host in currentWorkshop.hosts"]
+        .form-element
+          label = t("host.name")
+          input[ng-model="host.name"]
+        .form-element
+          label = t("host.description")
+          textarea[ng-model="host.description"]
+        .form-element
+          label = t("host.link")
+          input[ng-model="host.link"]
+        button[class="btn btn-primary" ng-click="deleteHost(host)"] = t("common.delete")
+      .panel-body
+        .form-element
+          label = t("host.name")
+          input[ng-model="newHost.name"]
+        .form-element
+          label = t("host.description")
+          textarea[ng-model="newHost.description"]
+        .form-element
+          label = t("host.link")
+          input[ng-model="newHost.link"]
+        button[class="btn btn-primary" ng-click="addHost()"] = t("common.add")
+    button[class="btn btn-primary" ng-click="saveWorkshop()"] = t("common.save")
+    button[class="btn btn-primary" ng-click="cancelEdit()"] = t("common.cancel")

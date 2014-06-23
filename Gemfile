@@ -10,15 +10,17 @@ gem 'compass-rails'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'angularjs-rails'
+gem 'angularjs-rails-resource'
 
-gem 'slim-rails'
+gem 'slim'
+
+gem 'angular-rails-templates'
 
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
 group :development, :test do
   gem "rspec-rails"
-  gem "rspec-fire"
   gem "factory_girl_rails"
   gem "pry"
 end
@@ -26,4 +28,5 @@ end
 group :development do
   gem "puma"
   gem "better_errors"
+  gem "binding_of_caller"
 end

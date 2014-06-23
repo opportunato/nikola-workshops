@@ -8,6 +8,7 @@ Rails.application.configure do
   config.assets.js_compressor = :uglifier
   config.assets.compile = true
   config.assets.digest = true
+
   config.assets.paths << "#{Rails.root}/app/assets/fonts"
   config.assets.version = '1.0'
 
