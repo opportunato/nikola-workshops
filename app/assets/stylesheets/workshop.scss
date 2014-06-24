@@ -1,3 +1,9 @@
+.schedule {
+  margin: $margin auto;
+  max-width: 980px;
+  width: 100%;
+}
+
 .workshopList {
   position: relative;
   .workshopWrapper {
@@ -15,6 +21,7 @@
       .date { color: white; }
     }
     &:last-child { border-bottom: 0; }
+    &:first-child { border-top: 4px solid $color-black; }
     .workshop {
       max-width: 980px;
       width: 100%;

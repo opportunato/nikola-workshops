@@ -20,6 +20,7 @@
     p {
       font-size: 1.2em;
     }
+    h1 { width: 85%; }
   }
 }
 
@@ -34,7 +35,7 @@
   }
   h1 { 
     margin-bottom: $margin; 
-    width: 82%;
+    width: 94%;
     @include respond-to(tabletvertical) {
       padding-left: $padding/2;
     }
