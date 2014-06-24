@@ -106,7 +106,7 @@
   }
 }
 
-.arrowDown {
+.trigger {
   position: absolute;
   z-index: 3;
   bottom: 5%;
@@ -118,7 +118,7 @@
 }
 
 .intro {
-  position: fixed;
+  position: absolute;
   left: 0; right: 0; top: 0;
   background: $color-green;
   z-index: 1;

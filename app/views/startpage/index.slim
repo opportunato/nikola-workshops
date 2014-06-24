@@ -1,5 +1,6 @@
-.main
+#container.container.intro-effect-push
 
+  = render partial: 'columns'
   section.intro
     video autoplay="" loop="loop"
       source src="intro.mp4" type="video/mp4"
@@ -8,7 +9,7 @@
       = render partial: 'columns'
     h1.slogan
       | Арт-резиденция «Коллектив» — воркшопы с международными специалистами в уникальной среде Никола-Ленивца.
-    .arrowDown =image_tag 'arrow_down.svg'
+    .trigger =image_tag 'arrow_down.svg'
 
   section.fullPage
     .workshopList
