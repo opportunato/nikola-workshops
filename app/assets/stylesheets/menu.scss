@@ -1,52 +1,22 @@
-.headroom {
-  position: fixed;
+header {
+  position: absolute;
   width: 100%;
   left: 0; right: 0; top: 0;
-  z-index: 3;
-  &.headroom--top {
-    .navigation {
-      @include translateY(0%);
-      opacity: 1;
-      background: transparent!important;
-    }
-  }
-  &.headroom--not-top {
-    .navigation {
-      opacity: 0;
-      @include translateY(-100%);
-    }
-  }
-  &.headroom--unpinned {
-    .navigation {
-      @include transition(transform 0.3s);
-      background: $color-green;
-      opacity: 0;
-      @include translateY(-100%);
-    }
-  }
-  &.headroom--pinned {
-    .navigation {
-      @include translateY(0%);
-      background: $color-green;
-      opacity: 1;
-    }
-  }
+  z-index: 999;
   .menu {
-    @include transition(all 0.3s);
-    height: 0px;
+    @include transition(all 0.6s);
+    @include translateY(-400%);
     overflow: hidden;
     background: $color-green;
     position: fixed;
-    opacity: 1;
     top: 0; right: 0; bottom: 0; left: 0;
-    @include transition(all 0.6s);
+    z-index: 99;
     ul {
-      @include transition(all 0.8s);
-      opacity: 0;
-      @include translateY(-400%);
       text-align: center;
       position: absolute;
-      top: 10%;
+      top: 10%; left: 0; right: 0;
+      margin: 0 auto;
+      max-width: 980px;
       width: 100%;
       font-size: 2em;
       font-family: "HelveticaNeue-Bold", "Helvetica Neue Bold", "Helvetica Neue Bold", Helvetica, Arial, "Lucida Grande", sans-serif; 
@@ -61,8 +31,6 @@
     }
   }
   .navigation {
-    @include transition(transform 0.6s);
-    @include translateY(-400%);
     padding: $padding;
     z-index: 9999;
     position: absolute;
@@ -75,6 +43,21 @@
   .logo {
     float: left;
     cursor: pointer;
+    position: relative;
+    img {
+      @include transition(all 1s);
+      opacity: 1; 
+    }
+  }
+  .logoBlack {
+    position: absolute;
+    left: 0; top: 0;
+    float: left;
+    cursor: pointer;
+    img { 
+      @include transition(all 1s);
+      opacity: 0; 
+    }
   }
   .menuButton {
     padding-top: 7px;
@@ -82,9 +65,7 @@
     width: 40px;
     float: right;
     .menuButtonBar {
-      @include transition-timing-function(cubic-bezier(0.25, 0.46, 0.45, 0.94));
-      @include transition-duration(150ms);
-      @include transition-property(all, -webkit-transform);
+      @include transition(all 0.6s);
       width: 40px;
       height: 4px;
       display: block;
@@ -93,37 +74,47 @@
     }
   }
   &.opened {
+    .logo img { opacity: 0; }
+    .logoBlack img { opacity: 1; }
     .navigation { background: transparent; }
     .menu {
-      height: 100%;
-      ul { @include translateY(0%); opacity: 1; }
+      @include translateY(0%);
     }
-    .menuButtonBar { width: 37px; }
-    .menuButtonBar:nth-child(1) {
-      @include transform-origin(4px 0px 0);
-      @include rotate(45deg);
-    }
-    .menuButtonBar:nth-child(2) {
-      opacity: 0;
-    }
-    .menuButtonBar:nth-child(3) {
-      @include transform-origin(4px 2px 0);
-      @include rotate(-45deg);
-    }
-    &.headroom--pinned {
-      .navigation {
-        @include translateY(0%);
+    .menuButton {
+      .menuButtonBar { 
+        width: 37px;
+        background: $color-black;
       }
-    }
-    &.headroom--top {
-      .navigation {
-        @include translateY(0%);
+      .menuButtonBar:nth-child(1) {
+        @include transform-origin(4px 0px 0);
+        transform-origin: 4px 0px 0;
+        -o-transform-origin: 4px 0px;
+        @include rotate(45deg);
       }
-    }
-    &.headroom--unpinned {
-      .navigation {
-        @include translateY(0%);
-        opacity: 1;
+      .menuButtonBar:nth-child(2) {
+        opacity: 0;
+      }
+      .menuButtonBar:nth-child(3) {
+        @include transform-origin(4px 2px 0);
+        transform-origin: 4px 2px 0;
+        -o-transform-origin: 4px 2px;
+        @include rotate(-45deg);
+      }
+      &.headroom--pinned {
+        .navigation {
+          @include translateY(0%);
+        }
+      }
+      &.headroom--top {
+        .navigation {
+          @include translateY(0%);
+        }
+      }
+      &.headroom--unpinned {
+        .navigation {
+          @include translateY(0%);
+          opacity: 1;
+        }
       }
     }
   }

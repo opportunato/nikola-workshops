@@ -4,7 +4,21 @@
   left: 0; right: 0; top: 0; bottom: 0;
   width: 100%;
   margin: 0 auto;
-  z-index: 0;
+  z-index: 1;
+  opacity: .1;
+  .column {
+    border-right: 1px solid $color-black;
+    width: 25%;
+    height: 100%;
+    display: inline-block;
+    vertical-align: top;
+    &:first-child { border-left: 1px solid $color-black; }
+  }
+}
+
+.white .column {
+  border-right: 1px solid white;
+  &:first-child { border-left: 1px solid white; }
 }
 
 .footer {
@@ -12,6 +26,10 @@
   margin: 0 auto;
   max-width: 980px;
   padding: 100px 0;
+  .wrapper {
+    position: relative;
+    z-index: 999;
+  }
   h1 { 
     margin-bottom: $margin;
     @include respond-to(tabletvertical) {
@@ -46,6 +64,8 @@
     margin: 0 auto;
     max-width: 980px;
     padding: 100px 0;
+    position: relative;
+    z-index: 999;
   }
   h1 {
     margin-bottom: $margin*2;
@@ -67,11 +87,19 @@
   .fl img { width: 80px; }
 }
 
+.imageAccommodation {
+  position: relative;
+}
+
 .slogan {
   position: absolute;
-  z-index: 999;
-  top: 40%;
-  width: 46%;
+  max-width: 980px;
+  z-index: 3;
+  top: 40%; left: 0; right: 0;
+  margin: 0 auto;
+  padding: 0 5%;
+  width: 100%;
+  text-align: center;
   color: white;
   @include respond-to(tabletvertical) {
     padding-left: $padding/2;
@@ -80,31 +108,20 @@
 
 .arrowDown {
   position: absolute;
-  z-index: 999;
+  z-index: 3;
   bottom: 5%;
   left: 50%;
   margin-left: -32px;
   cursor: pointer;
+  @include animation(arrow 1200ms infinite);
+  img { @include animation(arrow-appereance 1200ms); }
 }
 
 .intro {
   position: fixed;
   left: 0; right: 0; top: 0;
   background: $color-green;
-}
-
-.column {
-  border-right: 1px solid $color-black;
-  opacity: .1;
-  width: 25%;
-  height: 100%;
-  display: inline-block;
-  vertical-align: top;
-  &:first-child { border-left: 1px solid $color-black; }
-  &.white {
-    border-right: 1px solid white;
-    &:first-child { border-left: 1px solid white; }
-  }
+  z-index: 1;
 }
 
 .fullPage {
@@ -123,5 +140,5 @@ video, object {
   min-height: 100%;
   width: auto;
   height: auto;
-  opacity: .9;
+  opacity: .8;
 }
