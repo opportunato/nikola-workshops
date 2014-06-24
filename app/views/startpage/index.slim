@@ -40,6 +40,22 @@
     .imageAccommodation
       = image_tag 'accomodation.jpg'
       = render partial: 'columns'
+    .partners
+      = render partial: 'columns'
+      .wrapper
+        h1 Партнеры
+        .logo.nl
+          a[href='http://nikola-lenivets.com/' target='_blank']
+            =image_tag 'nl.png'
+        .logo.tnp
+          a[href='http://theoryandpractice.ru/' target='_blank']
+            =image_tag 'tnp.svg'
+        .logo.fl
+          a[href='http://www.fairlane.ru/' target='_blank']
+            =image_tag 'fairlane.svg'
+        .logo.fm
+          a[href='http://radiofollow.me/' target='_blank']
+            =image_tag 'fm.png'
     .footer
       = render partial: 'columns'
       .wrapper
@@ -64,19 +80,10 @@
         p
           a[href='http://nikola-lenivets.com/directions/' target='_blank']
             span Условия использования
-    .partners
-      = render partial: 'columns'
-      .wrapper
-        h1 Партнеры
-        .logo.nl
-          a[href='http://nikola-lenivets.com/' target='_blank']
-            =image_tag 'nl.png'
-        .logo.tnp
-          a[href='http://theoryandpractice.ru/' target='_blank']
-            =image_tag 'tnp.svg'
-        .logo.fl
-          a[href='http://www.fairlane.ru/' target='_blank']
-            =image_tag 'fairlane.svg'
-        .logo.fm
-          a[href='http://radiofollow.me/' target='_blank']
-            =image_tag 'fm.png'
+        p.social
+          a.fb[href='http://nikola-lenivets.com/directions/' target='_blank']
+            = image_tag 'fb.svg'
+          a.tw[href='http://nikola-lenivets.com/directions/' target='_blank']
+            = image_tag 'tw.svg'
+          a.vk[href='http://nikola-lenivets.com/directions/' target='_blank']
+            = image_tag 'vk.svg'

@@ -1,3 +1,8 @@
+.fb, .tw, .vk {
+  display: inline-block;
+  padding: 0 $padding/2;
+}
+
 .columns {
   max-width: 980px;
   position: absolute;
@@ -22,12 +27,13 @@
 }
 
 .footer {
+  background: $color-green;
   position: relative;
-  margin: 0 auto;
-  max-width: 980px;
   padding: 100px 0;
   .wrapper {
     position: relative;
+    margin: 0 auto;
+    max-width: 980px;
     z-index: 999;
   }
   h1 { 
@@ -49,21 +55,23 @@
       margin-left: $margin/3;
     }
     .phone, .email {
-      color: $color-green;
       margin-left: $margin/3;
-      &:hover { color: $color-red;}
     }
     &.block { margin-bottom: $margin/3; }
+  }
+  .social { 
+    text-align: center; 
+    margin-bottom: 0; 
   }
 }
 
 .partners {
-  background: $color-green;
   position: relative;
+  background: $color-green;
   .wrapper {
     margin: 0 auto;
     max-width: 980px;
-    padding: 100px 0;
+    padding-top: 100px;
     position: relative;
     z-index: 999;
   }

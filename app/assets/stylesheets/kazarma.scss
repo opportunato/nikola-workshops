@@ -12,13 +12,13 @@
   }
   .copy {
     position: absolute;
-    top: 25%;
+    top: 20%;
     width: 50%;
     @include respond-to(tabletvertical) {
       padding-left: $padding/2;
     }
     p {
-      font-size: 1.2em;
+      font-size: 1.8em;
     }
     h1 { width: 85%; }
   }
@@ -41,7 +41,7 @@
     }
   }
   p {
-    font-size: 2em;
+    font-size: 1.8em;
     margin-bottom: $margin;
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
     font-weight: 300;

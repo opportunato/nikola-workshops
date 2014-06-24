@@ -14,10 +14,24 @@ header
       .column
       .column
       .column
-    ul
-      li.aboutButton О резиденции
-      li.workshopsButton Воркшопы
-      li.venueButton Размещение
-      li.directionButton Как добраться?
-      li.questionButton Задать вопрос
-      li.termsButton Условия использования
+    .wrapper
+      ul.contacts
+        li Телефон: +7 926 226 41 37
+        li 
+          span Email: 
+          a[href='mailto:hello@k-o-l-l-e-k-t-i-v.ru' target='_blank']
+            span.email hello@k-o-l-l-e-k-t-i-v.ru
+        li
+          a.fb[href='http://nikola-lenivets.com/directions/' target='_blank']
+            = image_tag 'fb.svg'
+          a.tw[href='http://nikola-lenivets.com/directions/' target='_blank']
+            = image_tag 'tw.svg'
+          a.vk[href='http://nikola-lenivets.com/directions/' target='_blank']
+            = image_tag 'vk.svg'
+    ul.submenu
+      li 
+        a[href='http://nikola-lenivets.com/directions/' target='_blank']
+          span Задать вопрос
+      li
+        a[href='http://nikola-lenivets.com/directions/' target='_blank']
+          span Условия использования
