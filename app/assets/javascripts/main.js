@@ -3,17 +3,21 @@ $(function() {
   vpw = $(window).width();
   vph = $(window).height();
 
-  $(".intro").height(vph);
+  // $(".intro").height(vph);
   $(".kazarma").height(vph);
 
   $(window).resize(function() {
     vph = $(window).height();
-    $(".intro").height(vph);
+    // $(".intro").height(vph);
     $(".kazarma").height(vph);
   });
 
   $('.menuButton').on('click', function(e) {
     $('header').toggleClass('opened');
+  });
+  
+  $('.workshopWrapper').on('click', function(e) {
+    $('.morph-content').toggleClass('opened');
   });
 
   $('.trigger').on('click', function(e) {

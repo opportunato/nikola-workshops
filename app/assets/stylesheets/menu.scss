@@ -4,13 +4,13 @@ header {
   left: 0; right: 0; top: 0;
   z-index: 999;
   .menu {
-    @include transition(all 0.6s);
-    @include translateY(-400%);
+    @include transition(all 1s);
+    @include translateY(-200%);
     overflow: hidden;
     background: $color-green;
     position: fixed;
     top: 0; right: 0; bottom: 0; left: 0;
-    z-index: 99;
+    z-index: 999;
     .wrapper {
       position: absolute;
       top: 20%; left: 0; right: 0;

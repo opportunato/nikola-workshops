@@ -11,11 +11,12 @@
       | Арт-резиденция «Коллектив» — воркшопы с международными специалистами в уникальной среде Никола-Ленивца.
     .trigger =image_tag 'arrow_down.svg'
 
-  section.fullPage
-    .workshopList
-      = render partial: 'columns'
-      h3.schedule Расписание воркшопов
-      = render partial: 'workshop'
+
+  .workshopList
+    = render partial: 'columns'
+    h3.schedule Расписание воркшопов
+    = render partial: 'workshops'
+  article.content
     .kazarma
       = render partial: 'columns'
       .wrapper
@@ -56,7 +57,7 @@
         .logo.fm
           a[href='http://radiofollow.me/' target='_blank']
             =image_tag 'fm.png'
-    .footer
+    footer.footer
       = render partial: 'columns'
       .wrapper
         h1 Как добраться

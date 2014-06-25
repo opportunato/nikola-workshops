@@ -2,7 +2,7 @@
 /* Push */
 /* -------------------------- */
 .intro-effect-push:not(.notrans) .intro,
-.intro-effect-push:not(.notrans) > .fullPage,
+.intro-effect-push:not(.notrans) > .workshopList,
 .intro-effect-push:not(.notrans) .workshopWrapper > div {
   -webkit-transition-property: opacity, -webkit-transform;
   transition-property: opacity, transform;
@@ -26,7 +26,7 @@
   z-index: 1500;
 }
 
-.intro-effect-push > .fullPage {
+.intro-effect-push > .workshopList {
   position: relative;
   top: auto;
   left: auto;
@@ -38,14 +38,14 @@
 //   color: #b2b2c0;
 // }
 
-.intro-effect-push > .fullPage,
+.intro-effect-push > .workshopList,
 .intro-effect-push .workshopWrapper > div {
   -webkit-transform: translateY(400px);
   transform: translateY(400px);
   opacity: 0;
 }
 
-.intro-effect-push.modify > .fullPage,
+.intro-effect-push.modify > .workshopList,
 .intro-effect-push.modify .workshopWrapper > div {
   -webkit-transform: translateY(0);
   transform: translateY(0);
@@ -59,7 +59,7 @@
 }
 
 /* Delays */
-.intro-effect-push.modify:not(.notrans) > .fullPage {
+.intro-effect-push.modify:not(.notrans) > .workshopList {
   -webkit-transition-delay: 0.5s;
   transition-delay: 0.5s;
 }

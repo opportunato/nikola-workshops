@@ -6,8 +6,13 @@
 
 .workshopList {
   position: relative;
+  top: auto;
+  left: auto;
+  z-index: 2;
+  background: white;
   .workshopWrapper {
     @include transition(all 0.6s);
+    overflow: hidden;
     position: relative;
     z-index: 9;
     border-bottom: 4px solid $color-black;
@@ -15,10 +20,6 @@
     cursor: pointer;
     &.past {
       background: #eee;
-    }
-    &:hover { 
-      background: $color-green;
-      .date { color: white; }
     }
     &:last-child { border-bottom: 0; }
     &:first-child { border-top: 4px solid $color-black; }
@@ -64,5 +65,13 @@
         padding-left: $padding/2;
       }
     }
+  }
+}
+
+
+.modify {
+  .workshopWrapper:hover { 
+    background: $color-green;
+    .date { color: white; }
   }
 }
