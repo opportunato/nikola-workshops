@@ -21,22 +21,25 @@ angular.module("nikolaWorkshopsAdmin", [
     templateUrl: "workshopsEditor.html"
     controller: "workshopsEditCtrl"
     resolve:
-      workshops: (Workshop) ->
+      workshops: ['Workshop', (Workshop) ->
         Workshop.query()
+      ]
 
   $routeProvider.when "#{workshopsUrl}/new",
     templateUrl: "workshopsEditor.html"
     controller: "workshopsEditCtrl"
     resolve:
-      workshops: (Workshop) ->
+      workshops: ['Workshop', (Workshop) ->
         Workshop.query()
+      ]
 
   $routeProvider.otherwise
     templateUrl: "workshopsTable.html"
     controller: "workshopsTableCtrl"
     resolve:
-      workshops: (Workshop) ->
+      workshops: ['Workshop', (Workshop) ->
         Workshop.query()
+      ]
 ])
 
 .config(['ngQuickDateDefaultsProvider', (ngQuickDateDefaultsProvider) ->
