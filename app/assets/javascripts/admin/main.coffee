@@ -8,12 +8,12 @@ angular.module("nikolaWorkshopsAdmin", [
 .constant("workshopsUrl", "/admin/workshops")
 .constant("hostImageUrl", "/images/create_host")
 .constant("workshopImageUrl", "/images/create_workshop")
-.factory("Workshop", (railsResourceFactory, workshopsUrl, $templateCache) ->
+.factory("Workshop", ["railsResourceFactory", "workshopsUrl", "$templateCache", (railsResourceFactory, workshopsUrl, $templateCache) ->
   railsResourceFactory 
     url: "/workshops", 
     name: "workshop"
-)
-.config ($routeProvider, $locationProvider, workshopsUrl) ->
+])
+.config(['$routeProvider', '$locationProvider', 'workshopsUrl', ($routeProvider, $locationProvider, workshopsUrl) ->
 
   $locationProvider.html5Mode true
 
@@ -37,10 +37,12 @@ angular.module("nikolaWorkshopsAdmin", [
     resolve:
       workshops: (Workshop) ->
         Workshop.query()
+])
 
-.config (ngQuickDateDefaultsProvider) ->
+.config(['ngQuickDateDefaultsProvider', (ngQuickDateDefaultsProvider) ->
 
   ngQuickDateDefaultsProvider.set 
     disableTimepicker: true,
     dateFormat: "dd.MM.yyyy",
     iconClass: "fa-calendar"
+])

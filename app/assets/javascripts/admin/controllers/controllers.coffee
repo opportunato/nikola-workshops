@@ -1,5 +1,5 @@
 angular.module("nikolaWorkshopsAdmin")
-.controller("adminCtrl", ($scope, $location, Workshop, workshopsUrl) ->
+.controller("adminCtrl", ['$scope', '$location', 'Workshop', 'workshopsUrl', ($scope, $location, Workshop, workshopsUrl) ->
   $scope.workshopsUrl = workshopsUrl
   $scope.data = {}
 
@@ -13,13 +13,13 @@ angular.module("nikolaWorkshopsAdmin")
       $scope.data.workshops.splice $scope.data.workshops.indexOf(workshop), 1
 
     $location.path $scope.workshopsUrl
-)
+])
 
-.controller("workshopsTableCtrl", ($scope, $location, $route, workshops) ->
+.controller("workshopsTableCtrl", ['$scope', '$location', '$route', 'workshops', ($scope, $location, $route, workshops) ->
   $scope.data.workshops = workshops
-)
+])
 
-.controller "workshopsEditCtrl", ($scope, $routeParams, $location, workshops, Workshop) ->
+.controller("workshopsEditCtrl", ['$scope', '$routeParams', '$location', 'workshops', 'Workshop', ($scope, $routeParams, $location, workshops, Workshop) ->
   $scope.data.workshops = workshops
 
   $scope.$watch 'data.workshops.length', ->
@@ -44,8 +44,9 @@ angular.module("nikolaWorkshopsAdmin")
     else
       $scope.createWorkshop $scope.currentWorkshop
     $scope.currentWorkshop = new Workshop
+])
 
-.controller "hostsCtrl", ($scope, $upload, hostImageUrl) ->
+.controller("hostsCtrl", ['$scope', '$upload', 'hostImageUrl', ($scope, $upload, hostImageUrl) ->
   $scope.newHost = {}
 
   $scope.deleteHost = (host) ->
@@ -69,8 +70,9 @@ angular.module("nikolaWorkshopsAdmin")
         host.image = data.url
         host.imageId = data.id
       )
+])
 
-.controller "videosCtrl", ($scope) ->
+.controller("videosCtrl", ['$scope', ($scope) ->
   $scope.newVideo = {}
 
   $scope.deleteVideo = (host) ->
@@ -81,8 +83,9 @@ angular.module("nikolaWorkshopsAdmin")
     $scope.currentWorkshop.videos ||= []
     $scope.currentWorkshop.videos.push($scope.newVideo)
     $scope.newVideo = {}
+])
 
-.controller "imagesCtrl", ($scope, workshopImageUrl, $upload) ->
+.controller("imagesCtrl", ['$scope', 'workshopImageUrl', '$upload', ($scope, workshopImageUrl, $upload) ->
 
   $scope.deleteImage = (image) ->
     images = $scope.currentWorkshop.images
@@ -99,5 +102,5 @@ angular.module("nikolaWorkshopsAdmin")
       ).success((data, status, headers, config) ->
         $scope.currentWorkshop.images.push data
       )
-
+])
 
