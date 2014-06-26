@@ -9,7 +9,7 @@ angular.module("nikolaWorkshopsAdmin")
       $location.path $scope.workshopsUrl
 
   $scope.deleteWorkshop = (workshop) ->
-    workshop.$delete().then ->
+    workshop.delete().then ->
       $scope.data.workshops.splice $scope.data.workshops.indexOf(workshop), 1
 
     $location.path $scope.workshopsUrl
@@ -45,7 +45,7 @@ angular.module("nikolaWorkshopsAdmin")
       $scope.createWorkshop $scope.currentWorkshop
     $scope.currentWorkshop = new Workshop
 
-.controller "hostsCtrl", ($scope, $routeParams, $location) ->
+.controller "hostsCtrl", ($scope, $upload, hostImageUrl) ->
   $scope.newHost = {}
 
   $scope.deleteHost = (host) ->
@@ -53,5 +53,51 @@ angular.module("nikolaWorkshopsAdmin")
     hosts.splice hosts.indexOf(host), 1
 
   $scope.addHost = ->
+    $scope.currentWorkshop.hosts ||= []
     $scope.currentWorkshop.hosts.push($scope.newHost)
+
     $scope.newHost = {}
+
+  $scope.uploadImage = ($files, host) ->
+
+    for $file in $files
+      $scope.upload = $upload.upload(
+        url: hostImageUrl
+        file: $file
+        fileFormDataName: 'image'
+      ).success((data, status, headers, config) ->
+        host.image = data.url
+        host.imageId = data.id
+      )
+
+.controller "videosCtrl", ($scope) ->
+  $scope.newVideo = {}
+
+  $scope.deleteVideo = (host) ->
+    videos = $scope.currentWorkshop.videos
+    videos.splice videos.indexOf(video), 1
+
+  $scope.addVideo = ->
+    $scope.currentWorkshop.videos ||= []
+    $scope.currentWorkshop.videos.push($scope.newVideo)
+    $scope.newVideo = {}
+
+.controller "imagesCtrl", ($scope, workshopImageUrl, $upload) ->
+
+  $scope.deleteImage = (image) ->
+    images = $scope.currentWorkshop.images
+    images.splice images.indexOf(image), 1
+
+  $scope.uploadImages = ($files, host) ->
+    $scope.currentWorkshop.images ||= []
+
+    for $file in $files
+      $scope.upload = $upload.upload(
+        url: workshopImageUrl
+        file: $file
+        fileFormDataName: 'image'
+      ).success((data, status, headers, config) ->
+        $scope.currentWorkshop.images.push data
+      )
+
+

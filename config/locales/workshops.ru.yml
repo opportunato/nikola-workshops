@@ -10,7 +10,12 @@ ru:
     start_date: Дата начала
     end_date: Дата окончания
     is_published: Показывать на главной
+    hosts: Мастера
+    videos: Видео
+    images: Картинки
   host:
     name: Имя
     description: Описание
+    link: Ссылка
+  video:
     link: Ссылка

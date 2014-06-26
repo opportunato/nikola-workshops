@@ -2,9 +2,12 @@ angular.module("nikolaWorkshopsAdmin", [
   "rails",
   "ngRoute",
   "templates",
-  "ngQuickDate"
+  "ngQuickDate",
+  "angularFileUpload"
 ])
 .constant("workshopsUrl", "/admin/workshops")
+.constant("hostImageUrl", "/images/create_host")
+.constant("workshopImageUrl", "/images/create_workshop")
 .factory("Workshop", (railsResourceFactory, workshopsUrl, $templateCache) ->
   railsResourceFactory 
     url: "/workshops", 

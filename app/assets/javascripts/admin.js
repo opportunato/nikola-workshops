@@ -3,6 +3,7 @@
 //= require angularjs/rails/resource
 //= require angular-route
 //= require angular-rails-templates
+//= require angular-file-upload
 //= require ng-quick-date
 //= require_tree ../templates
 //= require admin/main

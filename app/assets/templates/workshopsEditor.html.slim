@@ -1,52 +1,48 @@
 .panel-body
   form novalidate=""
     a href="{{workshopsUrl}}/" = t("workshop.list")
+    = angular_form_tag(t("workshop.title"), "currentWorkshop.title")
+    = angular_form_tag(t("workshop.headline"), "currentWorkshop.headline")
+    = angular_form_tag(t("workshop.description"), "currentWorkshop.description", "textarea")
+    = angular_form_tag(t("workshop.program"), "currentWorkshop.program", "textarea")
+    = angular_form_tag(t("workshop.price"), "currentWorkshop.price")
+    = angular_form_tag(t("workshop.buy_link"), "currentWorkshop.buyLink")
+    = angular_form_tag(t("workshop.start_date"), "currentWorkshop.startDate", 'quick-datepicker')
+    = angular_form_tag(t("workshop.end_date"), "currentWorkshop.endDate", 'quick-datepicker')
     .form-element
-      label = t("workshop.title")
-      input[ng-model="currentWorkshop.title"]
-    .form-element
-      label = t("workshop.headline")
-      input[ng-model="currentWorkshop.headline"]
-    .form-element
-      label = t("workshop.description")
-      textarea[ng-model="currentWorkshop.description"]
-    .form-element
-      label = t("workshop.program")
-      textarea[ng-model="currentWorkshop.program"]
-    .form-element
-      label = t("workshop.price")
-      input[ng-model="currentWorkshop.price"]
-    .form-element
-      label = t("workshop.buy_link")
-      input[ng-model="currentWorkshop.buyLink"]
-    .form-element
-      label = t("workshop.start_date")
-      quick-datepicker[ng-model="currentWorkshop.startDate"]
-    .form-element
-      label = t("workshop.end_date")
-      quick-datepicker[ng-model="currentWorkshop.endDate"]
+      label = t("workshop.is_published")
+      input[type="checkbox" ng-model="currentWorkshop.isPublished"]
     .hosts[ng-controller="hostsCtrl"]
+      h2 = t("workshop.hosts")
       .panel-body[ng-repeat="host in currentWorkshop.hosts"]
+        = angular_form_tag(t("host.name"), "host.name")
+        = angular_form_tag(t("host.description"), "host.description")
+        = angular_form_tag(t("host.link"), "host.link")
+        img[ng-src="{{host.image}}"]
         .form-element
-          label = t("host.name")
-          input[ng-model="host.name"]
-        .form-element
-          label = t("host.description")
-          textarea[ng-model="host.description"]
-        .form-element
-          label = t("host.link")
-          input[ng-model="host.link"]
+          input[type="file" ng-file-select="uploadImage($files, host)"]
         button[class="btn btn-primary" ng-click="deleteHost(host)"] = t("common.delete")
       .panel-body
+        = angular_form_tag(t("host.name"), "newHost.name")
+        = angular_form_tag(t("host.description"), "newHost.description")
+        = angular_form_tag(t("host.link"), "newHost.link")
+        img[ng-src="{{newHost.image}}"]
         .form-element
-          label = t("host.name")
-          input[ng-model="newHost.name"]
-        .form-element
-          label = t("host.description")
-          textarea[ng-model="newHost.description"]
-        .form-element
-          label = t("host.link")
-          input[ng-model="newHost.link"]
+          input[type="file" ng-file-select="uploadImage($files, newHost)"]
         button[class="btn btn-primary" ng-click="addHost()"] = t("common.add")
+    .videos[ng-controller="videosCtrl"]
+      h2 = t("workshop.videos")
+      .panel-body[ng-repeat="video in currentWorkshop.videos"]
+        = angular_form_tag(t("video.link"), "video.link")
+      .panel-body
+        = angular_form_tag(t("video.link"), "newVideo.link")
+        button[class="btn btn-primary" ng-click="addVideo()"] = t("common.add")
+    .images[ng-controller="imagesCtrl"]
+      h2 = t("workshop.images")
+      .panel-body[ng-repeat="image in currentWorkshop.images"]
+        img[ng-src="{{image.url}}"]
+        button[class="btn btn-primary" ng-click="deleteImage(image)"] = t("common.delete")
+      .form-element
+        input[type="file" ng-file-select="uploadImages($files)" multiple=""]
     button[class="btn btn-primary" ng-click="saveWorkshop()"] = t("common.save")
     button[class="btn btn-primary" ng-click="cancelEdit()"] = t("common.cancel")
