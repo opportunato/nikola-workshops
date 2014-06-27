@@ -7,9 +7,9 @@ class WorkshopsController < ApplicationController
   end
 
   def create
-    @workshop = Workshop.new(workshop_params)
+    @workshop = Workshop.new(workshop_original_params)
 
-    if @workshop.save && update_hosts(@workshop, workshop_params[:hosts])
+    if @workshop.save && update_workshop
       render json: @workshop, status: :created
     else
       render json: @workshop.errors, status: :unprocessable_entity
@@ -19,7 +19,7 @@ class WorkshopsController < ApplicationController
   def update
     @workshop = Workshop.find(params[:id])
 
-    if @workshop.update(workshop_params) && update_hosts(@workshop, params[:workshop][:hosts])
+    if @workshop.update(workshop_original_params) && update_workshop
       render json: @workshop, status: :created
     else
       render json: @workshop.errors, status: :unprocessable_entity
@@ -35,32 +35,75 @@ class WorkshopsController < ApplicationController
 
 private
   def workshop_params
-    params.require(:workshop).permit(:title, :headline, :description, :program, :price, :buy_link, :start_date, :end_date, :is_published)
+    params.require(:workshop).permit(:title, :headline, :description, :program, :price, :buy_link, :start_date, :end_date, :is_published, 
+      hosts: [:id, :name, :description, :link, :image_id],
+      videos: [:id, :link],
+      images: [:id]
+    )
+  end
+
+  def update_workshop
+    update_hosts(workshop_params[:hosts]) && update_videos(workshop_params[:videos]) && update_images(workshop_params[:images])
+  end
+
+  def workshop_original_params
+    workshop_params.except(:hosts, :videos, :images)
   end
 
   # TODO oh, the humanity...
+  # That sucks waaaaay to much cock
 
-  def update_hosts(workshop, hosts)
-    old_hosts = workshop.hosts
-    old_hosts_ids = old_hosts.map(&:id)
-    new_hosts_ids = hosts.map { |host| host[:id] }
+  def update_collection(collection, collection_name, constructor, create=true)
+    old_collection = @workshop.send(collection_name)
+    old_collection_ids = old_collection.map(&:id)
+    new_collection_ids = collection.map { |element| element[:id] }
 
-    old_hosts.each do |host|
-      if !new_hosts_ids.include?(host.id)
-        host.destroy
+    old_collection.each do |element|
+      if !new_collection_ids.include?(element.id)
+        element.destroy
       end
     end
 
-    hosts.each do |host|
-      if !old_hosts_ids.include?(host[:id])
-        workshop.hosts.push Host.new({
-          name: host[:name],
-          description: host[:description],
-          link: host[:link]
-        })
+    collection.each do |element|
+
+      # The horror is here
+
+      if !old_collection_ids.include?(element[:id])
+        if create
+          object = constructor.new(element.except(:image_id))
+          @workshop.send(collection_name).push constructor.new(element.except(:image_id))
+        else
+          @workshop.send(collection_name).push constructor.find_by(id: element[:id])
+        end
+      else
+        object = constructor.find_by(id: element[:id])
+      end
+
+      # And here is really scary too
+
+      if element[:image_id].present?
+        image = HostImage.find_by(id: element[:image_id])
+        object.image = image
       end
     end
 
-    workshop.save
+    @workshop.save
+  end
+
+  def update_hosts(hosts)
+    hosts ||= []
+    update_collection(hosts, :hosts, Host)
+  end
+
+  def update_videos(videos)
+    #Zakhar style coding
+
+    videos ||= []
+    update_collection(videos, :videos, WorkshopVideo)
+  end
+
+  def update_images(images)
+    images ||= []
+    update_collection(images, :images, WorkshopImage, false)
   end
 end

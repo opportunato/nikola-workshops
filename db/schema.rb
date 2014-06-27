@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140620174506) do
+ActiveRecord::Schema.define(version: 20140623072059) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "host_images", force: true do |t|
+    t.string   "image",      null: false
+    t.integer  "host_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "hosts", force: true do |t|
     t.string   "name"
@@ -26,6 +33,20 @@ ActiveRecord::Schema.define(version: 20140620174506) do
   end
 
   add_index "hosts", ["workshop_id"], name: "index_hosts_on_workshop_id", using: :btree
+
+  create_table "workshop_images", force: true do |t|
+    t.string   "image",       null: false
+    t.integer  "workshop_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "workshop_videos", force: true do |t|
+    t.string   "link",        null: false
+    t.integer  "workshop_id", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "workshops", force: true do |t|
     t.string   "title"

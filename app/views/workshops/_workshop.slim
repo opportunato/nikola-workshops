@@ -1,0 +1,10 @@
+article.morph-button.morph-button-overlay.morph-button-fixed
+  .workshopWrapper
+    button.buttonPopup
+    .workshop
+      .date 01-06 сентября
+      h2.title = workshop.title
+      - if workshop.has_hosts?
+        .host
+          .image = image_tag workshop.host_image
+          .name = workshop.host_name
