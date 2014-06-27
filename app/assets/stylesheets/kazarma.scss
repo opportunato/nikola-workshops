@@ -18,9 +18,9 @@
       padding-left: $padding/2;
     }
     p {
-      font-size: 1.8em;
+      font-size: 1.4em;
     }
-    h1 { width: 85%; }
+    h1 { width: 80%; }
   }
 }
 
@@ -35,13 +35,13 @@
   }
   h1 { 
     margin-bottom: $margin; 
-    width: 94%;
+    width: 89%;
     @include respond-to(tabletvertical) {
       padding-left: $padding/2;
     }
   }
   p {
-    font-size: 1.8em;
+    font-size: 1.4em;
     margin-bottom: $margin;
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
     font-weight: 300;

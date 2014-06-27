@@ -1,8 +1,9 @@
-article.morph-button.morph-button-overlay.morph-button-fixed
+.wrapper
   .workshopWrapper
-    button.buttonPopup
     .workshop
-      .date 01-06 сентября
+      .date 
+        | 01-06 сентября
+        span.badge Прошел
       h2.title = workshop.title
       - if workshop.has_hosts?
         .host

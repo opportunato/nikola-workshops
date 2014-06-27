@@ -3,12 +3,10 @@ $(function() {
   vpw = $(window).width();
   vph = $(window).height();
 
-  // $(".intro").height(vph);
   $(".kazarma").height(vph);
 
   $(window).resize(function() {
     vph = $(window).height();
-    // $(".intro").height(vph);
     $(".kazarma").height(vph);
   });
 
@@ -23,9 +21,9 @@ $(function() {
 
   $('.menuButtonPopup').on({
     click: function() {
-      $('body').toggleClass('noscroll');
+      $('.overlay').toggleClass('opened');
       setTimeout(function() {
-        $('.overlay').toggleClass('opened');
+        $('body').toggleClass('noscroll');
       }, 50);
     }
   });

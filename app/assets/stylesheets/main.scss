@@ -50,7 +50,7 @@
     }
   }
   p {
-    font-size: 2em;
+    font-size: 1.4em;
     margin-bottom: $margin;
     line-height: 1.4;
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
@@ -117,7 +117,7 @@
   margin: 0 auto;
   padding: 0 5%;
   width: 100%;
-  font-size: 3.2em;
+  font-size: 3em;
   text-align: center;
   color: white;
   @include respond-to(tabletvertical) {
