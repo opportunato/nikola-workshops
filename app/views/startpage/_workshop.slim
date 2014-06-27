@@ -1,5 +1,21 @@
-article.morph-content
-  div
-    .content-style-overlay
-      span.icon.icon-close Close the overlay
-      h2 About Parsley
+.wrapper
+  nav.navigation
+    .logoBlack
+      = image_tag 'logo_black.svg'
+    .menuButtonPopup
+      span.menuButtonBar
+      span.menuButtonBar
+      span.menuButtonBar
+  .description
+    = render partial: 'columns'
+    .wrapper
+      .floatLeft
+        .date 01-06 сентября
+        h1.title Street studio workshop
+      a.button[href='http://theoryandpractice.ru/' target='_blank']
+        .title Купить билеты
+        .price 5 000р.
+  .gallery
+    =image_tag 'test.jpg'
+  = render partial: 'partners'
+  = render partial: 'footer'

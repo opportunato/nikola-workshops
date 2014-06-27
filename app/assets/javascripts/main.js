@@ -12,17 +12,38 @@ $(function() {
     $(".kazarma").height(vph);
   });
 
-  $('.menuButton').on('click', function(e) {
-    $('header').toggleClass('opened');
-  });
-  
-  $('.workshopWrapper').on('click', function(e) {
-    $('.morph-content').toggleClass('opened');
+  $('.menuButton').on({
+    click: function() {
+      $('body').toggleClass('noscroll');
+      setTimeout(function() {
+        $('header').toggleClass('opened');
+      }, 50);
+    }
   });
 
-  $('.trigger').on('click', function(e) {
-    return $('html, body').animate({
-      scrollTop: $(".fullPage").offset().top
-    }, 400);
+  $('.menuButtonPopup').on({
+    click: function() {
+      $('body').toggleClass('noscroll');
+      setTimeout(function() {
+        $('.overlay').toggleClass('opened');
+      }, 50);
+    }
+  });
+  
+  $('.workshopWrapper').on({
+    click: function() {
+      $('body').toggleClass('noscroll');
+      setTimeout(function() {
+        $('.overlay').toggleClass('opened');
+      }, 50);
+    }
+  });
+
+  $('.trigger').on({
+    click: function() {
+      return $('html, body').animate({
+        scrollTop: $(".fullPage").offset().top
+      }, 400);
+    }
   });
 });

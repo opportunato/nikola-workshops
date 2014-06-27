@@ -3,10 +3,11 @@
   pointer-events: none !important;
 }
 
-.fb, .tw, .vk {
+.fb, .tw, .vk, .in, .vm {
   display: inline-block;
   padding: 0 $padding/2;
-  &:hover { opacity: .8; }
+  font-size: 1.2em;
+  text-decoration: none;
 }
 
 .columns {
@@ -97,7 +98,7 @@
     &:hover { opacity: .8; }
   }
   .fm img { width: 100px; }
-  .nl img { width: 112px; }
+  .nl img { width: 172px; }
   .tnp img { width: 62px; }
   .fl img { width: 80px; }
 }

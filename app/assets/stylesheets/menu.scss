@@ -117,22 +117,6 @@ header {
         -o-transform-origin: 4px 2px;
         @include rotate(-45deg);
       }
-      &.headroom--pinned {
-        .navigation {
-          @include translateY(0%);
-        }
-      }
-      &.headroom--top {
-        .navigation {
-          @include translateY(0%);
-        }
-      }
-      &.headroom--unpinned {
-        .navigation {
-          @include translateY(0%);
-          opacity: 1;
-        }
-      }
     }
   }
 }
