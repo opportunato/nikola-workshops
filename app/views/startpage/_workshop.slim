@@ -16,9 +16,14 @@
         a[href='http://theoryandpractice.ru/' target='_blank']
           .title Купить билеты
           .price 5 000р.
-  .gallery
-    .arrowLeft=image_tag 'arrow.svg'
-    .arrowRight=image_tag 'arrow.svg'
+  #carousel
+    ul.animate
+      li.pane1
+        iframe allowfullscreen="" frameborder="0" height="281" mozallowfullscreen="" src="//player.vimeo.com/video/84882560" webkitallowfullscreen="" width="500" 
+      li.pane2
+      li.pane3
+    #arrowLeft=image_tag 'arrow.svg'
+    #arrowRight=image_tag 'arrow.svg'
   .content.bottom
     = render partial: 'columns'
     .wrapper

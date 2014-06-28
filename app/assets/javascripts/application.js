@@ -5,4 +5,7 @@
 //= require angular-resource
 //= require classie
 //= require animation_push
+//= require modernizr
+//= require hammer
+//= require carousel
 //= require main

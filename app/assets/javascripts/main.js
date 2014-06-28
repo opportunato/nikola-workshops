@@ -6,16 +6,18 @@ $(function() {
   $(".kazarma").height(vph);
 
   if ($(window).width() > 1024) {
-    $(".gallery").height(vph);
+    $("#carousel").height(vph);
+  } else {
+    $("#carousel").height(400);
   }
 
   $(window).resize(function() {
     vph = $(window).height();
     $(".kazarma").height(vph);
     if ($(window).width() > 1024) {
-      $(".gallery").height(vph);
+      $("#carousel").height(vph);
     } else {
-      $(".gallery").height(400);
+      $("#carousel").height(400);
     }
   });
 
@@ -43,14 +45,6 @@ $(function() {
       setTimeout(function() {
         $('.overlay').toggleClass('opened');
       }, 50);
-    }
-  });
-
-  $('.trigger').on({
-    click: function() {
-      return $('html, body').animate({
-        scrollTop: $(".fullPage").offset().top
-      }, 400);
     }
   });
 });
