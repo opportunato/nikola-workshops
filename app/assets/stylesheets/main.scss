@@ -6,7 +6,7 @@
 .fb, .tw, .vk, .in, .vm {
   display: inline-block;
   padding: 0 $padding/2;
-  font-size: 1.2em;
+  font-size: 1.4em;
   text-decoration: none;
 }
 
@@ -37,6 +37,9 @@
   background: $color-green;
   position: relative;
   padding: 100px 0;
+  @include respond-to(iphone) {
+    padding: $padding/2 0;
+  }
   .wrapper {
     position: relative;
     margin: 0 auto;
@@ -45,8 +48,11 @@
   }
   h1 { 
     margin-bottom: $margin;
-    @include respond-to(tabletvertical) {
+    @include respond-to(iphone) {
       padding-left: $padding/2;
+    }
+    @include respond-to(iphone) {
+      margin-bottom: $margin/2;
     }
   }
   p {
@@ -55,8 +61,10 @@
     line-height: 1.4;
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
     font-weight: 300;
-    @include respond-to(tabletvertical) {
+    @include respond-to(iphone) {
       padding-left: $padding/2;
+      font-size: 1.2em;
+      margin-bottom: $margin/2;
     }
     .more { 
       margin-left: $margin/3;
@@ -67,6 +75,8 @@
     &.block { margin-bottom: $margin/3; }
   }
   .social { 
+    position: relative;
+    z-index: 999;
     text-align: center; 
     margin-bottom: 0; 
   }
@@ -81,11 +91,18 @@
     padding-top: 100px;
     position: relative;
     z-index: 999;
+    @include respond-to(iphone) {
+      padding-top: $padding/2;
+      padding-bottom: $padding/2;
+    }
   }
   h1 {
     margin-bottom: $margin*2;
-    @include respond-to(tabletvertical) {
+    @include respond-to(iphone) {
       padding-left: $padding/2;
+    }
+    @include respond-to(iphone) {
+      margin-bottom: $margin;
     }
   }
   .logo {
@@ -96,6 +113,13 @@
     position: relative;
     z-index: 1;
     &:hover { opacity: .8; }
+    @include respond-to(iphone) {
+      width: 100%;
+      display: block;
+      text-align: center;
+      margin-bottom: $margin;
+      &:last-child { margin-bottom: 0; }
+    }
   }
   .fm img { width: 100px; }
   .nl img { width: 172px; }
@@ -120,8 +144,12 @@
   font-size: 3em;
   text-align: center;
   color: white;
-  @include respond-to(tabletvertical) {
+  @include respond-to(iphone) {
     padding-left: $padding/2;
+    font-size: 2.4em;
+  }
+  @include respond-to(iphone) {
+    font-size: 1.6em;
   }
 }
 
@@ -143,6 +171,10 @@
   overflow: hidden;
   height: 100%;
   top: 0;
+  @include respond-to(tablet) {
+    background: image_url('bg.jpg') no-repeat center center $color-black;     
+    @include background-size(cover);
+  }
 }
 
 video, object {
@@ -155,5 +187,7 @@ video, object {
   min-height: 100%;
   width: auto;
   height: auto;
-  // opacity: .8;
+  @include respond-to(tablet) {
+    display: none;
+  }
 }

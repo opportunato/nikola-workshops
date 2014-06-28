@@ -5,7 +5,8 @@ header {
   z-index: 999;
   .menu {
     @include transition(all 1s);
-    @include translateY(-200%);
+    -webkit-transform: translateY(-200%);
+    transform: translateY(-200%);
     overflow: hidden;
     background: $color-green;
     position: fixed;
@@ -13,7 +14,9 @@ header {
     z-index: 999;
     .wrapper {
       position: absolute;
-      top: 20%; left: 0; right: 0;
+      top: 50%; left: 50%;
+      -webkit-transform: translateX(-50%) translateY(-50%);
+      transform: translateX(-50%) translateY(-50%);
       margin: 0 auto;
       max-width: 980px;
       z-index: 999;
@@ -27,9 +30,15 @@ header {
       font-size: 1.2em;
       font-family: "HelveticaNeue-Bold", Helvetica, Arial, "Lucida Grande", sans-serif; 
       font-weight: 600;
+      @include respond-to(iphone) {
+        padding-bottom: $padding/3;
+      }
       li { 
         display: inline-block;
         padding: $padding $padding/2;
+        @include respond-to(iphone) {
+          padding: 0 0 $padding/2 0;
+        }
       }
     }
     .contacts {
@@ -41,9 +50,15 @@ header {
       font-size: 1.6em;
       font-family: "HelveticaNeue-Bold", Helvetica, Arial, "Lucida Grande", sans-serif; 
       font-weight: 600;
+      @include respond-to(iphone) {
+        width: 90%;
+        font-size: 1.2em;
+      }
       li {
         padding: $padding/2 0;
-        &:last-child { border-bottom: 0; }
+        @include respond-to(iphone) {
+          padding: $padding/3 0;
+        }
       }
     }
   }
@@ -56,6 +71,9 @@ header {
     @include respond-to(tablet) {
       padding: $padding 23px;
     }
+    @include respond-to(iphone) {
+      padding: $padding/2;
+    }
   }
   .logo {
     float: left;
@@ -63,7 +81,11 @@ header {
     position: relative;
     img {
       @include transition(all 1s);
-      opacity: 1; 
+      opacity: 1;
+      @include respond-to(iphone) {
+        display: block;
+        width: 200px;
+      }
     }
   }
   .logoBlack {
@@ -73,7 +95,11 @@ header {
     cursor: pointer;
     img { 
       @include transition(all 1s);
-      opacity: 0; 
+      opacity: 0;
+      @include respond-to(iphone) {
+        display: block;
+        width: 200px;
+      }
     }
   }
   .menuButton {
@@ -81,6 +107,10 @@ header {
     cursor: pointer;
     width: 40px;
     float: right;
+    @include respond-to(iphone) {
+      -webkit-transform: scale(0.8);
+      transform: scale(0.8);
+    }
     .menuButtonBar {
       @include transition(all 0.6s);
       width: 40px;
@@ -95,7 +125,9 @@ header {
     .logoBlack img { opacity: 1; }
     .navigation { background: transparent; }
     .menu {
-      @include translateY(0%);
+      // @include translateY(0%);
+      -webkit-transform: translateY(0%);
+      transform: translateY(0%);
     }
     .menuButton {
       .menuButtonBar { 

@@ -1,6 +1,9 @@
 .overlay {
-  @include transition(all 0.6s);
-  @include translateY(100%);
+  @include transition(all 0.6s ease-in-out);
+  // @include translateY(100%);
+  @include scale(0.8);
+  opacity: 0;
+  visibility: hidden;
   position: fixed;
   z-index: 9999;
   background: $color-green;
@@ -8,12 +11,43 @@
   width: 100%; height: 100%;
   overflow: hidden;
   &.opened {
-    @include translateY(0%);
+    // @include translateY(0%);
+    @include scale(1);
+    opacity: 1;
+    visibility: visible;
     overflow-y: scroll;
     .wrapper {
-      @include translateY(0%);
-      height: auto;
-      opacity: 1;
+      // @include translateY(0%);
+      // height: auto;
+      // opacity: 1;
+    }
+    .menuButtonPopup {
+      padding-top: 7px;
+      cursor: pointer;
+      width: 40px;
+      float: right;
+      .menuButtonBar {
+        width: 37px;
+        height: 4px;
+        display: block;
+        background-color: $color-black;
+        margin: 6px 0;
+        &:nth-child(1) {
+          @include transform-origin(4px 0px 0);
+          transform-origin: 4px 0px 0;
+          -o-transform-origin: 4px 0px;
+          @include rotate(45deg);
+          opacity: 1;
+        }
+        &:nth-child(2) { opacity: 0; }
+        &:nth-child(3) {
+          @include transform-origin(4px 2px 0);
+          transform-origin: 4px 2px 0;
+          -o-transform-origin: 4px 2px;
+          @include rotate(-45deg);
+          opacity: 1;
+        }
+      }
     }
   }
   .navigation {
@@ -25,15 +59,30 @@
     @include respond-to(tablet) {
       padding: $padding 23px;
     }
+    @include respond-to(iphone) {
+      padding: $padding/2;
+    }
   }
-  .description {
+  .partners .wrapper { padding-top: 0; }
+  .content {
     width: 100%;
-    padding-top: 150px;
     padding-bottom: $padding;
     max-width: 980px;
     margin: 0 auto;
     position: relative;
     overflow: hidden;
+    @include respond-to(iphone) {
+      padding-bottom: $padding/2;
+    }
+    &.top {
+      padding-top: 150px;
+      @include respond-to(iphone) {
+        padding-top: 100px;
+      }
+    }
+    &.bottom {
+      padding-top: $padding;
+    }
     .wrapper {
       position: relative;
       z-index: 999;
@@ -42,20 +91,117 @@
     .floatLeft { 
       float: left;
       width: 75%;
+      padding-right: 5%;
+      @include respond-to(iphone) {
+        float: none;
+        width: 100%;
+        padding: 0 $padding/2;
+      }
+      .description {
+        font-size: 1.2em;
+        margin-bottom: $margin;
+        p { 
+          margin-bottom: $margin/2;
+          line-height: 1.4;
+        }
+      }
+      .share { 
+        margin-bottom: $margin/2;
+        .fb-like, iframe {
+          display: inline-block;
+          vertical-align: middle;
+        }
+        .fb-like {
+          padding-right: $margin/2;
+        }
+      }
     }
-    h1 { margin-bottom: 0; }
+    .floatRight {
+      float: right;
+      width: 25%;
+      @include respond-to(iphone) {
+        float: none;
+        width: 100%;
+        padding: 0 $padding/2;
+      }
+    }
+    .headline {
+      margin-bottom: $margin/2;
+      line-height: 1.3;
+    }
+    .programme {
+      font-size: 1.2em;
+      p { margin-bottom: $margin/2; }
+    }
+    .host {
+      margin-bottom: $margin;
+      text-decoration: none;
+      display: block;
+      overflow: hidden;
+      @include respond-to(iphone) {
+        margin-bottom: $margin/2;
+      }
+      &:hover { opacity: .8; color: $color-black; }
+      .name, .image, .description { 
+        margin-bottom: $margin/6;
+        display: block;
+      }
+      .name {
+        font-family: "HelveticaNeue-Bold", Helvetica, Arial, "Lucida Grande", sans-serif; 
+        font-weight: 600;
+        font-size: 1.2em;
+        @include respond-to(iphone) {
+          margin-left: 90px;
+        }
+      }
+      .image {
+        width: 80px;
+        @include respond-to(iphone) {
+          float: left;
+          margin-right: $margin/3;
+        }
+        img { 
+          display: block;
+          border-radius: 100%;
+          width: 100%;
+        }
+      }
+      .description {
+        line-height: 1.4;
+        @include respond-to(iphone) {
+          margin-left: 90px;
+        }
+      }
+    }
+    h1 { 
+      margin-bottom: 0;
+      @include respond-to(iphone) {
+        margin-bottom: $margin/2;
+      }
+    }
     .date { 
       font-size: 1.2em;
       margin-bottom: $margin/2;
+      @include respond-to(iphone) {
+        margin-bottom: $margin/6;
+      }
     }
     .button {
       @include transition(all 0.1s);
       text-align: center;
-      width: 25%;
       float: right;
-      border: 4px solid $color-black;
-      padding: $padding/2;
-      text-decoration: none;
+      width: 25%;
+      @include respond-to(iphone) {
+        float: none;
+        width: 100%;
+        padding: 0 $padding/2;
+      }
+      a {
+        border: 4px solid $color-black;
+        padding: $padding/2;
+        text-decoration: none;
+        display: block;
+      }
       &:hover {
         background: $color-black;
         color: $color-green;
@@ -70,20 +216,29 @@
     }
   }
   .wrapper {
-    @include translateY(-100%);
-    height: 0;
-    opacity: 0;
-    @include transition(opacity 0.6s);
+    // @include translateY(-100%);
+    // height: 0;
+    // @include transition(opacity 0.6s);
   }
   .logoBlack {
     float: left;
     cursor: pointer;
+    img {
+      @include respond-to(iphone) {
+        display: block;
+        width: 200px;
+      }
+    }
   }
   .menuButtonPopup {
     padding-top: 7px;
     cursor: pointer;
     width: 40px;
     float: right;
+    @include respond-to(iphone) {
+      -webkit-transform: scale(0.8);
+      transform: scale(0.8);
+    }
     .menuButtonBar {
       width: 37px;
       height: 4px;
@@ -94,14 +249,16 @@
         @include transform-origin(4px 0px 0);
         transform-origin: 4px 0px 0;
         -o-transform-origin: 4px 0px;
-        @include rotate(45deg);
+        @include rotate(0);
+        opacity: 0;
       }
-      &:nth-child(2) { opacity: 0; }
+      &:nth-child(2) { opacity: 1; }
       &:nth-child(3) {
         @include transform-origin(4px 2px 0);
         transform-origin: 4px 2px 0;
         -o-transform-origin: 4px 2px;
-        @include rotate(-45deg);
+        @include rotate(0);
+        opacity: 0;
       }
     }
   }
@@ -111,6 +268,13 @@
   margin: $margin auto;
   max-width: 980px;
   width: 100%;
+  @include respond-to(tablet) {
+    padding-left: $padding/2;
+  }
+  @include respond-to(iphone) {
+    padding-left: $padding/2;
+    margin: $margin/2 auto;
+  }
 }
 
 .workshopList {
@@ -128,6 +292,9 @@
     border-bottom: 4px solid $color-black;
     padding: $padding 0;
     cursor: pointer;
+    @include respond-to(iphone) {
+      padding: $padding/2 0;
+    }
     &:hover { 
       background: $color-green;
       .date { 
@@ -160,16 +327,32 @@
       display: inline-block;
       vertical-align: middle;
       padding-right: $padding*2;
+      @include respond-to(iphone) {
+        padding-left: $padding/2;
+        display: block;
+        width: 100%;
+        padding-right: $padding/2;
+        margin-bottom: $margin/6;
+      }
     }
     .host {
       width: 25%;
       display: inline-block;
       vertical-align: middle;
+      @include respond-to(iphone) {
+        padding-left: $padding/2;
+        display: block;
+        width: 100%;
+        margin-bottom: $margin/6;
+      }
       .image {
         display: inline-block;
         vertical-align: middle;
         width: 80px;
         margin-right: $margin/3;
+        @include respond-to(iphone) {
+          display: none;
+        }
         img { 
           display: block;
           border-radius: 100%;
@@ -180,6 +363,9 @@
         font-size: 1.2em;
         display: inline-block;
         vertical-align: middle;
+        @include respond-to(iphone) {
+          font-size: 1em;
+        }
       }
     }
     .date {
@@ -188,8 +374,12 @@
       width: 25%;
       display: inline-block;
       vertical-align: middle;
-      @include respond-to(tabletvertical) {
+      @include respond-to(iphone) {
         padding-left: $padding/2;
+        display: block;
+        width: 100%;
+        margin-bottom: $margin/6;
+        font-size: 1em;
       }
     }
   }

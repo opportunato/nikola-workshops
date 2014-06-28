@@ -5,9 +5,18 @@ $(function() {
 
   $(".kazarma").height(vph);
 
+  if ($(window).width() > 1024) {
+    $(".gallery").height(vph);
+  }
+
   $(window).resize(function() {
     vph = $(window).height();
     $(".kazarma").height(vph);
+    if ($(window).width() > 1024) {
+      $(".gallery").height(vph);
+    } else {
+      $(".gallery").height(400);
+    }
   });
 
   $('.menuButton').on({

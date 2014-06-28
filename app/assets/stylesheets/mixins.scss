@@ -2,7 +2,10 @@
   @if $media == tablet {
     @media only screen and (max-width: $break-tablet) {@content; }
   }
-  @else if $media == tabletvertical {
+  // @else if $media == tabletvertical {
+  //   @media only screen and (max-width: $break-tablet - 1) {@content; }
+  // }
+  @else if $media == iphone {
     @media only screen and (max-width: $break-tablet - 1) {@content; }
   }
 }
