@@ -1,9 +1,12 @@
 .wrapper
-  .workshopWrapper
+  .workshopWrapper[data-id=workshop.id]
     .workshop
       .date 
-        | 01-06 сентября
-        span.badge Прошел
+        = workshop.duration
+        - if workshop.passed?
+          span.badge = t(".passed")
+        - if workshop.current?
+          span.badge = t(".current")
       h2.title = workshop.title
       - if workshop.has_hosts?
         .host

@@ -1,0 +1,35 @@
+.wrapper
+  nav.navigation
+    .logoBlack
+      = image_tag 'logo_black.svg'
+    .menuButtonPopup
+      span.menuButtonBar
+      span.menuButtonBar
+      span.menuButtonBar
+  .content.top
+    = render partial: 'shared/columns'
+    .wrapper
+      .floatLeft
+        .date = @workshop.duration
+        h1.title = @workshop.title
+      .button
+        = link_to @workshop.buy_link do
+          .title = t(".buy_link")
+          .price = @workshop.price
+  #carousel
+    = @workshop.media
+    #arrowLeft = image_tag 'arrow.svg'
+    #arrowRight = image_tag 'arrow.svg'
+  .content.bottom
+    = render partial: 'shared/columns'
+    .wrapper
+      .floatLeft
+        = render partial: 'workshops/share', locals: { workshop: @workshop }
+        h2.headline = @workshop.headline
+        .description = @workshop.description
+        h3 = t(".program")
+        .programme = @workshop.program
+      .floatRight
+        = render partial: 'workshops/host', locals: { hosts: @workshop.hosts }
+  = render partial: 'shared/partners'
+  = render partial: 'shared/footer'

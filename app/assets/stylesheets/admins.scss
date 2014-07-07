@@ -1,0 +1,54 @@
+body {
+  margin: 50px;
+}
+
+.create {
+  margin-bottom: 20px;
+}
+
+form {
+  width: 600px;
+}
+
+textarea.form-control {
+  height: 200px;
+}
+
+.back-link {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.hosts img {
+  width: 80px;
+}
+
+.images img {
+  width: 200px;
+}
+
+.image {
+  display: inline-block;
+  margin-right: 50px;
+  margin-bottom: 50px;
+  position: relative;
+}
+
+.image button {
+  position: absolute;
+  height: 24px;
+  width: 24px;
+  background: image_url('cross.png') no-repeat;
+  border: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.videos, .hosts, .images {
+  margin-bottom: 20px;
+}
+
+.save {
+  margin-right: 20px;
+}

@@ -6,7 +6,7 @@ Bundler.require(*Rails.groups)
 
 module NikolaWorkshops
   class Application < Rails::Application
-    config.assets.precompile += %w(admin.js)
+    config.assets.precompile += %w(admin.js admin.css)
 
     config.i18n.available_locales = %w(en ru)
     config.i18n.default_locale = 'ru'

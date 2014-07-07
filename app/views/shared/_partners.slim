@@ -1,7 +1,7 @@
 .partners
-  = render partial: 'columns'
+  = render partial: 'shared/columns'
   .wrapper
-    h1 Партнеры
+    h1 = t('.title')
     .logo.nl
       a[href='http://nikola-lenivets.com/' target='_blank']
         =image_tag 'nl.png'

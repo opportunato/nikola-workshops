@@ -22,11 +22,11 @@ header
           a[href='mailto:hello@k-o-l-l-e-k-t-i-v.ru' target='_blank']
             span.email hello@k-o-l-l-e-k-t-i-v.ru
         li.social
-          = render partial: 'social'
+          = render partial: 'shared/social'
     ul.submenu
       li 
         a[href='http://nikola-lenivets.com/directions/' target='_blank']
-          span Задать вопрос
+          span = t(".ask_question")
       li
         a[href='http://nikola-lenivets.com/directions/' target='_blank']
-          span Условия использования
+          span = t(".terms")

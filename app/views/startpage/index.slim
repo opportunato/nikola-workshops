@@ -1,25 +1,20 @@
-#fb-root
 #container.container.intro-effect-push
 
-  = render partial: 'columns'
+  = render partial: 'shared/columns'
   section.intro
     video autoplay="" loop="loop"
       source src="intro.mp4" type="video/mp4"
     = render partial: 'header'
     .white
-      = render partial: 'columns'
-    h1.slogan
-      | Арт-резиденция «Коллектив» — воркшопы с международными специалистами в уникальной среде Никола-Ленивца.
-    .trigger =image_tag 'arrow.svg'
-
-
+      = render partial: 'shared/columns'
+    h1.slogan = t(".slogan")
+    .trigger = image_tag 'arrow.svg'
   .workshopList
-    = render partial: 'columns'
-    h3.schedule Расписание воркшопов
+    = render partial: 'shared/columns'
+    h3.schedule = t(".schedule")
     = render @workshops
   article.content
     = render partial: 'kazarma'
-    = render partial: 'partners'
-    = render partial: 'footer'
+    = render partial: 'shared/partners'
+    = render partial: 'shared/footer'
   .overlay
-    = render partial: 'workshop'

@@ -4,7 +4,7 @@
 //= require angular-route
 //= require angular-rails-templates
 //= require angular-file-upload
-//= require ng-quick-date
+//= require ui-bootstrap
 //= require_tree ../templates
 //= require admin/main
 //= require_tree ./admin

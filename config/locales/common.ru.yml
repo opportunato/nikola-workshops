@@ -1,8 +1,15 @@
 ru:
   common:
     edit: Редактировать
-    create: Создать
+    create: Создать воркшоп
     add: Добавить
     save: Сохранить
     cancel: Отменить
     delete: Удалить
+    roubles_cost: "%{price} р."
+    back: Назад
+    yes: Да
+    no: Нет
+  startpage:
+    share:
+      tweet: Твитнуть

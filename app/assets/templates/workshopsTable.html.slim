@@ -1,15 +1,19 @@
-a href="{{workshopsUrl}}/new" = t("common.create")
+a class="btn btn-primary create" href="{{workshopsUrl}}/new" = t("common.create")
 
-table
+table.table.table-hover
   thead
     tr
       th = t("workshop.title")
-      th
+      th = t("workshop.duration")
+      th = t("workshop.is_published")
       th
   tbody
-    tr ng-repeat="workshop in data.workshops"
-      td ng-bind="workshop.title"
+    tr role="link" ng-repeat="workshop in data.workshops"
+      td ng-bind="workshop.title" ng-click="startEdit(workshop)"
+      td ng-bind="workshop.duration" ng-click="startEdit(workshop)"
+      td ng-show="workshop.isPublished" ng-click="startEdit(workshop)"
+        = t("common.yes")
+      td ng-show="!workshop.isPublished" ng-click="startEdit(workshop)"
+        = t("common.no")
       td
-        a href="{{workshopsUrl}}/{{workshop.id}}/edit" = t("common.edit")
-      td
-        a ng-click="deleteWorkshop(workshop)" = t("common.delete")
+        a href="" class="btn btn-danger" ng-click="deleteWorkshop(workshop)" = t("common.delete")

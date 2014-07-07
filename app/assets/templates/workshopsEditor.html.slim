@@ -1,48 +1,49 @@
 .panel-body
   form novalidate=""
-    a href="{{workshopsUrl}}/" = t("workshop.list")
+    a class="back-link" href="{{workshopsUrl}}/" = t("common.back")
     = angular_form_tag(t("workshop.title"), "currentWorkshop.title")
     = angular_form_tag(t("workshop.headline"), "currentWorkshop.headline")
     = angular_form_tag(t("workshop.description"), "currentWorkshop.description", "textarea")
     = angular_form_tag(t("workshop.program"), "currentWorkshop.program", "textarea")
     = angular_form_tag(t("workshop.price"), "currentWorkshop.price")
     = angular_form_tag(t("workshop.buy_link"), "currentWorkshop.buyLink")
-    = angular_form_tag(t("workshop.start_date"), "currentWorkshop.startDate", 'quick-datepicker')
-    = angular_form_tag(t("workshop.end_date"), "currentWorkshop.endDate", 'quick-datepicker')
-    .form-element
-      label = t("workshop.is_published")
-      input[type="checkbox" ng-model="currentWorkshop.isPublished"]
+    = angular_form_tag(t("workshop.start_date"), "currentWorkshop.startDate", 'datepicker-popup')
+    = angular_form_tag(t("workshop.end_date"), "currentWorkshop.endDate", 'datepicker-popup')
+    .checkbox
+      label
+        input[type="checkbox" ng-model="currentWorkshop.isPublished"]
+        = t("workshop.is_published")
     .hosts[ng-controller="hostsCtrl"]
-      h2 = t("workshop.hosts")
-      .panel-body[ng-repeat="host in currentWorkshop.hosts"]
+      h3 = t("workshop.hosts")
+      div[ng-repeat="host in currentWorkshop.hosts"]
         = angular_form_tag(t("host.name"), "host.name")
-        = angular_form_tag(t("host.description"), "host.description")
+        = angular_form_tag(t("host.description"), "host.description", "textarea")
         = angular_form_tag(t("host.link"), "host.link")
         img[ng-src="{{host.image}}"]
         .form-element
           input[type="file" ng-file-select="uploadImage($files, host)"]
         button[class="btn btn-primary" ng-click="deleteHost(host)"] = t("common.delete")
-      .panel-body
+      div
         = angular_form_tag(t("host.name"), "newHost.name")
-        = angular_form_tag(t("host.description"), "newHost.description")
-        = angular_form_tag(t("host.link"), "newHost.link")
+        = angular_form_tag(t("host.description"), "newHost.description", "textarea")
+        = angular_form_tag(t("host.link"), "newHost.link") 
         img[ng-src="{{newHost.image}}"]
         .form-element
           input[type="file" ng-file-select="uploadImage($files, newHost)"]
         button[class="btn btn-primary" ng-click="addHost()"] = t("common.add")
     .videos[ng-controller="videosCtrl"]
-      h2 = t("workshop.videos")
-      .panel-body[ng-repeat="video in currentWorkshop.videos"]
+      h3 = t("workshop.videos")
+      div[ng-repeat="video in currentWorkshop.videos"]
         = angular_form_tag(t("video.link"), "video.link")
-      .panel-body
+      div
         = angular_form_tag(t("video.link"), "newVideo.link")
         button[class="btn btn-primary" ng-click="addVideo()"] = t("common.add")
     .images[ng-controller="imagesCtrl"]
-      h2 = t("workshop.images")
-      .panel-body[ng-repeat="image in currentWorkshop.images"]
+      h3 = t("workshop.images")
+      div.image[ng-repeat="image in currentWorkshop.images"]
         img[ng-src="{{image.url}}"]
-        button[class="btn btn-primary" ng-click="deleteImage(image)"] = t("common.delete")
+        button[ng-click="deleteImage(image)"]
       .form-element
         input[type="file" ng-file-select="uploadImages($files)" multiple=""]
-    button[class="btn btn-primary" ng-click="saveWorkshop()"] = t("common.save")
-    button[class="btn btn-primary" ng-click="cancelEdit()"] = t("common.cancel")
+    button.save[class="btn btn-success" ng-click="saveWorkshop()"] = t("common.save")
+    button.cancel[class="btn btn-danger" ng-click="cancelEdit()"] = t("common.cancel")

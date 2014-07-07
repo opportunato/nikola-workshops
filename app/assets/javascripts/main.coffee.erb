@@ -1,0 +1,62 @@
+$ ->
+  $window = $(window)
+  $body = $("body")
+  $kazarma = $(".kazarma")
+  $carousel = $("#carousel")
+  $header = $("header")
+  $menuButton = $(".menuButton")
+  $workshopList = $(".workshopList")
+  $overlay = $(".overlay")
+
+  vpw = $window.width()
+  vph = $window.height()
+
+  $kazarma.height vph
+
+  if $window.width() > 1024
+    $carousel.height vph
+  else
+    $carousel.height 400
+
+  $window.resize ->
+    vph = $window.height()
+    $kazarma.height vph
+
+    if $window.width() > 1024
+      $carousel.height vph
+    else
+      $carousel.height 400
+
+  # TODO с timeout какой-то грязный хак, не нравится мне это
+
+  $menuButton.on 'click', ->
+    $body.toggleClass 'noscroll'
+
+    setTimeout ->
+      $header.toggleClass 'opened'
+    , 50
+
+  $overlay.on 'click', '.menuButtonPopup', ->
+
+    $overlay.html("")
+    $overlay.toggleClass 'opened'
+
+    setTimeout ->
+      $body.toggleClass 'noscroll'
+    , 50
+  
+  $workshopList.on 'click', ".workshopWrapper", (e) ->
+    id = $(e.currentTarget).data('id')
+    $body.toggleClass 'noscroll'
+
+    setTimeout ->
+      $overlay.toggleClass 'opened'
+    , 50
+
+    history.pushState({}, "", "/workshops/#{id}")
+
+    $.get "/workshops/#{id}.js",
+      (data) ->
+        $overlay.html(data)
+      , 'html'
+

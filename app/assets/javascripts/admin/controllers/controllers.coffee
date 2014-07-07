@@ -17,6 +17,9 @@ angular.module("nikolaWorkshopsAdmin")
 
 .controller("workshopsTableCtrl", ['$scope', '$location', '$route', 'workshops', ($scope, $location, $route, workshops) ->
   $scope.data.workshops = workshops
+
+  $scope.startEdit = (workshop) ->
+    $location.path "#{$scope.workshopsUrl}/#{workshop.id}/edit"
 ])
 
 .controller("workshopsEditCtrl", ['$scope', '$routeParams', '$location', 'workshops', 'Workshop', ($scope, $routeParams, $location, workshops, Workshop) ->

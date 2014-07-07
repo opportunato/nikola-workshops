@@ -1,9 +1,18 @@
 class WorkshopsController < ApplicationController
 
   def index
-    @workshops = Workshop.for_admin
+    @workshops = Workshop.for_admin.decorate
 
     render layout: false
+  end
+
+  def show
+    @workshop = Workshop.find_by(id: params[:id]).decorate
+
+    respond_to do |format|
+      format.html
+      format.js { render layout: false }
+    end
   end
 
   def create

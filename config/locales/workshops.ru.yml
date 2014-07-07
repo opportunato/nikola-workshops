@@ -13,9 +13,24 @@ ru:
     hosts: Мастера
     videos: Видео
     images: Картинки
+    duration: Время проведения
   host:
     name: Имя
     description: Описание
     link: Ссылка
   video:
     link: Ссылка
+  workshops:
+    workshop:
+      passed: Прошел
+      current: Идет
+    show:
+      buy_link: Купить билеты
+      program: Программа
+  startpage:
+    index:
+      slogan: Арт-резиденция «Коллектив» — воркшопы с международными специалистами в уникальной среде Никола-Ленивца.
+      schedule: Расписание воркшопов
+
+
+

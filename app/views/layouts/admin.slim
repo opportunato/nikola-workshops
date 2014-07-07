@@ -2,6 +2,7 @@ doctype html
 html[ng-app="nikolaWorkshopsAdmin"]
   head
     = render partial: "shared/head"
+    = stylesheet_link_tag "admin", media: :all
   body
     = yield
     = javascript_include_tag "admin"
