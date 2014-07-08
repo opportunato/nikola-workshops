@@ -3,7 +3,7 @@ class WorkshopDecorator < ApplicationDecorator
   delegate_all
 
   def media
-    h.content_tag "ul", class: "animate" do 
+    h.content_tag "ul" do 
       model.videos.map do |video|
         h.content_tag 'iframe', allowfullscreen: "", frameborder: "0", mozallowfullscreen: "", webkitallowfullscreen: "", src: video.player_link  
       end.join.html_safe + 
