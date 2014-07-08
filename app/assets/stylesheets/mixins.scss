@@ -45,11 +45,11 @@
   100%    { @include translateY(0px); @include opacity(1); }
 }
 
-@include keyframes(slogan) {
-  0%      { -webkit-transform: translateX(-50%) translateY(50%); transform: translateX(-50%) translateY(50%); @include opacity(0); }
-  80%     { -webkit-transform: translateX(-50%) translateY(-50%); transform: translateX(-50%) translateY(-50%); @include opacity(1); }
-  100%    { -webkit-transform: translateX(-50%) translateY(-50%); transform: translateX(-50%) translateY(-50%); @include opacity(1); }
-}
+// @include keyframes(slogan) {
+//   0%      { -webkit-transform: translateX(-50%) translateY(-30%); transform: translateX(-50%) translateY(-30%); @include opacity(0); }
+//   80%     { -webkit-transform: translateX(-50%) translateY(-50%); transform: translateX(-50%) translateY(-50%); @include opacity(1); }
+//   100%    { -webkit-transform: translateX(-50%) translateY(-50%); transform: translateX(-50%) translateY(-50%); @include opacity(1); }
+// }
 
 @include keyframes(arrow-appereance) {
   0%      { @include translateY(250%); @include opacity(0); }
@@ -58,9 +58,24 @@
 }
 
 // .slogan {
-//   @include animation(slogan 1200ms);
+//   @include animation(slogan 600ms 600ms both);
+// }
+
+// noindex:-o-prefocus, .slogan { /* remove animation just for Opera */
+//   animation: none;
 // }
 
 .navigation {
   @include animation(navigation 1200ms);
+}
+
+noindex:-o-prefocus, .navigation { /* remove animation just for Opera */
+  animation: none;
+}
+
+//typed animation
+@include keyframes(blink) {
+  0% { opacity:1; }
+  50% { opacity:0; }
+  100% { opacity:1; }
 }

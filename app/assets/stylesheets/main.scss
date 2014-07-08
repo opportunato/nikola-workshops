@@ -10,6 +10,12 @@
   text-decoration: none;
 }
 
+#typed-cursor {
+  opacity: 1;
+  font-weight: 100;
+  @include animation(blink 0.7s 0 linear both infinite);
+}
+
 .columns {
   max-width: 980px;
   position: absolute;
@@ -161,11 +167,18 @@
   margin-left: -32px;
   cursor: pointer;
   @include animation(arrow 1200ms infinite);
-  img { @include animation(arrow-appereance 1200ms); }
+  img { @include animation(arrow-appereance 1200ms 300ms both); }
+  noindex:-o-prefocus, img { /* remove animation just for Opera */
+    animation: none;
+  }
+}
+
+noindex:-o-prefocus, .trigger { /* remove animation just for Opera */
+  animation: none;
 }
 
 .intro {
-  background: image_url('bg5.jpg') no-repeat center center $color-black;     
+  background: image_url('bg5.jpg') no-repeat center center $color-green;     
   @include background-size(cover);
   position: relative;
   width: 100%;

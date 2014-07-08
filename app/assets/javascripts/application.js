@@ -6,4 +6,5 @@
 //= require modernizr
 //= require hammer
 //= require carousel
+//= require typed
 //= require main

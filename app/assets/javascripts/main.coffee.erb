@@ -18,6 +18,13 @@ $ ->
   else
     $carousel.height 400
 
+  # typed.js
+  setTimeout ->
+    $("#typed").typed
+      strings: ["Воркшопы с международными специалистами в уникальной среде Никола-Ленивца."]
+      typeSpeed: 10
+  , 1200
+
   $window.resize ->
     vph = $window.height()
     $kazarma.height vph

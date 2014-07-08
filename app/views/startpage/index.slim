@@ -5,7 +5,9 @@
     = render partial: 'header'
     .white
       = render partial: 'shared/columns'
-    h1.slogan = t(".slogan")
+    h1.slogan.type-wrap 
+      / = t(".slogan")
+      span#typed
     .trigger = image_tag 'arrow.svg'
   .workshopList
     = render partial: 'shared/columns'
