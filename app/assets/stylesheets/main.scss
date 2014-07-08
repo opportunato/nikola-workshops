@@ -3,7 +3,7 @@
   pointer-events: none !important;
 }
 
-.fb, .tw, .vk, .in, .vm {
+.fb, .tw, .vk, .in, .vm, .sc {
   display: inline-block;
   padding: 0 $padding/2;
   font-size: 1.4em;
@@ -121,7 +121,7 @@
       &:last-child { margin-bottom: 0; }
     }
   }
-  .fm img { width: 100px; }
+  .fm img { width: 60px; }
   .nl img { width: 172px; }
   .tnp img { width: 62px; }
   .fl img { width: 80px; }
@@ -165,16 +165,13 @@
 }
 
 .intro {
+  background: image_url('bg5.jpg') no-repeat center center $color-black;     
+  @include background-size(cover);
   position: relative;
   width: 100%;
-  background: $color-green;
   overflow: hidden;
   height: 100%;
   top: 0;
-  @include respond-to(tablet) {
-    background: image_url('bg.jpg') no-repeat center center $color-black;     
-    @include background-size(cover);
-  }
 }
 
 video, object {
