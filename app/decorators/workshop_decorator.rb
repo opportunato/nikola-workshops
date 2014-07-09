@@ -3,12 +3,16 @@ class WorkshopDecorator < ApplicationDecorator
   delegate_all
 
   def media
-    h.content_tag "ul" do 
+    h.content_tag "ul" do
       model.videos.map do |video|
-        h.content_tag 'iframe', allowfullscreen: "", frameborder: "0", mozallowfullscreen: "", webkitallowfullscreen: "", src: video.player_link  
+        h.content_tag("li", class: "pane") do
+          h.content_tag 'iframe', "", allowfullscreen: "", frameborder: "0", mozallowfullscreen: "", webkitallowfullscreen: "", src: video.player_link  
+        end
       end.join.html_safe + 
       model.images.map do |image|
-        h.image_tag image.image.url(:small)
+        h.content_tag("li", class: "pane") do
+          h.content_tag "div", "", class: "carousel-image", style: "background-image: url(#{image.image.url(:normal)});"
+        end
       end.join.html_safe
     end
   end

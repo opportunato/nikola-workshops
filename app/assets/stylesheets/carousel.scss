@@ -38,12 +38,16 @@
       background-color: $color-black;
       @include background-size(cover);
     }
-    .pane2 { background-image: image_url('kazarma.jpg'); }
-    .pane3 { background-image: image_url('bg2.jpg'); }
   }
   iframe {
     width: 100%;
     height: 100%;
+  }
+  .carousel-image {
+    width: 100%;
+    height: 100%;
+    background: center center no-repeat;
+    background-size: contain;
   }
   #arrowRight, #arrowLeft {
     cursor: pointer;

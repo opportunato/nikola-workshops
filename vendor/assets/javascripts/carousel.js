@@ -140,19 +140,17 @@ var current_pane = 0;
 var nexthammertime = Hammer(arrowRight).on("tap", function (event) {
     var nextCarousel = new Carousel("#carousel");
     nextCarousel.init();
-    nextCarousel.showPane(current_pane+1, true);
+    nextCarousel.showPane(current_pane + 1, true);
     if (current_pane < pane_count-1) {
         current_pane++;
     }
-    console.log(current_pane);
 });
 
 var previoushammertime = Hammer(arrowLeft).on("tap", function (event) {
     var previousCarousel= new Carousel("#carousel");
     previousCarousel.init();
-    previousCarousel.showPane(current_pane-1, true);
+    previousCarousel.showPane(current_pane - 1, true);
     if (current_pane > 0) {
         current_pane--;
     }
-    console.log(current_pane);
 });
