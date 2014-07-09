@@ -32,12 +32,10 @@
       min-height: 100%;
       position: relative;
     }
-    [class^="pane"], [class*=" pane"] {
-      background-position: center;
-      background-repeat: no-repeat;
-      background-color: $color-black;
-      @include background-size(cover);
-    }
+  }
+  .pane {
+    width: 100%;
+    height: 100%;
   }
   iframe {
     width: 100%;
@@ -48,6 +46,7 @@
     height: 100%;
     background: center center no-repeat;
     background-size: contain;
+    background-color: $color-black;
   }
   #arrowRight, #arrowLeft {
     cursor: pointer;

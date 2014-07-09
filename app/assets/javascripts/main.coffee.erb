@@ -48,6 +48,8 @@ $ ->
     $overlay.html("")
     $overlay.toggleClass 'opened'
 
+    history.go(-1)
+
     setTimeout ->
       $body.toggleClass 'noscroll'
     , 50
