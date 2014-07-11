@@ -12,9 +12,6 @@ set :log_level, :info
 set :linked_files, %w{config/local_env.yml}
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
-SSHKit.config.command_map[:rake]  = "bundle exec rake"
-SSHKit.config.command_map[:rails] = "bundle exec rails"
-
 set :keep_releases, 5
 
 set :rbenv_type, :system
