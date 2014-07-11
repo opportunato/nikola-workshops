@@ -39,7 +39,6 @@ group :development do
   gem 'binding_of_caller'
   gem 'capistrano-rails'
   gem 'capistrano-bundler'
-  gem 'capistrano-postgresql'
   gem 'capistrano-puma'
   gem 'capistrano-rbenv'
 end

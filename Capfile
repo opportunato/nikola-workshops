@@ -8,6 +8,5 @@ require 'capistrano/rails/assets'
 require 'capistrano/rails/migrations'
 require 'capistrano/rbenv'
 require 'capistrano/puma'
-require 'capistrano/postgresql'
 
 Dir.glob('lib/capistrano/tasks/*.rake').each { |r| import r }
