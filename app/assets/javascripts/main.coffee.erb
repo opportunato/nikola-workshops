@@ -20,8 +20,11 @@ $ ->
 
   if vpw > 1024
     $carousel.height vph
+  else if vpw < 1024
+    $carousel.height 540
   else
     $carousel.height 360
+
 
   # typed.js
   setTimeout ->
@@ -36,8 +39,11 @@ $ ->
 
     if vpw > 1024
       $carousel.height vph
+    else if vpw < 1024
+      $carousel.height 540
     else
       $carousel.height 360
+
 
   # TODO с timeout какой-то грязный хак, не нравится мне это
 
