@@ -7,11 +7,16 @@ $ ->
   $menuButton = $(".menuButton")
   $workshopList = $(".workshopList")
   $overlay = $(".overlay")
+  $intro = $(".intro")
+  images = ['bg1.jpg', 'bg2.jpg', 'bg3.jpg', 'bg4.jpg', 'bg5.jpg']
 
   vpw = $window.width()
   vph = $window.height()
 
+  $intro.css( 'background-image': 'url(/assets/' + images[Math.floor(Math.random() * images.length)] + ')' )
+
   $kazarma.height vph
+  $kazarma.css( 'background-image': 'url(/assets/kazarma.jpg)' )
 
   if $window.width() > 1024
     $carousel.height vph

@@ -178,7 +178,7 @@ noindex:-o-prefocus, .trigger { /* remove animation just for Opera */
 }
 
 .intro {
-  background: image_url('bg5.jpg') no-repeat center center $color-green;     
+  background: no-repeat center center $color-green;     
   @include background-size(cover);
   position: relative;
   width: 100%;

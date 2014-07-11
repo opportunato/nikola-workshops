@@ -1,5 +1,5 @@
 .kazarma {
-  background: image_url('kazarma.jpg') no-repeat center center $color-green;     
+  background: no-repeat center center $color-green;     
   @include background-size(cover);
   color: white;
   position: relative;

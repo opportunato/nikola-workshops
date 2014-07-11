@@ -8,3 +8,4 @@
 //= require carousel
 //= require typed
 //= require main
+//= require responsive
