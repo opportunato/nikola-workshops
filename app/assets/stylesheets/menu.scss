@@ -89,6 +89,7 @@ header {
     float: left;
     cursor: pointer;
     position: relative;
+    a { display: block; }
     img {
       @include transition(all 1s);
       opacity: 1;
@@ -104,6 +105,7 @@ header {
     left: 0; top: 0;
     float: left;
     cursor: pointer;
+    a { display: block; }
     img { 
       @include transition(all 1s);
       opacity: 0;

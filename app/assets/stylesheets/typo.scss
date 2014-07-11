@@ -21,7 +21,7 @@ h3 {
   font-size: 1.6em;
   font-family: "HelveticaNeue-Bold", Helvetica, Arial, "Lucida Grande", sans-serif; 
   font-weight: 600;
-  margin-bottom: $margin/2;
+  margin-bottom: $margin/3*2;
   @include respond-to(iphone) {
     font-size: 1.2em;
   }

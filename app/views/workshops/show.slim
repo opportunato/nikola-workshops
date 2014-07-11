@@ -1,7 +1,7 @@
 .wrapper
   nav.navigation
     .logoBlack
-      = image_tag 'logo_black.svg'
+      = link_to image_tag('logo_black.svg'), root_url
     .menuButtonPopup
       span.menuButtonBar
       span.menuButtonBar
@@ -25,10 +25,10 @@
     .wrapper
       .floatLeft
         = render partial: 'workshops/share', locals: { workshop: @workshop }
-        h2.headline = @workshop.headline
-        .description = @workshop.description
+        h2.headline = @workshop.headline.html_safe
+        .description = @workshop.description.html_safe
         h3 = t(".program")
-        .programme = @workshop.program
+        .programme = @workshop.program.html_safe
       .floatRight
         = render partial: 'workshops/host', locals: { hosts: @workshop.hosts }
   = render partial: 'shared/partners'

@@ -18,10 +18,10 @@ $ ->
   $kazarma.height vph
   $kazarma.css( 'background-image': 'url(/assets/kazarma.jpg)' )
 
-  if $window.width() > 1024
+  if vpw > 1024
     $carousel.height vph
   else
-    $carousel.height 400
+    $carousel.height 360
 
   # typed.js
   setTimeout ->
@@ -34,10 +34,10 @@ $ ->
     vph = $window.height()
     $kazarma.height vph
 
-    if $window.width() > 1024
+    if vpw > 1024
       $carousel.height vph
     else
-      $carousel.height 400
+      $carousel.height 360
 
   # TODO с timeout какой-то грязный хак, не нравится мне это
 
