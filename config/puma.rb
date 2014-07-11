@@ -1,9 +1,7 @@
-rails_env = ENV['RAILS_ENV'] || 'development'
+environment ENV['RAILS_ENV'] || 'production'
 
-threads 4,4
+bind 'unix:///var/run/puma.sock'
+pidfile '/home/deploy/kollektiv/current/tmp/pids/puma.pid'
+state_path '/home/deploy/kollektiv/current/tmp/pids/puma.state'
 
-bind  "unix:///home/deploy/kollektiv/shared/tmp/puma/appname-puma.sock"
-pidfile "/home/deploy/kollektiv/current/tmp/puma/pid"
-state_path "/home/deploy/kollektiv/current/tmp/puma/state"
-
-activate_control_app
+threads 0, 16
