@@ -21,14 +21,12 @@ gem 'fog'
 gem 'mini_magick'
 gem 'russian'
 
-gem 'capistrano', '~> 3.2.0'
-gem 'capistrano-bundler', '~> 1.1.2'
-gem 'capistrano-rails', '~> 1.1.1'
-
 gem 'angular-rails-templates'
 
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
+
+gem 'puma'
 
 group :development, :test do
   gem 'rspec-rails'
@@ -37,9 +35,10 @@ group :development, :test do
 end
 
 group :development do
-  gem 'puma'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'capistrano-rails'
+  gem 'capistrano-postgresql'
 end
 
 gem 'rails_12factor', group: :production
