@@ -38,7 +38,10 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'capistrano-rails'
+  gem 'capistrano-bundler'
   gem 'capistrano-postgresql'
+  gem 'capistrano-puma'
+  gem 'capistrano-rbenv'
 end
 
 gem 'rails_12factor', group: :production
