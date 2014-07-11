@@ -1,12 +1,13 @@
 class WorkshopDecorator < ApplicationDecorator
   decorates :workshop
+  decorates_association :videos
   delegate_all
 
   def media
     h.content_tag "ul" do
-      model.videos.map do |video|
+      model.videos.decorate.map do |video|
         h.content_tag("li", class: "pane") do
-          h.content_tag 'iframe', "", allowfullscreen: "", frameborder: "0", mozallowfullscreen: "", webkitallowfullscreen: "", src: video.player_link  
+          video.player_link  
         end
       end.join.html_safe + 
       model.images.map do |image|
