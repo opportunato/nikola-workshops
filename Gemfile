@@ -26,8 +26,6 @@ gem 'angular-rails-templates'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
-gem 'puma'
-
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
@@ -39,7 +37,6 @@ group :development do
   gem 'binding_of_caller'
   gem 'capistrano-rails'
   gem 'capistrano-bundler'
-  gem 'capistrano-puma'
   gem 'capistrano-rbenv'
 end
 
