@@ -1,4 +1,4 @@
-#carousel {
+.carousel {
   overflow: hidden;
   position: relative;
   width: 100%;
@@ -48,14 +48,14 @@
     background-size: contain;
     background-color: $color-black;
   }
-  #arrowRight, #arrowLeft {
+  .arrowRight, .arrowLeft {
     cursor: pointer;
     position: absolute;
     top: 50%;
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
   }
-  #arrowLeft {
+  .arrowLeft {
     @include rotate(90deg);
     left: 30px;
     @include respond-to(iphone) {
@@ -64,7 +64,7 @@
       transform: rotate(90deg) scale(0.6);
     }
   }
-  #arrowRight {
+  .arrowRight {
     @include rotate(-90deg);
     right: 30px;
     @include respond-to(iphone) {

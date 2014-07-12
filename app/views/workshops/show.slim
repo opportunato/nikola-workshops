@@ -16,10 +16,10 @@
         = link_to @workshop.buy_link do
           .title = t(".buy_link")
           .price = @workshop.price
-  #carousel
+  .carousel
     = @workshop.media
-    #arrowLeft = image_tag 'arrow.svg'
-    #arrowRight = image_tag 'arrow.svg'
+    .arrowLeft = image_tag 'arrow.svg'
+    .arrowRight = image_tag 'arrow.svg'
   .content.bottom
     = render partial: 'shared/columns'
     .wrapper

@@ -1,4 +1,5 @@
 class WorkshopsController < ApplicationController
+ layout "workshop"
 
   def index
     @workshops = Workshop.for_admin.decorate

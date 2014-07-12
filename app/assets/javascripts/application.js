@@ -8,4 +8,4 @@
 //= require carousel
 //= require typed
 //= require main
-//= require responsive
+//= require responsive-images

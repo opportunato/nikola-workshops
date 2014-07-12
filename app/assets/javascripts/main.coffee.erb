@@ -2,23 +2,57 @@ $ ->
   $window = $(window)
   $body = $("body")
   $kazarma = $(".kazarma")
-  $carousel = $("#carousel")
   $header = $("header")
   $menuButton = $(".menuButton")
   $workshopList = $(".workshopList")
   $overlay = $(".overlay")
   $intro = $(".intro")
-  
+
+  workshopInit = ->
+    $carousel = $(".carousel")
+
+    if $carousel.length > 0
+      carousel = new Carousel(".carousel")
+      carousel.init()
+
+      arrowRight = $('.arrowRight')
+      arrowLeft = $('.arrowLeft')
+
+      panes = $('.carousel li.pane')
+      pane_count = panes.length;
+
+      current_pane = 0;
+
+      nexthammertime = Hammer(arrowRight[0]).on "tap", (event) ->
+          nextCarousel = new Carousel(".carousel")
+          nextCarousel.init()
+          nextCarousel.showPane(current_pane + 1, true)
+          if current_pane < pane_count-1
+              current_pane += 1
+
+      previoushammertime = Hammer(arrowLeft[0]).on "tap", (event) ->
+          previousCarousel = new Carousel(".carousel")
+          previousCarousel.init()
+          previousCarousel.showPane(current_pane - 1, true)
+          if current_pane > 0
+              current_pane -= 1
+
+    if $window.width() > 1024
+      $carousel.height vph
+    else
+      $carousel.height 400
+
+    $(".carousel-image").responsive_images 
+      mobile_size: 640,
+      tablet_size: 1024,
+      desktop_size: 1600
+
+  workshopInit()
 
   vpw = $window.width()
   vph = $window.height()
 
   $kazarma.height vph
-
-  if $window.width() > 1024
-    $carousel.height vph
-  else
-    $carousel.height 400
 
   # typed.js
   setTimeout ->
@@ -32,9 +66,9 @@ $ ->
     $kazarma.height vph
 
     if $window.width() > 1024
-      $carousel.height vph
+      $(".carousel").height vph
     else
-      $carousel.height 400
+      $(".carousel").height 400
 
   # TODO с timeout какой-то грязный хак, не нравится мне это
 
@@ -52,10 +86,12 @@ $ ->
 
     history.go(-1)
 
+    workshopInit();
+
     setTimeout ->
       $body.toggleClass 'noscroll'
     , 50
-  
+
   $workshopList.on 'click', ".workshopWrapper", (e) ->
     id = $(e.currentTarget).data('id')
     $body.toggleClass 'noscroll'
@@ -69,5 +105,5 @@ $ ->
     $.get "/workshops/#{id}.js",
       (data) ->
         $overlay.html(data)
+        workshopInit()
       , 'html'
-

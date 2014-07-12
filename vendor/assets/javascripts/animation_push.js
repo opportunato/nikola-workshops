@@ -108,7 +108,6 @@
         enable_scroll();
       }
     }, 1200 );
-    console.log(isRevealed);
   }
 
   // refreshing the page...
@@ -128,14 +127,11 @@
     $(window).on("orientationchange", function(event){
       if( !isRevealed ) {
         $(document).scrollTop(0);
-        console.log('scrolled');
         window.removeEventListener( 'scroll', scrollPage );
-        console.log('event listener removed 1');
       } else if( isRevealed ) {
         window.removeEventListener( 'scroll', scrollPage );
         if (isRevealed) {
           window.addEventListener( 'touchmove', function() {
-            console.log('event listener added by touch');
             window.addEventListener( 'scroll', scrollPage );
           });
         }

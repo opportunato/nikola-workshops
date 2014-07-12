@@ -135,6 +135,10 @@ GEM
       subexec (~> 0.2.1)
     mini_portile (0.6.0)
     minitest (5.3.5)
+    mobileesp_converted (0.2.3)
+    mobvious (0.3.2)
+      mobileesp_converted (~> 0.2.0)
+      rack (>= 1.1.0)
     multi_json (1.10.1)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
@@ -174,6 +178,8 @@ GEM
     rdoc (4.1.1)
       json (~> 1.4)
     request_store (1.0.6)
+    responsive_images (0.1.1)
+      mobvious
     rspec-core (3.0.1)
       rspec-support (~> 3.0.0)
     rspec-expectations (3.0.1)
@@ -259,6 +265,7 @@ DEPENDENCIES
   pry
   rails (= 4.1.1)
   rails_12factor
+  responsive_images
   rspec-rails
   russian
   sass-rails (~> 4.0.3)
