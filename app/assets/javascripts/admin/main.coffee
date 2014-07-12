@@ -41,9 +41,10 @@ angular.module("nikolaWorkshopsAdmin", [
         Workshop.query()
       ]
 ])
-.config (ngQuickDateDefaultsProvider) ->
+.config(['ngQuickDateDefaultsProvider', (ngQuickDateDefaultsProvider) ->
 
   ngQuickDateDefaultsProvider.set 
     disableTimepicker: true,
     dateFormat: "dd.MM.yyyy",
     iconClass: "fa-calendar"
+])
