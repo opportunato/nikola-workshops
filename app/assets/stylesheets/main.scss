@@ -167,7 +167,10 @@
   margin-left: -32px;
   cursor: pointer;
   @include animation(arrow 1200ms infinite);
-  img { @include animation(arrow-appereance 1200ms 300ms both); }
+  img { 
+    display: block;
+    @include animation(arrow-appereance 1200ms 300ms both); 
+  }
   noindex:-o-prefocus, img { /* remove animation just for Opera */
     animation: none;
   }
