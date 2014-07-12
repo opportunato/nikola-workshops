@@ -33,9 +33,11 @@ group :development, :test do
 end
 
 group :development do
-  gem 'puma'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'capistrano-rails'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rbenv'
 end
 
 gem 'rails_12factor', group: :production
