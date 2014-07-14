@@ -1,11 +1,15 @@
+- set_meta_tags title: @workshop.title, description: @workshop.headline
+
 .wrapper
   nav.navigation
     .logoBlack
-      = image_tag 'logo_black.svg'
-    .menuButtonPopup
-      span.menuButtonBar
-      span.menuButtonBar
-      span.menuButtonBar
+      = link_to root_path do
+        = image_tag 'logo_black.svg'
+    - if @has_close_button
+      .menuButtonPopup
+        span.menuButtonBar
+        span.menuButtonBar
+        span.menuButtonBar
   .content.top
     = render partial: 'shared/columns'
     .wrapper

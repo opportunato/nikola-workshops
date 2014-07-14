@@ -110,42 +110,44 @@
     }, 1200 );
   }
 
-  // refreshing the page...
-  var pageScroll = scrollY();
-  noscroll = pageScroll === 0;
-  
-  disable_scroll();
-  
-  if( pageScroll ) {
-    isRevealed = true;
-    classie.add( container, 'notrans' );
-    classie.add( container, 'modify' );
-  }
-  
-
-  if( touchDevices ) {
-    $(window).on("orientationchange", function(event){
-      if( !isRevealed ) {
-        $(document).scrollTop(0);
-        window.removeEventListener( 'scroll', scrollPage );
-      } else if( isRevealed ) {
-        window.removeEventListener( 'scroll', scrollPage );
-        if (isRevealed) {
-          window.addEventListener( 'touchmove', function() {
-            window.addEventListener( 'scroll', scrollPage );
-          });
-        }
-      }
-    });
-  } else {
-    window.addEventListener( 'scroll', scrollPage );
-  }
-  trigger.addEventListener( 'click', function() { 
-    toggle( 'reveal' );
-    if( touchDevices ) {
-      setTimeout( function() {
-        window.addEventListener( 'scroll', scrollPage );
-      }, 1200 );
+  if (trigger) {
+    // refreshing the page...
+    var pageScroll = scrollY();
+    noscroll = pageScroll === 0;
+    
+    disable_scroll();
+    
+    if( pageScroll ) {
+      isRevealed = true;
+      classie.add( container, 'notrans' );
+      classie.add( container, 'modify' );
     }
-  } );
+    
+
+    if( touchDevices ) {
+      $(window).on("orientationchange", function(event){
+        if( !isRevealed ) {
+          $(document).scrollTop(0);
+          window.removeEventListener( 'scroll', scrollPage );
+        } else if( isRevealed ) {
+          window.removeEventListener( 'scroll', scrollPage );
+          if (isRevealed) {
+            window.addEventListener( 'touchmove', function() {
+              window.addEventListener( 'scroll', scrollPage );
+            });
+          }
+        }
+      });
+    } else {
+      window.addEventListener( 'scroll', scrollPage );
+    }
+    trigger.addEventListener( 'click', function() { 
+      toggle( 'reveal' );
+      if( touchDevices ) {
+        setTimeout( function() {
+          window.addEventListener( 'scroll', scrollPage );
+        }, 1200 );
+      }
+    } );
+  } 
 })();

@@ -8,7 +8,10 @@ $ ->
   $overlay = $(".overlay")
   $intro = $(".intro")
 
-  workshopInit = ->
+  if (window.location.pathname == "/")
+    title = document.title
+
+  initWorkshop = ->
     $carousel = $(".carousel")
 
     if $carousel.length > 0
@@ -47,7 +50,35 @@ $ ->
       tablet_size: 1024,
       desktop_size: 1600
 
-  workshopInit()
+  closeWorkshop = ->
+    $overlay.html("")
+    $overlay.toggleClass 'opened'
+
+    setTimeout ->
+      $body.toggleClass 'noscroll'
+    , 50
+
+  openWorkshop = (id, title) ->
+    $body.toggleClass 'noscroll'
+
+    setTimeout ->
+      $overlay.toggleClass 'opened'
+    , 50
+
+    document.title = title
+
+    $.get "/workshops/#{id}.js",
+      (data) ->
+        $overlay.html(data)
+        initWorkshop()
+      , 'html'
+
+  workshopIds = window.location.pathname.match(/workshops\\(\d)+/)
+
+  if (workshopIds)
+    openWorkshop(workshopIds[1], undefined)
+
+  initWorkshop()
 
   vpw = $window.width()
   vph = $window.height()
@@ -80,30 +111,26 @@ $ ->
     , 50
 
   $overlay.on 'click', '.menuButtonPopup', ->
+    history.pushState({}, "", "/")
 
-    $overlay.html("")
-    $overlay.toggleClass 'opened'
+    document.title = title
 
-    history.go(-1)
-
-    workshopInit();
-
-    setTimeout ->
-      $body.toggleClass 'noscroll'
-    , 50
+    closeWorkshop()
 
   $workshopList.on 'click', ".workshopWrapper", (e) ->
     id = $(e.currentTarget).data('id')
-    $body.toggleClass 'noscroll'
+    title = $(e.currentTarget).find('.title').text()
 
-    setTimeout ->
-      $overlay.toggleClass 'opened'
-    , 50
+    openWorkshop(id, title)
 
-    history.pushState({}, "", "/workshops/#{id}")
+    history.pushState({workshopId: id, title: title}, "", "/workshops/#{id}")
 
-    $.get "/workshops/#{id}.js",
-      (data) ->
-        $overlay.html(data)
-        workshopInit()
-      , 'html'
+  $window.on "popstate", (e) ->
+    state = e.originalEvent.state || {}
+
+    if (state.workshopId)
+      openWorkshop(state.workshopId, state.title)
+    else if (window.location.pathname == "/")
+      closeWorkshop()
+
+    document.title = state.title || title
