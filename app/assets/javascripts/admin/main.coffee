@@ -3,6 +3,7 @@ angular.module("nikolaWorkshopsAdmin", [
   "ngRoute",
   "templates",
   "ngQuickDate",
+  "ui.bootstrap",
   "angularFileUpload"
 ])
 .constant("workshopsUrl", "/admin/workshops")

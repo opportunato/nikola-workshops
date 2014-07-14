@@ -14,6 +14,7 @@ ru:
     videos: Видео
     images: Картинки
     duration: Время проведения
+    data: Основная информация
   host:
     name: Имя
     description: Описание
