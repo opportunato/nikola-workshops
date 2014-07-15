@@ -109,6 +109,22 @@
           margin-bottom: $margin/2;
           line-height: 1.4;
         }
+        b, a {
+          font-family: "HelveticaNeue-Bold", Helvetica, Arial, "Lucida Grande", sans-serif; 
+          font-weight: 600;
+        }
+        ul {
+          list-style: square inside;
+          margin-left: $margin/2;
+          margin-bottom: $margin/2;
+          li { margin-bottom: $margin/3; }
+        }
+        ol {
+          list-style: upper-roman inside;
+          margin-left: $margin/2;
+          margin-bottom: $margin/2;
+          li { margin-bottom: $margin/3; }
+        }
       }
       .share { 
         margin-bottom: $margin/2;
