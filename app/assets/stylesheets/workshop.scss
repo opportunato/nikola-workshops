@@ -317,14 +317,10 @@
       }
     }
     .badge {
-      display: none;
       background: #21d1bf;
       color: white;
       padding: 2px 5px;
       margin-left: 5px;
-    }
-    &#passed, &#current {
-      .badge { display: inline; }
     }
     &:last-child { border-bottom: 0; }
     &:first-child { border-top: 4px solid $color-black; }

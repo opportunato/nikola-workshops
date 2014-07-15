@@ -13,10 +13,20 @@ function preloadImages(images, cb) {
   }
 };
 
-preloadImages(["<%= asset_path('bg1.jpg') %>", 
+setTimeout(function() {
+  preloadImages(["<%= asset_path('bg1.jpg') %>", 
                "<%= asset_path('bg2.jpg') %>",
-               "<%= asset_path('bg3.jpg') %>", 
+               "<%= asset_path('bg3.jpg') %>",
                "<%= asset_path('bg4.jpg') %>",
                "<%= asset_path('bg5.jpg') %>" ], function() {
-  alert("DONE");
-});
+    $('body').addClass('loaded').removeClass('noscroll');
+  });
+}, 3200);
+
+// preloadImages(["<%= asset_path('bg1.jpg') %>", 
+//                "<%= asset_path('bg2.jpg') %>",
+//                "<%= asset_path('bg3.jpg') %>",
+//                "<%= asset_path('bg4.jpg') %>",
+//                "<%= asset_path('bg5.jpg') %>" ], function() {
+//   $('body').addClass('loaded');
+// });
