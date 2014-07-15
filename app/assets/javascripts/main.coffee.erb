@@ -49,19 +49,12 @@ $ ->
 
   closeWorkshop = ->
     $overlay.html("")
-    $overlay.toggleClass 'opened'
-
-    setTimeout ->
-      $body.toggleClass 'noscroll'
-    , 50
+    $overlay.removeClass 'opened'
+    $body.removeClass 'noscroll'
 
   openWorkshop = (id, title) ->
-    $body.toggleClass 'noscroll'
-
-    setTimeout ->
-      $overlay.toggleClass 'opened'
-    , 50
-
+    $overlay.addClass 'opened'
+    $body.addClass 'noscroll'
     document.title = title
 
     $.get "/workshops/#{id}.js",

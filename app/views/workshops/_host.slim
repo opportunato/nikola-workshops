@@ -1,6 +1,6 @@
 - hosts.each do |host|
 
-  = link_to host.link, class: "host" do
+  = link_to host.link, class: "host", target: "_blank" do
     .image = image_tag host.image_url
     span.name[href='http://nikola-lenivets.com/directions/' target='_blank'] = host.name
     span.description = host.description

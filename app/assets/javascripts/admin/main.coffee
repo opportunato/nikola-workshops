@@ -2,7 +2,6 @@ angular.module("nikolaWorkshopsAdmin", [
   "rails",
   "ngRoute",
   "templates",
-  "ngQuickDate",
   "ui.bootstrap",
   "textAngular",
   "angularFileUpload"
@@ -43,11 +42,4 @@ angular.module("nikolaWorkshopsAdmin", [
       workshops: ['Workshop', (Workshop) ->
         Workshop.query()
       ]
-])
-.config(['ngQuickDateDefaultsProvider', (ngQuickDateDefaultsProvider) ->
-
-  ngQuickDateDefaultsProvider.set 
-    disableTimepicker: true,
-    dateFormat: "dd.MM.yyyy",
-    iconClass: "fa-calendar"
 ])

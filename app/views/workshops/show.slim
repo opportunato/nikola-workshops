@@ -16,7 +16,7 @@
         .date = @workshop.duration
         h1.title = @workshop.title
       .button
-        = link_to @workshop.buy_link do
+        = link_to @workshop.buy_link, target: "_blank" do
           .title = t(".buy_link")
           .price = @workshop.price
   .carousel

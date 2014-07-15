@@ -14,8 +14,12 @@ body {
   width: 800px;
 }
 
+.nav-tabs li {
+  cursor: pointer;
+}
+
 .tab-pane {
-  padding-top: 30px;
+  padding-top: 20px;
 }
 
 textarea.form-control {

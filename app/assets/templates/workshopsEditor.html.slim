@@ -7,12 +7,14 @@
         .info
           = angular_form_tag(t("workshop.title"), "currentWorkshop.title")
           = angular_form_tag(t("workshop.headline"), "currentWorkshop.headline")
-          = angular_form_tag(t("workshop.description"), "currentWorkshop.description", "div", true, "text-angular" => "", "ta-toolbar" => "[['bold','italics', 'underline'], ['ul', 'ol', 'p'], ['insertLink']]")
-          = angular_form_tag(t("workshop.program"), "currentWorkshop.program", "div", true, "text-angular" => "", "ta-toolbar" => "[['bold','italics', 'underline'], ['ul', 'ol', 'p'], ['insertLink']]")
+          = angular_form_tag(t("workshop.description"), "currentWorkshop.description", "div", true, "text-angular" => "", "ta-toolbar" => "[['bold', 'insertLink'], ['ul', 'ol']]")
+          = angular_form_tag(t("workshop.program"), "currentWorkshop.program", "div", true, "text-angular" => "", "ta-toolbar" => "[['bold', 'insertLink'], ['ul', 'ol']]")
           = angular_form_tag(t("workshop.price"), "currentWorkshop.price")
           = angular_form_tag(t("workshop.buy_link"), "currentWorkshop.buyLink")
-          = angular_form_tag(t("workshop.start_date"), "currentWorkshop.startDate", 'quick-datepicker')
-          = angular_form_tag(t("workshop.end_date"), "currentWorkshop.endDate", 'quick-datepicker')
+          = angular_form_tag(t("workshop.start_date"), "currentWorkshop.startDate", "div", false, "datepicker-popup" => "dd.MM.yyyy")
+          button type="button" class="btn btn-default" ng-click="open($event)"
+            i class="fa fa-calendar"
+          = angular_form_tag(t("workshop.end_date"), "currentWorkshop.endDate", "div", false, "datepicker-popup" => "dd.MM.yyyy")
           .checkbox
             label
               input[type="checkbox" ng-model="currentWorkshop.isPublished"]
