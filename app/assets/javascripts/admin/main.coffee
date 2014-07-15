@@ -4,9 +4,11 @@ angular.module("nikolaWorkshopsAdmin", [
   "templates",
   "ngQuickDate",
   "ui.bootstrap",
+  "textAngular",
   "angularFileUpload"
 ])
 .constant("workshopsUrl", "/admin/workshops")
+.constant("workshopsUserUrl", "/workshops")
 .constant("hostImageUrl", "/images/create_host")
 .constant("workshopImageUrl", "/images/create_workshop")
 .factory("Workshop", ["railsResourceFactory", "workshopsUrl", "$templateCache", (railsResourceFactory, workshopsUrl, $templateCache) ->

@@ -18,6 +18,14 @@ class WorkshopDecorator < ApplicationDecorator
     end
   end
 
+  def description
+    model.description.html_safe
+  end
+
+  def program
+    model.program.html_safe
+  end
+
   def price
     price = h.number_with_delimiter(model.price, delimiter: " ")
 

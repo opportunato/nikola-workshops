@@ -15,6 +15,7 @@ ru:
     images: Картинки
     duration: Время проведения
     data: Основная информация
+    go_to: Проверить
   host:
     name: Имя
     description: Описание

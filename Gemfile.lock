@@ -179,6 +179,7 @@ GEM
     rake (10.3.2)
     rdoc (4.1.1)
       json (~> 1.4)
+    redcarpet (3.1.2)
     request_store (1.0.6)
     responsive_images (0.1.1)
       mobvious
@@ -268,6 +269,7 @@ DEPENDENCIES
   pry
   rails (= 4.1.1)
   rails_12factor
+  redcarpet
   responsive_images
   rspec-rails
   russian

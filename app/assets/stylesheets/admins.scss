@@ -22,9 +22,11 @@ textarea.form-control {
   height: 200px;
 }
 
-.back-link {
-  display: block;
+.back-link,
+.go-to-link {
+  display: inline-block;
   margin-bottom: 10px;
+  margin-right: 20px;
 }
 
 .hosts img {
@@ -55,6 +57,36 @@ textarea.form-control {
 
 .videos, .hosts, .images {
   margin-bottom: 20px;
+}
+
+.ta-editor {
+  min-height: 300px;
+  height: auto;
+  overflow: auto;
+  font-family: inherit;
+  font-size: 100%;
+  margin: 20px 0;
+  line-height: 1.5;
+  padding: 15px;
+
+  ul, ol {
+    margin-bottom: 10px;
+    list-style-position: inside;
+  }
+
+  ul {
+    list-style-type: circle;
+  }
+
+  ol {
+    list-style-type: decimal;
+  }
+}
+
+.quickdate.form-control {
+  border: none;
+  box-shadow: none;
+  padding-left: 0;
 }
 
 .save {

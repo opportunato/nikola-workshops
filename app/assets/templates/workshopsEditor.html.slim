@@ -1,13 +1,14 @@
 .panel-body
   form novalidate=""
-    a class="back-link" href="{{workshopsUrl}}/" = t("common.back")
+    a class="back-link" ng-href="{{workshopsUrl}}/" = t("common.back")
+    a class="go-to-link" ng-if="workshopLink" ng-href="{{workshopLink}}" = t("workshop.go_to")
     tabset
       tab heading=t("workshop.data")
         .info
           = angular_form_tag(t("workshop.title"), "currentWorkshop.title")
           = angular_form_tag(t("workshop.headline"), "currentWorkshop.headline")
-          = angular_form_tag(t("workshop.description"), "currentWorkshop.description", "textarea")
-          = angular_form_tag(t("workshop.program"), "currentWorkshop.program", "textarea")
+          = angular_form_tag(t("workshop.description"), "currentWorkshop.description", "div", true, "text-angular" => "", "ta-toolbar" => "[['bold','italics', 'underline'], ['ul', 'ol', 'p'], ['insertLink']]")
+          = angular_form_tag(t("workshop.program"), "currentWorkshop.program", "div", true, "text-angular" => "", "ta-toolbar" => "[['bold','italics', 'underline'], ['ul', 'ol', 'p'], ['insertLink']]")
           = angular_form_tag(t("workshop.price"), "currentWorkshop.price")
           = angular_form_tag(t("workshop.buy_link"), "currentWorkshop.buyLink")
           = angular_form_tag(t("workshop.start_date"), "currentWorkshop.startDate", 'quick-datepicker')

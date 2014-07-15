@@ -16,4 +16,6 @@ table.table.table-hover
       td ng-show="!workshop.isPublished" ng-click="startEdit(workshop)"
         = t("common.no")
       td
+        a href="" class="btn btn-primary" ng-click="goToWorkshop(workshop)" = t("workshop.go_to")
+      td
         a href="" class="btn btn-danger" ng-click="deleteWorkshop(workshop)" = t("common.delete")

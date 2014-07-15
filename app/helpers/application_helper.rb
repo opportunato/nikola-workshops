@@ -1,8 +1,8 @@
 module ApplicationHelper
-  def angular_form_tag(title, model, tag='input')
+  def angular_form_tag(title, model, tag='input', clear_classes=false, options={})
     content_tag('div', class: 'form-group') do
       content_tag('label', title, for: model, class: 'form-element') +
-      content_tag(tag, "", "ng-model" => model, id: model, class: 'form-control')
+      content_tag(tag, "", options.merge({"ng-model" => model, :id => model, :class => ('form-control' if !clear_classes)}))
     end
   end
 

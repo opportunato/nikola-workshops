@@ -1,5 +1,5 @@
 angular.module("nikolaWorkshopsAdmin")
-.controller("adminCtrl", ['$scope', '$location', 'Workshop', 'workshopsUrl', ($scope, $location, Workshop, workshopsUrl) ->
+.controller("adminCtrl", ['$scope', '$location', 'Workshop', 'workshopsUrl', 'workshopsUserUrl', ($scope, $location, Workshop, workshopsUrl, workshopsUserUrl) ->
   $scope.workshopsUrl = workshopsUrl
   $scope.data = {}
 
@@ -13,6 +13,9 @@ angular.module("nikolaWorkshopsAdmin")
       $scope.data.workshops.splice $scope.data.workshops.indexOf(workshop), 1
 
     $location.path $scope.workshopsUrl
+
+  $scope.goToWorkshop = (workshop) ->
+    window.location.path = "#{workshopsUserUrl}/#{workshop.id}"
 ])
 
 .controller("workshopsTableCtrl", ['$scope', '$location', '$route', 'workshops', ($scope, $location, $route, workshops) ->
@@ -22,7 +25,7 @@ angular.module("nikolaWorkshopsAdmin")
     $location.path "#{$scope.workshopsUrl}/#{workshop.id}/edit"
 ])
 
-.controller("workshopsEditCtrl", ['$scope', '$routeParams', '$location', 'workshops', 'Workshop', ($scope, $routeParams, $location, workshops, Workshop) ->
+.controller("workshopsEditCtrl", ['$scope', '$routeParams', '$location', 'workshops', 'Workshop', 'workshopsUserUrl', ($scope, $routeParams, $location, workshops, Workshop, workshopsUserUrl) ->
   $scope.data.workshops = workshops
 
   $scope.$watch 'data.workshops.length', ->
@@ -31,8 +34,11 @@ angular.module("nikolaWorkshopsAdmin")
         if workshop.id == parseInt(id)
           $scope.currentWorkshop = workshop
       )[0]
+      $scope.workshopLink = "#{workshopsUserUrl}/#{$scope.currentWorkshop.id}"
+
     else
       $scope.currentWorkshop = new Workshop
+      $scope.workshopLink = null
 
   $scope.cancelEdit = ->
     $location.path $scope.workshopsUrl
