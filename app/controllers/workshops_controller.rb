@@ -1,4 +1,5 @@
 class WorkshopsController < ApplicationController
+ layout "workshop"
 
   def index
     @workshops = Workshop.for_admin.decorate
@@ -8,6 +9,8 @@ class WorkshopsController < ApplicationController
 
   def show
     @workshop = Workshop.find_by(id: params[:id]).decorate
+
+    @has_close_button = (request.format == "js")
 
     respond_to do |format|
       format.html

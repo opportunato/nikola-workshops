@@ -1,0 +1,11 @@
+doctype html
+html
+  head
+    = render partial: "shared/head"
+    = stylesheet_link_tag "application", media: :all
+  body
+    #fb-root
+    #container.container
+      .overlay.opened
+        = yield
+    = javascript_include_tag "application"

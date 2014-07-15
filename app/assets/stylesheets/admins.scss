@@ -6,8 +6,16 @@ body {
   margin-bottom: 20px;
 }
 
-form {
+.info, .videos, .hosts {
   width: 600px;
+}
+
+.images {
+  width: 800px;
+}
+
+.tab-pane {
+  padding-top: 30px;
 }
 
 textarea.form-control {

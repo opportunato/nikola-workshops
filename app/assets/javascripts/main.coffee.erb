@@ -2,37 +2,82 @@ $ ->
   $window = $(window)
   $body = $("body")
   $kazarma = $(".kazarma")
-  $carousel = $("#carousel")
   $header = $("header")
   $menuButton = $(".menuButton")
   $workshopList = $(".workshopList")
   $overlay = $(".overlay")
   $intro = $(".intro")
-  
 
-  vpw = $window.width()
-  vph = $window.height()
+  if (window.location.pathname == "/")
+    title = document.title
 
-  $kazarma.height vph
+  initWorkshop = ->
+    $carousel = $(".carousel")
 
-  if vpw > 1024
-    $carousel.height vph
-  else if vpw < 1024
-    $carousel.height 540
-  else
-    $carousel.height 360
+    if $carousel.length > 0
+      carousel = new Carousel(".carousel")
+      carousel.init()
 
+      arrowRight = $('.arrowRight')
+      arrowLeft = $('.arrowLeft')
 
-  # typed.js
-  setTimeout ->
-    $("#typed").typed
-      strings: ["Воркшопы с международными специалистами в уникальной среде Никола-Ленивца."]
-      typeSpeed: 10
-  , 1200
+      panes = $('.carousel li.pane')
+      pane_count = panes.length;
 
-  $window.resize ->
+      current_pane = 0;
+
+      nexthammertime = Hammer(arrowRight[0]).on "tap", (event) ->
+          nextCarousel = new Carousel(".carousel")
+          nextCarousel.init()
+          nextCarousel.showPane(current_pane + 1, true)
+          if current_pane < pane_count-1
+              current_pane += 1
+
+      previoushammertime = Hammer(arrowLeft[0]).on "tap", (event) ->
+          previousCarousel = new Carousel(".carousel")
+          previousCarousel.init()
+          previousCarousel.showPane(current_pane - 1, true)
+          if current_pane > 0
+              current_pane -= 1
+
+    if $window.width() > 1024
+      $carousel.height vph
+    else
+      $carousel.height 400
+
+    $(".carousel-image").responsive_images 
+      mobile_size: 640,
+      tablet_size: 1024,
+      desktop_size: 1600
+
+  closeWorkshop = ->
+    $overlay.html("")
+    $overlay.toggleClass 'opened'
+
+    setTimeout ->
+      $body.toggleClass 'noscroll'
+    , 50
+
+  openWorkshop = (id, title) ->
+    $body.toggleClass 'noscroll'
+
+    setTimeout ->
+      $overlay.toggleClass 'opened'
+    , 50
+
+    document.title = title
+
+    $.get "/workshops/#{id}.js",
+      (data) ->
+        $overlay.html(data)
+        initWorkshop()
+      , 'html'
+
+  adaptCarousel = ->
     vpw = $window.width()
     vph = $window.height()
+    $carousel = $(".carousel")
+
     $kazarma.height vph
 
     if vpw > 1024
@@ -42,6 +87,24 @@ $ ->
     else
       $carousel.height 360
 
+  adaptCarousel()
+
+  workshopIds = window.location.pathname.match(/workshops\\(\d)+/)
+
+  if (workshopIds)
+    openWorkshop(workshopIds[1], undefined)
+
+  initWorkshop()
+
+  # typed.js
+  setTimeout ->
+    $("#typed").typed
+      strings: ["Воркшопы с международными специалистами в уникальной среде Никола-Ленивца."]
+      typeSpeed: 10
+  , 1200
+
+  $window.resize ->
+    adaptCarousel()
 
   # TODO с timeout какой-то грязный хак, не нравится мне это
 
@@ -53,28 +116,26 @@ $ ->
     , 50
 
   $overlay.on 'click', '.menuButtonPopup', ->
+    history.pushState({}, "", "/")
 
-    $overlay.html("")
-    $overlay.toggleClass 'opened'
+    document.title = title
 
-    history.go(-1)
+    closeWorkshop()
 
-    setTimeout ->
-      $body.toggleClass 'noscroll'
-    , 50
-  
   $workshopList.on 'click', ".workshopWrapper", (e) ->
     id = $(e.currentTarget).data('id')
-    $body.toggleClass 'noscroll'
+    title = $(e.currentTarget).find('.title').text()
 
-    setTimeout ->
-      $overlay.toggleClass 'opened'
-    , 50
+    openWorkshop(id, title)
 
-    history.pushState({}, "", "/workshops/#{id}")
+    history.pushState({workshopId: id, title: title}, "", "/workshops/#{id}")
 
-    $.get "/workshops/#{id}.js",
-      (data) ->
-        $overlay.html(data)
-      , 'html'
+  $window.on "popstate", (e) ->
+    state = e.originalEvent.state || {}
 
+    if (state.workshopId)
+      openWorkshop(state.workshopId, state.title)
+    else if (window.location.pathname == "/")
+      closeWorkshop()
+
+    document.title = state.title || title

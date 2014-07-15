@@ -1,4 +1,4 @@
-#carousel {
+.carousel {
   cursor: -webkit-grab; 
   cursor: -moz-grab;
   -webkit-touch-callout: none;
@@ -73,14 +73,14 @@
     -ms-user-select: none;
     user-select: none;
   }
-  #arrowRight, #arrowLeft {
+  .arrowRight, .arrowLeft {
     cursor: pointer;
     position: absolute;
     top: 50%;
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
   }
-  #arrowLeft {
+  .arrowLeft {
     @include rotate(90deg);
     left: 30px;
     @include respond-to(iphone) {
@@ -89,7 +89,7 @@
       transform: rotate(90deg) scale(0.6);
     }
   }
-  #arrowRight {
+  .arrowRight {
     @include rotate(-90deg);
     right: 30px;
     @include respond-to(iphone) {

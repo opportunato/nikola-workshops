@@ -13,6 +13,6 @@ json.array! @workshops do |workshop|
 
   json.images workshop.images do |image|
     json.(image, :id)
-    json.url image.image.url(:small)
+    json.url image.image.url(:mobile)
   end
 end

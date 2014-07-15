@@ -113,6 +113,21 @@ class SeedGenerator
       },
       {
         image: image("image-3.jpg")
+      },
+      {
+        image: image("image-4.jpg")
+      },
+      {
+        image: image("image-5.jpg")
+      },
+      {
+        image: image("image-6.jpg")
+      },
+      {
+        image: image("image-7.jpg")
+      },
+      {
+        image: image("image-8.jpg")
       }
     ]
   end

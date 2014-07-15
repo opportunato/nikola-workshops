@@ -12,7 +12,7 @@ class WorkshopDecorator < ApplicationDecorator
       end.join.html_safe + 
       model.images.map do |image|
         h.content_tag("li", class: "pane") do
-          h.content_tag "div", "", class: "carousel-image bg", style: "background-image: url(#{image.image.url(:normal)});"
+          h.content_tag "div", "", h.responsive_background_image(image.image).merge(class: "carousel-image bg")
         end
       end.join.html_safe
     end
