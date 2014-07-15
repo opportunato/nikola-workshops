@@ -1,7 +1,7 @@
 class Workshop < ActiveRecord::Base
-  has_many :hosts, dependent: :destroy
-  has_many :videos, dependent: :destroy, class_name: "WorkshopVideo"
-  has_many :images, dependent: :destroy, class_name: "WorkshopImage"
+  has_many :hosts, -> { order 'created_at ASC' }, dependent: :destroy
+  has_many :videos, -> { order 'created_at ASC' }, dependent: :destroy, class_name: "WorkshopVideo"
+  has_many :images, -> { order 'created_at ASC' }, dependent: :destroy, class_name: "WorkshopImage"
 
   validates :title, :headline, :price, :start_date, :end_date, presence: true
 
