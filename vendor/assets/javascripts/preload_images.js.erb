@@ -1,0 +1,22 @@
+function preloadImages(images, cb) {
+  var count = images.length,
+    check = function() {
+      if(!--count) {
+        cb();
+      }
+    };
+
+  for (var i = images.length - 1; i >= 0; i--) {
+    var img = new Image();
+    img.onload = check;
+    img.src = images[i];
+  }
+};
+
+preloadImages(["<%= asset_path('bg1.jpg') %>", 
+               "<%= asset_path('bg2.jpg') %>",
+               "<%= asset_path('bg3.jpg') %>", 
+               "<%= asset_path('bg4.jpg') %>",
+               "<%= asset_path('bg5.jpg') %>" ], function() {
+  alert("DONE");
+});

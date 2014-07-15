@@ -9,3 +9,4 @@
 //= require typed
 //= require main
 //= require responsive
+//= require preload_images
