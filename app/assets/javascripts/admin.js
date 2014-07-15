@@ -4,7 +4,6 @@
 //= require angular-route
 //= require angular-rails-templates
 //= require angular-file-upload
-//= require ng-quick-date
 //= require ui-bootstrap
 //= require textAngular-sanitize
 //= require textAngularSetup

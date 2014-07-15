@@ -11,10 +11,10 @@
           = angular_form_tag(t("workshop.program"), "currentWorkshop.program", "div", true, "text-angular" => "", "ta-toolbar" => "[['bold', 'insertLink'], ['ul', 'ol']]")
           = angular_form_tag(t("workshop.price"), "currentWorkshop.price")
           = angular_form_tag(t("workshop.buy_link"), "currentWorkshop.buyLink")
-          = angular_form_tag(t("workshop.start_date"), "currentWorkshop.startDate", "div", false, "datepicker-popup" => "dd.MM.yyyy")
-          button type="button" class="btn btn-default" ng-click="open($event)"
-            i class="fa fa-calendar"
-          = angular_form_tag(t("workshop.end_date"), "currentWorkshop.endDate", "div", false, "datepicker-popup" => "dd.MM.yyyy")
+          / = angular_form_tag(t("workshop.start_date"), "currentWorkshop.startDate", "div", false, "datepicker-popup" => "")
+          / button type="button" class="btn btn-default" ng-click="open($event)"
+          /   i class="fa fa-calendar"
+          / = angular_form_tag(t("workshop.end_date"), "currentWorkshop.endDate", "div", false, "datepicker-popup" => "dd.MM.yyyy")
           .checkbox
             label
               input[type="checkbox" ng-model="currentWorkshop.isPublished"]
@@ -28,7 +28,7 @@
             img[ng-src="{{host.image}}"]
             .form-element
               input[type="file" ng-file-select="uploadImage($files, host)"]
-            button[class="btn btn-primary" ng-click="deleteHost(host)"] = t("common.delete")
+            button[class="btn btn-danger" ng-click="deleteHost(host)"] = t("common.delete")
           div
             = angular_form_tag(t("host.name"), "newHost.name")
             = angular_form_tag(t("host.description"), "newHost.description", "textarea")
@@ -41,6 +41,7 @@
         .videos ng-controller="videosCtrl"
           div[ng-repeat="video in currentWorkshop.videos"]
             = angular_form_tag(t("video.link"), "video.link")
+            button[class="btn btn-danger" ng-click="deleteVideo(video)"] = t("common.delete")
           div
             = angular_form_tag(t("video.link"), "newVideo.link")
             button[class="btn btn-primary" ng-click="addVideo()"] = t("common.add")

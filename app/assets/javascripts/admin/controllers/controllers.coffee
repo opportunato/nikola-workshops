@@ -84,7 +84,7 @@ angular.module("nikolaWorkshopsAdmin")
 .controller("videosCtrl", ['$scope', ($scope) ->
   $scope.newVideo = {}
 
-  $scope.deleteVideo = (host) ->
+  $scope.deleteVideo = (video) ->
     videos = $scope.currentWorkshop.videos
     videos.splice videos.indexOf(video), 1
 
