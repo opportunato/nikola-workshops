@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root to: "startpage#index"
 
   get "/admin", to: "admin/workshops#index"
+  get "/terms", to: "startpage#terms"
 
   resources :workshops, except: [:edit]
   match "/admin/*path" => "admin/workshops#index", via: [:get], constraints: { format: 'html' }
