@@ -3,14 +3,14 @@
   pointer-events: none !important;
 }
 
-.fb, .tw, .vk, .in, .vm, .sc {
+.fb, .tw, .vk, .in, .vm, .sc, .tum {
   display: inline-block;
   padding: 0 $padding/2;
   font-size: 1.4em;
   text-decoration: none;
   @include respond-to(iphone) {
     font-size: 1.2em;
-    padding: 0 $padding/6;
+    padding: 0 $padding/3;
   }
 }
 
@@ -55,6 +55,7 @@
     margin: 0 auto;
     max-width: 980px;
     z-index: 999;
+    padding-bottom: $padding;
   }
   h1 { 
     margin-bottom: $margin;
@@ -84,12 +85,30 @@
     }
     &.block { margin-bottom: $margin/3; }
   }
-  .social { 
-    position: relative;
-    z-index: 999;
-    text-align: center; 
-    margin-bottom: 0; 
-    span.hashtag { color: $color-red; }
+  .item {
+    font-size: 2em;
+  }
+}
+
+.social { 
+  position: relative;
+  z-index: 999;
+  text-align: center; 
+  margin-bottom: 0; 
+  .hashtag {
+    padding-top: $padding/3*2;
+    display: block;
+  }
+  .item {
+    font-family: "HelveticaNeue-Bold", Helvetica, Arial, "Lucida Grande", sans-serif; 
+    font-weight: 600;
+    display: block;
+  }
+  .message {
+    display: block;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+    font-weight: 300;
+    padding-bottom: $padding/6;
   }
 }
 
@@ -160,7 +179,7 @@
     font-size: 2.4em;
   }
   @include respond-to(iphone) {
-    font-size: 1.6em;
+    font-size: 2em;
   }
 }
 
