@@ -1,9 +1,3 @@
-body.loaded {
-  .navigation {
-    @include animation(navigation 1200ms 400ms);
-  }
-}
-
 header {
   position: absolute;
   width: 100%;

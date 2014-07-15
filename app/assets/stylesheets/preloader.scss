@@ -1,0 +1,107 @@
+#preloader {
+  @include transition(all .8s);
+  // -webkit-transform: translateY(0%);
+  // transform: translateY(0%);
+  visibility: visible;
+  opacity: 1;
+  position: absolute;
+  left: 0; right: 0; top: 0; bottom: 0;
+  z-index: 99999;
+  background: white;
+  .copy {
+      position: absolute;
+      margin-top: 52px;
+      left: 50%; top: 50%;
+      margin-left: 2px;
+      -webkit-transform: translateX(-50%) translateY(-50%);
+      transform: translateX(-50%) translateY(-50%);
+      @include animation(blink 1800ms infinite);
+    }
+  .wrapper {
+    width: 53px; height: 52px;
+    position: absolute;
+    overflow: hidden;
+    left: 50%; top: 50%;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    .first, .second, .third, .fourth, .fifth, .sixth, .seventh, .eight, .ninth { 
+      position: absolute;
+      top: 0; left: 0;
+      background: black;
+      width: 4px;
+      height: 80%;
+    }
+    .first {
+      @include animation(preloader-top 300ms 300ms both);
+      margin-top: 8px;
+      margin-left: 4px;
+    }
+    .second {
+      @include animation(preloader-bottom 300ms 600ms both);
+      margin-left: 12px;
+    }
+    .third {
+      @include animation(preloader-top 300ms 900ms both);
+      margin-top: 6px;
+      margin-left: 20px;
+    }
+    .fourth {
+      @include animation(preloader-bottom 300ms 1200ms both);
+      margin-left: 28px;
+      margin-top: 4px;
+    }
+    .fifth {
+      @include animation(preloader-top 300ms 1500ms both);
+      margin-left: 36px;
+      margin-top: 10px;
+    }
+    .sixth {
+      @include animation(preloader-bottom 300ms 1800ms both);
+      margin-left: 44px;
+      margin-top: 4px;
+      height: 90%;
+    }
+    .seventh {
+      @include animation(preloader-seventh 300ms 2100ms both);
+      height: 120%;
+      margin-top: -2px;
+    } 
+    .eight {
+      @include animation(preloader-eight 300ms 2400ms both);
+      height: 120%;
+      margin-top: -1px;
+    }
+    .ninth {
+      @include animation(preloader-ninth 300ms 2700ms both);
+      height: 120%;
+    }
+  }
+}
+
+body.loaded {
+  .navigation {
+    @include animation(navigation 1200ms 400ms both);
+  }
+  #container {
+    opacity: 1;
+  }
+  #preloader {
+    // -webkit-transform: translateY(-100%);
+    // transform: translateY(-100%);
+    visibility: hidden;
+    opacity: 0;
+  }
+  .trigger {
+    @include animation(arrow 1200ms infinite);
+    img { 
+      display: block;
+      // @include animation(arrow-appereance 1200ms 300ms both); 
+    }
+    noindex:-o-prefocus, img { /* remove animation just for Opera */
+      animation: none;
+    }
+  }
+  noindex:-o-prefocus, .trigger { /* remove animation just for Opera */
+    animation: none;
+  }
+}

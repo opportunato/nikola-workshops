@@ -67,7 +67,7 @@
 @include keyframes(preloader-eight) {
   0%      { -webkit-transform: rotate(90deg) translateX(0px) translateY(-94px); transform: rotate(90deg) translateX(0px) translateY(-94px); }
   90%     { -webkit-transform: rotate(90deg) translateX(0px) translateY(-24px); transform: rotate(90deg) translateX(0px) translateY(-24px); }
-  100%    { -webkit-transform: rotate(90deg) translateX(0px) translateY(-24px); transform: rotate(70deg) translateX(0px) translateY(-24px); }
+  100%    { -webkit-transform: rotate(90deg) translateX(0px) translateY(-24px); transform: rotate(90deg) translateX(0px) translateY(-24px); }
 }
 
 @include keyframes(preloader-ninth) {
