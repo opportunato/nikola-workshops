@@ -22,7 +22,7 @@ $ ->
       arrowLeft = $('.arrowLeft')
 
       panes = $('.carousel li.pane')
-      pane_count = panes.length;
+      pane_count = panes.length
 
       current_pane = 0;
 
@@ -40,15 +40,12 @@ $ ->
           if current_pane > 0
               current_pane -= 1
 
-    if $window.width() > 1024
-      $carousel.height vph
-    else
-      $carousel.height 400
+      adaptCarousel()
 
-    $(".carousel-image").responsive_images 
-      mobile_size: 640,
-      tablet_size: 1024,
-      desktop_size: 1600
+      $(".carousel-image").responsive_images 
+        mobile_size: 640,
+        tablet_size: 1024,
+        desktop_size: 1600
 
   closeWorkshop = ->
     $overlay.html("")
