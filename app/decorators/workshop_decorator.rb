@@ -36,21 +36,21 @@ class WorkshopDecorator < ApplicationDecorator
     duration = if start_date.month == end_date.month
       [
         start_date.day,
-        "-",
+        "—",
         end_date.day,
         " ",
         t("date.common_month_names")[start_date.month]
-      ].join(' ')
+      ].join
     else
       [
         start_date.day,
         " ",
         t("date.common_month_names")[start_date.month],
-        "-",
+        "—",
         end_date.day,
         " ",
         t("date.common_month_names")[end_date.month]
-      ].join(' ')
+      ].join
     end
   end 
 
