@@ -1,9 +1,9 @@
 .panel-body
   form novalidate=""
     a class="back-link" ng-href="{{workshopsUrl}}/" = t("common.back")
-    a class="go-to-link" ng-if="workshopLink" ng-href="{{workshopLink}}" = t("workshop.go_to")
+    a class="btn btn-primary" target="_blank" class="go-to-link" ng-if="workshopLink" ng-href="{{workshopLink}}" = t("workshop.go_to")
     tabset
-      tab heading=t("workshop.data")
+      tab heading=t("workshop.data") select="selectTab('main')" active="editorTabs['main']"
         .info
           = angular_form_tag(t("workshop.title"), "currentWorkshop.title")
           = angular_form_tag(t("workshop.headline"), "currentWorkshop.headline")
@@ -19,11 +19,11 @@
             label
               input[type="checkbox" ng-model="currentWorkshop.isPublished"]
               = t("workshop.is_published")
-      tab heading=t("workshop.hosts")
+      tab heading=t("workshop.hosts") select="selectTab('hosts')" active="editorTabs['hosts']"
         .hosts ng-controller="hostsCtrl"
           div[ng-repeat="host in currentWorkshop.hosts"]
             = angular_form_tag(t("host.name"), "host.name")
-            = angular_form_tag(t("host.description"), "host.description", "textarea")
+            = angular_form_tag(t("host.description"), "host.description", "div", true, "text-angular" => "", "ta-toolbar" => "[['bold', 'insertLink'], ['ul', 'ol']]")
             = angular_form_tag(t("host.link"), "host.link")
             img[ng-src="{{host.image}}"]
             .form-element
@@ -37,7 +37,7 @@
             .form-element
               input[type="file" ng-file-select="uploadImage($files, newHost)"]
             button[class="btn btn-primary" ng-click="addHost()"] = t("common.add")
-      tab heading=t("workshop.videos")
+      tab heading=t("workshop.videos") select="selectTab('videos')" active="editorTabs['videos']"
         .videos ng-controller="videosCtrl"
           div[ng-repeat="video in currentWorkshop.videos"]
             = angular_form_tag(t("video.link"), "video.link")
@@ -45,7 +45,7 @@
           div
             = angular_form_tag(t("video.link"), "newVideo.link")
             button[class="btn btn-primary" ng-click="addVideo()"] = t("common.add")
-      tab heading=t("workshop.images")
+      tab heading=t("workshop.images") select="selectTab('images')" active="editorTabs['images']"
         .images ng-controller="imagesCtrl"
           div.image[ng-repeat="image in currentWorkshop.images"]
             img[ng-src="{{image.url}}"]

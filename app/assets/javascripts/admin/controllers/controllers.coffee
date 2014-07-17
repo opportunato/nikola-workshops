@@ -14,22 +14,37 @@ angular.module("nikolaWorkshopsAdmin")
 
     $location.path $scope.workshopsUrl
 
-  $scope.goToWorkshop = (workshop) ->
-    window.location.path = "#{workshopsUserUrl}/#{workshop.id}"
+  $scope.getWorkshopUserLink = (id) ->
+    "#{workshopsUserUrl}/#{id}"
 ])
 
 .controller("workshopsTableCtrl", ['$scope', '$location', '$route', 'workshops', ($scope, $location, $route, workshops) ->
   $scope.data.workshops = workshops
+
+  $location.search 'tab', null
 
   $scope.startEdit = (workshop) ->
     $location.path "#{$scope.workshopsUrl}/#{workshop.id}/edit"
 ])
 
 .controller("workshopsEditCtrl", ['$scope', '$routeParams', '$location', 'workshops', 'Workshop', 'workshopsUserUrl', ($scope, $routeParams, $location, workshops, Workshop, workshopsUserUrl) ->
+  $scope.editorTabs =
+    main: false
+    hosts: false
+    videos: false
+    images: false
+
+  currentTab = $location.search()['tab'] || "main"
+
+  $scope.editorTabs[currentTab] = true
+
+  $scope.selectTab = (tabName) ->
+    $location.search 'tab', tabName
+
   $scope.data.workshops = workshops
 
   $scope.$watch 'data.workshops.length', ->
-    if id = $routeParams["id"]
+    if id = $routeParams['id']
       $scope.currentWorkshop = ($scope.data.workshops.filter (workshop) ->
         if workshop.id == parseInt(id)
           $scope.currentWorkshop = workshop

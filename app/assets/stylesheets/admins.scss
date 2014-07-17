@@ -2,12 +2,20 @@ body {
   margin: 50px;
 }
 
+table tr {
+  cursor: pointer;
+}
+
 .create {
   margin-bottom: 20px;
 }
 
 .info, .videos, .hosts {
   width: 600px;
+}
+
+.hosts .ta-scroll-window {
+  height: 150px;
 }
 
 .images {

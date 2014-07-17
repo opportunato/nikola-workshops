@@ -12,10 +12,10 @@ table.table.table-hover
       td ng-bind="workshop.title" ng-click="startEdit(workshop)"
       td ng-bind="workshop.duration" ng-click="startEdit(workshop)"
       td ng-show="workshop.isPublished" ng-click="startEdit(workshop)"
-        = t("common.yes")
+        = t("common.ya")
       td ng-show="!workshop.isPublished" ng-click="startEdit(workshop)"
-        = t("common.no")
+        = t("common.nein")
       td
-        a href="" class="btn btn-primary" ng-click="goToWorkshop(workshop)" = t("workshop.go_to")
+        a ng-href="{{getWorkshopUserLink(workshop.id)}}" class="btn btn-primary" target="_blank" = t("workshop.go_to")
       td
-        a href="" class="btn btn-danger" ng-click="deleteWorkshop(workshop)" = t("common.delete")
+        button class="btn btn-danger" ng-click="deleteWorkshop(workshop)" = t("common.delete")

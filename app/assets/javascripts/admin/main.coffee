@@ -22,6 +22,7 @@ angular.module("nikolaWorkshopsAdmin", [
   $routeProvider.when "#{workshopsUrl}/:id/edit",
     templateUrl: "workshopsEditor.html"
     controller: "workshopsEditCtrl"
+    reloadOnSearch: false
     resolve:
       workshops: ['Workshop', (Workshop) ->
         Workshop.query()
@@ -30,6 +31,7 @@ angular.module("nikolaWorkshopsAdmin", [
   $routeProvider.when "#{workshopsUrl}/new",
     templateUrl: "workshopsEditor.html"
     controller: "workshopsEditCtrl"
+    reloadOnSearch: false
     resolve:
       workshops: ['Workshop', (Workshop) ->
         Workshop.query()
