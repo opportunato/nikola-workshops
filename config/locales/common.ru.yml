@@ -11,6 +11,9 @@ ru:
     ya: Да
     nein: Нет
     admin: Админка
+    close: Закрыть
+    clear: Очистить
+    current: Сегодня
   startpage:
     share:
       tweet: Твитнуть

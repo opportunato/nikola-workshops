@@ -83,12 +83,13 @@ private
       if !old_collection_ids.include?(element[:id])
         if create
           object = constructor.new(element.except(:image_id))
-          @workshop.send(collection_name).push constructor.new(element.except(:image_id))
+          @workshop.send(collection_name).push object
         else
           @workshop.send(collection_name).push constructor.find_by(id: element[:id])
         end
       else
         object = constructor.find_by(id: element[:id])
+        object.update(element.except(:id, :image_id))
       end
 
       # And here is really scary too

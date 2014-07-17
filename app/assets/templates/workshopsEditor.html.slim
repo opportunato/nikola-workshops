@@ -7,14 +7,24 @@
         .info
           = angular_form_tag(t("workshop.title"), "currentWorkshop.title")
           = angular_form_tag(t("workshop.headline"), "currentWorkshop.headline")
+          .form-group
+            label.form-element = t("workshop.start_date")
+            p.input-group
+              input.form-control type='text' datepicker-popup='dd.MM.yyyy' ng-model='currentWorkshop.startDate' is-open='controls.startDatePopupOpened' close-text='#{t("common.close")}' clear-text='#{t("common.clear")}' current-text='#{t("common.current")}'
+              span.input-group-btn
+                button[class="btn btn-default" type='button' ng-click='openStartDate($event)']
+                  i[class="fa fa-calendar"]
+          .form-group
+            label.form-element = t("workshop.end_date")
+            p.input-group
+              input.form-control type='text' datepicker-popup='dd.MM.yyyy' ng-model='currentWorkshop.endDate' is-open='controls.endDatePopupOpened' close-text='#{t("common.close")}' clear-text='#{t("common.clear")}' current-text='#{t("common.current")}'
+              span.input-group-btn
+                button[class="btn btn-default" type='button' ng-click='openEndDate($event)']
+                  i[class="fa fa-calendar"]
           = angular_form_tag(t("workshop.description"), "currentWorkshop.description", "div", true, "text-angular" => "", "ta-toolbar" => "[['bold', 'insertLink'], ['ul', 'ol']]")
           = angular_form_tag(t("workshop.program"), "currentWorkshop.program", "div", true, "text-angular" => "", "ta-toolbar" => "[['bold', 'insertLink'], ['ul', 'ol']]")
           = angular_form_tag(t("workshop.price"), "currentWorkshop.price")
           = angular_form_tag(t("workshop.buy_link"), "currentWorkshop.buyLink")
-          / = angular_form_tag(t("workshop.start_date"), "currentWorkshop.startDate", "div", false, "datepicker-popup" => "")
-          / button type="button" class="btn btn-default" ng-click="open($event)"
-          /   i class="fa fa-calendar"
-          / = angular_form_tag(t("workshop.end_date"), "currentWorkshop.endDate", "div", false, "datepicker-popup" => "dd.MM.yyyy")
           .checkbox
             label
               input[type="checkbox" ng-model="currentWorkshop.isPublished"]

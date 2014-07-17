@@ -18,7 +18,7 @@
       .button
         = link_to @workshop.buy_link, target: "_blank" do
           .title = t(".buy_link")
-          .price = @workshop.price
+          .price = @workshop.formatted_price
   .carousel
     = @workshop.media
     .arrowLeft = image_tag 'arrow.svg'

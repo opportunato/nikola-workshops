@@ -26,7 +26,7 @@ class WorkshopDecorator < ApplicationDecorator
     model.program.html_safe
   end
 
-  def price
+  def formatted_price
     price = h.number_with_delimiter(model.price, delimiter: " ")
 
     t("common.roubles_cost", price: price)

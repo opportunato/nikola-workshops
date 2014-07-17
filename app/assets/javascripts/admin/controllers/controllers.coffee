@@ -27,7 +27,10 @@ angular.module("nikolaWorkshopsAdmin")
     $location.path "#{$scope.workshopsUrl}/#{workshop.id}/edit"
 ])
 
-.controller("workshopsEditCtrl", ['$scope', '$routeParams', '$location', 'workshops', 'Workshop', 'workshopsUserUrl', ($scope, $routeParams, $location, workshops, Workshop, workshopsUserUrl) ->
+.controller("workshopsEditCtrl", ['$scope', '$routeParams', '$location', 'workshops', 'Workshop', 'workshopsUserUrl', '$rootScope', ($scope, $routeParams, $location, workshops, Workshop, workshopsUserUrl, $rootScope) ->
+  $scope.newHost = {}
+  $scope.newVideo = {}
+
   $scope.editorTabs =
     main: false
     hosts: false
@@ -43,11 +46,31 @@ angular.module("nikolaWorkshopsAdmin")
 
   $scope.data.workshops = workshops
 
+  $scope.controls = {}
+
+  $scope.controls.startDatePopupOpened = false
+  $scope.controls.endDatePopupOpened = false
+
+  $scope.open = ($event) ->
+    $event.preventDefault()
+    $event.stopPropagation()
+
+    $scope.controls.startDatePopupOpened = true
+
+  $scope.openEndDate = ($event) ->
+    $event.preventDefault()
+    $event.stopPropagation()
+
+    $scope.controls.endDatePopupOpened = true
+
   $scope.$watch 'data.workshops.length', ->
     if id = $routeParams['id']
       $scope.currentWorkshop = ($scope.data.workshops.filter (workshop) ->
         if workshop.id == parseInt(id)
           $scope.currentWorkshop = workshop
+
+          $scope.currentWorkshop.startDate = new Date($scope.currentWorkshop.startDate)
+          $scope.currentWorkshop.endDate = new Date($scope.currentWorkshop.endDate)
       )[0]
       $scope.workshopLink = "#{workshopsUserUrl}/#{$scope.currentWorkshop.id}"
 
@@ -63,16 +86,28 @@ angular.module("nikolaWorkshopsAdmin")
     $location.path $scope.workshopsUrl
 
   $scope.saveWorkshop = ->
+    if $scope.newHost.name
+      $scope.currentWorkshop.hosts ||= []
+      $scope.currentWorkshop.hosts.push($scope.newHost)
+
+      $scope.newHost = {}
+
+    if $scope.newVideo.link
+      $scope.currentWorkshop.videos ||= []
+      $scope.currentWorkshop.videos.push($scope.newVideo)
+      $scope.newVideo = {}
+
     if angular.isDefined($scope.currentWorkshop.id)
       $scope.updateWorkshop $scope.currentWorkshop
     else
       $scope.createWorkshop $scope.currentWorkshop
     $scope.currentWorkshop = new Workshop
+
+  $scope.openStartDate = ->
+    $scope.startDateOpened = true
 ])
 
 .controller("hostsCtrl", ['$scope', '$upload', 'hostImageUrl', ($scope, $upload, hostImageUrl) ->
-  $scope.newHost = {}
-
   $scope.deleteHost = (host) ->
     hosts = $scope.currentWorkshop.hosts
     hosts.splice hosts.indexOf(host), 1
@@ -97,8 +132,6 @@ angular.module("nikolaWorkshopsAdmin")
 ])
 
 .controller("videosCtrl", ['$scope', ($scope) ->
-  $scope.newVideo = {}
-
   $scope.deleteVideo = (video) ->
     videos = $scope.currentWorkshop.videos
     videos.splice videos.indexOf(video), 1
