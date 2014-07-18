@@ -56,11 +56,13 @@ angular.module("nikolaWorkshopsAdmin")
     $event.stopPropagation()
 
     $scope.controls.startDatePopupOpened = true
+    $scope.controls.endDatePopupOpened = false
 
   $scope.openEndDate = ($event) ->
     $event.preventDefault()
     $event.stopPropagation()
 
+    $scope.controls.startDatePopupOpened = false
     $scope.controls.endDatePopupOpened = true
 
   $scope.$watch 'data.workshops.length', ->

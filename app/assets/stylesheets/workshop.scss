@@ -94,6 +94,8 @@
       .description {
         font-size: 1.2em;
         margin-bottom: $margin;
+        line-height: 1.5;
+        text-align: justify;
         p { 
           margin-bottom: $margin/2;
           line-height: 1.4;
@@ -101,18 +103,6 @@
         b, a {
           font-family: "HelveticaNeue-Bold", Helvetica, Arial, "Lucida Grande", sans-serif; 
           font-weight: 600;
-        }
-        ul {
-          list-style: square inside;
-          margin-left: $margin/2;
-          margin-bottom: $margin/2;
-          li { margin-bottom: $margin/3; }
-        }
-        ol {
-          list-style: decimal inside;
-          margin-left: $margin/2;
-          margin-bottom: $margin/2;
-          li { margin-bottom: $margin/3; }
         }
       }
       .share { 
@@ -127,6 +117,20 @@
             margin-bottom: $margin/3;
           }
         }
+      }
+    }
+    .description,
+    .programme {
+      ul, ol {
+        margin-left: $margin/2;
+        margin-bottom: $margin/2;
+        li { margin-bottom: $margin/3; }
+      }
+      ul {
+        list-style: square inside;
+      }
+      ol {
+        list-style: decimal inside;
       }
     }
     .floatRight a {
@@ -181,6 +185,8 @@
       line-height: 1.3;
     }
     .programme {
+      line-height: 1.5;
+      text-align: justify;
       font-size: 1.2em;
       p { margin-bottom: $margin/3; overflow: hidden; }
     }

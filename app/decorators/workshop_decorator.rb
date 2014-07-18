@@ -29,7 +29,11 @@ class WorkshopDecorator < ApplicationDecorator
   def formatted_price
     price = h.number_with_delimiter(model.price, delimiter: " ")
 
-    t("common.roubles_cost", price: price)
+    if model.is_price_min
+      t("common.min_roubles_cost", price: price)
+    else
+      t("common.roubles_cost", price: price)
+    end
   end
 
   def duration

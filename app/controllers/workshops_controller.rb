@@ -47,7 +47,7 @@ class WorkshopsController < ApplicationController
 
 private
   def workshop_params
-    params.require(:workshop).permit(:title, :headline, :description, :program, :price, :buy_link, :start_date, :end_date, :is_published, 
+    params.require(:workshop).permit(:title, :headline, :description, :program, :price, :buy_link, :start_date, :end_date, :is_published, :is_price_min, 
       hosts: [:id, :name, :description, :link, :image_id],
       videos: [:id, :link],
       images: [:id]

@@ -9,6 +9,7 @@ ru:
     buy_link: Ссылка на покупку билетов
     start_date: Дата начала
     end_date: Дата окончания
+    is_price_min: Минимальная цена
     is_published: Показывать на главной
     hosts: Мастера
     videos: Видео
@@ -27,7 +28,7 @@ ru:
       passed: Прошел
       current: Идет
     show:
-      buy_link: Купить билеты
+      buy_link: Оплатить участие
       program: Программа
   startpage:
     index:

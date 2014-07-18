@@ -7,6 +7,7 @@ ru:
     cancel: Отменить
     delete: Удалить
     roubles_cost: "%{price} р."
+    min_roubles_cost: "от %{price} р."
     back: Назад
     ya: Да
     nein: Нет

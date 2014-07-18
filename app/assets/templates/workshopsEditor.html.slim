@@ -21,10 +21,14 @@
               span.input-group-btn
                 button[class="btn btn-default" type='button' ng-click='openEndDate($event)']
                   i[class="fa fa-calendar"]
-          = angular_form_tag(t("workshop.description"), "currentWorkshop.description", "div", true, "text-angular" => "", "ta-toolbar" => "[['bold', 'insertLink'], ['ul', 'ol']]")
-          = angular_form_tag(t("workshop.program"), "currentWorkshop.program", "div", true, "text-angular" => "", "ta-toolbar" => "[['bold', 'insertLink'], ['ul', 'ol']]")
+          = angular_form_tag(t("workshop.description"), "currentWorkshop.description", "div", true, "text-angular" => "", "ta-toolbar" => "[['bold', 'insertLink'], ['ul', 'ol'], ['undo', 'redo']]")
+          = angular_form_tag(t("workshop.program"), "currentWorkshop.program", "div", true, "text-angular" => "", "ta-toolbar" => "[['bold', 'insertLink'], ['ul', 'ol'], ['undo', 'redo']]")
           = angular_form_tag(t("workshop.price"), "currentWorkshop.price")
           = angular_form_tag(t("workshop.buy_link"), "currentWorkshop.buyLink")
+          .checkbox
+            label
+              input[type="checkbox" ng-model="currentWorkshop.isPriceMin"]
+              = t("workshop.is_price_min")
           .checkbox
             label
               input[type="checkbox" ng-model="currentWorkshop.isPublished"]
