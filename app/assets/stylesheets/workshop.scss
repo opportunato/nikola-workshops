@@ -100,10 +100,6 @@
           margin-bottom: $margin/2;
           line-height: 1.4;
         }
-        b, a {
-          font-family: "HelveticaNeue-Bold", Helvetica, Arial, "Lucida Grande", sans-serif; 
-          font-weight: 600;
-        }
       }
       .share { 
         margin-bottom: $margin/2;
@@ -131,6 +127,10 @@
       }
       ol {
         list-style: decimal inside;
+      }
+      b, a {
+        font-family: "HelveticaNeue-Bold", Helvetica, Arial, "Lucida Grande", sans-serif; 
+        font-weight: 600;
       }
     }
     .floatRight a {
