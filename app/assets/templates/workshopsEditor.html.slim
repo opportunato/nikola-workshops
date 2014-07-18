@@ -12,7 +12,7 @@
             p.input-group
               input.form-control type='text' datepicker-popup='dd.MM.yyyy' ng-model='currentWorkshop.startDate' is-open='controls.startDatePopupOpened' close-text='#{t("common.close")}' clear-text='#{t("common.clear")}' current-text='#{t("common.current")}'
               span.input-group-btn
-                button[class="btn btn-default" type='button' ng-click='openStartDate($event)']
+                button[class="btn btn-default" type='button' ng-click='open($event)']
                   i[class="fa fa-calendar"]
           .form-group
             label.form-element = t("workshop.end_date")
