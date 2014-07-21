@@ -103,12 +103,9 @@
       }
       .share { 
         margin-bottom: $margin/2;
-        .fb-like, #twitter-widget-0, #vk-like {
+        .fb-like, #twitter-share, #vk-like {
           display: inline-block;
           vertical-align: middle;
-        }
-        #twitter-widget-0 {
-          width: 110px !important;
         }
         .fb-like {
           padding-right: $margin/2;

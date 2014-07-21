@@ -42,6 +42,9 @@ $ ->
 
       adaptCarousel()
 
+      addFacebookButton()
+      addVKButton()
+
       $(".carousel-image").responsive_images 
         mobile_size: 640,
         tablet_size: 1024,
@@ -62,9 +65,16 @@ $ ->
         $overlay.html(data)
         initWorkshop()
 
-        try FB.XFBML.parse()
-        catch e
+        addFacebookButton()
+        addVKButton()
       , 'html'
+
+  addFacebookButton = ->
+    try FB.XFBML.parse()
+    catch e
+
+  addVKButton = ->
+    VK.Widgets.Like("vk-like", {type: "mini"});
 
   adaptCarousel = ->
     vpw = $window.width()
