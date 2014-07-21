@@ -4,6 +4,6 @@ html
     = render partial: "shared/head"
     = stylesheet_link_tag "application", media: :all
   body.noscroll
-    #fb-root
+    = render partial: "shared/social_scripts"
   	= yield
     = javascript_include_tag "application"

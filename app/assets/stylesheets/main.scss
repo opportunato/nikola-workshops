@@ -116,6 +116,16 @@
   }
 }
 
+.like-boxes {
+  width: 640px;
+  margin: 0 auto;
+
+  > * {
+    display: inline-block;
+    margin-right: 40px;
+  }
+}
+
 .partners {
   position: relative;
   background: $color-green;

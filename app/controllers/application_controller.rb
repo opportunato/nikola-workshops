@@ -15,9 +15,9 @@ protected
   end
 
   def authenticate
-    if Rails.env.production?
+    if Rails.env.development?
       login = authenticate_or_request_with_http_basic do |username, password|
-        username == "kollektiv" && Digest::SHA1.hexdigest(password) == "bfcb9ec698b0ef2330efee368e89886505b27b0d"
+        username == ENV['USERNAME'] && Digest::SHA1.hexdigest(password) == ENV['PASSWORD_HASH']
       end
     end
   end
