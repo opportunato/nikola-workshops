@@ -107,6 +107,9 @@
           display: inline-block;
           vertical-align: middle;
         }
+        #twitter-widget-0 {
+          width: 110px !important;
+        }
         .fb-like {
           padding-right: $margin/2;
           @include respond-to(iphone) {
