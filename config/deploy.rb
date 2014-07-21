@@ -9,7 +9,7 @@ set :deploy_to, '/home/deploy/kollektiv'
 
 set :log_level, :info
 
-set :linked_files, %w{config/local_env.yml config/secrets.yml}
+set :linked_files, %w{config/application.yml config/secrets.yml}
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads}
 
 set :keep_releases, 5
