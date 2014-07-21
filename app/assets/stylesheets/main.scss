@@ -120,9 +120,12 @@
   width: 640px;
   margin: 0 auto;
 
+  .fb-like-box {
+    margin-right: 40px;
+  }
+
   > * {
     display: inline-block;
-    margin-right: 40px;
   }
 }
 

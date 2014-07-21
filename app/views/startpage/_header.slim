@@ -22,7 +22,7 @@ header
           a[href='mailto:hello@k-o-l-l-e-k-t-i-v.ru']
             span.email hello@k-o-l-l-e-k-t-i-v.ru
         li.social
-          = render partial: 'shared/social'
+          = render partial: 'shared/social', locals: { show_like_boxes: false }
     ul.submenu
       li 
         a[href='mailto:hello@k-o-l-l-e-k-t-i-v.ru']

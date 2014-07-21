@@ -103,7 +103,7 @@
       }
       .share { 
         margin-bottom: $margin/2;
-        .fb-like, iframe {
+        .fb-like, #twitter-widget-0, #vk-like {
           display: inline-block;
           vertical-align: middle;
         }

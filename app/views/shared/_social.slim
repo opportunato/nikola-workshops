@@ -15,8 +15,9 @@ a.tum[href='http://art-kollektiv.tumblr.com/' target='_blank']
 span.hashtag
   span.message Официальный хештег
   span.item #artkollektiv
-.like-boxes
-  div class="fb-like-box" data-href="https://www.facebook.com/artkollektiv" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"
-  div id="vk_groups"
-javascript:
-  VK.Widgets.Group("vk_groups", {mode: 0, width: "220", height: "400", color1: 'FFFFFF', color2: '2B587A', color3: '5B7FA6'}, 73689861);
+- if show_like_boxes
+  .like-boxes
+    div class="fb-like-box" data-href="https://www.facebook.com/artkollektiv" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false" style="background-color: white;"
+    div id="vk-groups"
+  javascript:
+    VK.Widgets.Group("vk-groups", {mode: 0, width: "300", height: "241", color1: 'FFFFFF', color2: '2B587A', color3: '5B7FA6'}, 73689861);
