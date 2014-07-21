@@ -7,9 +7,19 @@ $ ->
   $workshopList = $(".workshopList")
   $overlay = $(".overlay")
   $intro = $(".intro")
+  TILDE_CODE = 192
 
   if (window.location.pathname == "/")
     title = document.title
+
+  $(document).on 'keydown', (e) ->
+    if e.keyCode == TILDE_CODE
+      e.preventDefault()
+
+      if workshopIds = window.location.pathname.match(/workshops\/(\d+)/)
+        document.location = "/admin/workshops/#{workshopIds[1]}/edit"
+      else
+        document.location = '<%= admin_path %>'
 
   initWorkshop = ->
     $carousel = $(".carousel")
@@ -91,11 +101,6 @@ $ ->
       $carousel.height 360
 
   adaptCarousel()
-
-  workshopIds = window.location.pathname.match(/workshops\\(\d)+/)
-
-  if (workshopIds)
-    openWorkshop(workshopIds[1], undefined)
 
   initWorkshop()
 

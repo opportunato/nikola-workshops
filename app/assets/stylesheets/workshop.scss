@@ -192,9 +192,14 @@
     }
     h1 { 
       margin-bottom: 0;
+      display: inline-block;
       @include respond-to(iphone) {
         margin-bottom: $margin/2;
       }
+    }
+    .admin-edit-link {
+      display: inline-block;
+      margin-left: 20px;
     }
     .date { 
       font-size: 1.2em;

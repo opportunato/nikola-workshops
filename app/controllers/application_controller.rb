@@ -8,6 +8,10 @@ class ApplicationController < ActionController::Base
     cookies['XSRF-TOKEN'] = form_authenticity_token if protect_against_forgery?
   end
 
+  before_filter do
+    @is_admin = session[:admin] == true
+  end
+
 protected
 
   def verified_request?
@@ -19,6 +23,12 @@ protected
       login = authenticate_or_request_with_http_basic do |username, password|
         username == ENV['USERNAME'] && Digest::SHA1.hexdigest(password) == ENV['PASSWORD_HASH']
       end
+    end
+  end
+
+  def admin_login
+    if login = authenticate_or_request_with_http_basic { |u, p| u == ENV['ADMIN_USERNAME'] && Digest::SHA1.hexdigest(p) == ENV['ADMIN_PASSWORD_HASH'] }
+      session[:admin] = true
     end
   end
 end

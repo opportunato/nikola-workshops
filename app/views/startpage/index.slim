@@ -14,7 +14,8 @@
   .workshopList
     = render partial: 'shared/columns'
     h3.schedule = t(".schedule")
-    = render @workshops
+    = render partial: 'workshops/workshop', collection: @current_workshops
+    = render partial: 'workshops/workshop', collection: @passed_workshops
   article.content
     = render partial: 'kazarma'
     = render partial: 'shared/partners'

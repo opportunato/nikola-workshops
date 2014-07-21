@@ -1,5 +1,6 @@
 class WorkshopsController < ApplicationController
  layout "workshop"
+ before_filter :admin_login, except: [:show]
 
   def index
     @workshops = Workshop.for_admin.decorate

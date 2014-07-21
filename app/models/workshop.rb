@@ -5,15 +5,15 @@ class Workshop < ActiveRecord::Base
 
   validates :title, :headline, :price, :start_date, :end_date, presence: true
 
-  scope :for_admin, -> { includes(:hosts, :images, :videos).order('start_date ASC') }
-  scope :for_startpage, -> { where(is_published: true).includes(:hosts, :images, :videos).order('start_date ASC') }
+  scope :for_admin, -> { includes(:images, :videos, :hosts).order('start_date ASC') }
+  scope :for_startpage, -> { where(is_published: true).includes(:images, :videos, hosts: [:image]).order('start_date ASC') }
 
   def passed?
-    end_date > Date.current
+    end_date < Date.current
   end
 
   def current?
-    start_date > Date.current && end_date < Date.current
+    start_date < Date.current && end_date > Date.current
   end
 
   def has_hosts?

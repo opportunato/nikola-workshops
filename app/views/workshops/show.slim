@@ -15,6 +15,9 @@
       .floatLeft
         .date = @workshop.duration
         h1.title = @workshop.title
+        - if @is_admin
+          .admin-edit-link
+            = link_to t("common.edit"), "/admin/workshops/#{@workshop.id}/edit"
       .button
         = link_to @workshop.buy_link, target: "_blank" do
           .title = t(".buy_link")
