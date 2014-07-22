@@ -6,8 +6,12 @@ table tr {
   cursor: pointer;
 }
 
-.create {
+.main, .create {
   margin-bottom: 20px;
+}
+
+.create {
+  margin-left: 20px;
 }
 
 .info, .videos, .hosts {

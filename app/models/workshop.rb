@@ -8,6 +8,9 @@ class Workshop < ActiveRecord::Base
   scope :for_admin, -> { includes(:images, :videos, :hosts).order('start_date ASC') }
   scope :for_startpage, -> { where(is_published: true).includes(:images, :videos, hosts: [:image]).order('start_date ASC') }
 
+  extend FriendlyId
+  friendly_id :title, use: :slugged
+
   def passed?
     end_date < Date.current
   end

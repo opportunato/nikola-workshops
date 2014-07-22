@@ -1,7 +1,7 @@
 .wrapper
-  .workshopWrapper[data-id=workshop.id]
+  = link_to workshop_path(workshop), class: 'workshopWrapper', "data-id" => workshop.id do
     .workshop
-      .date 
+      .date
         = workshop.duration
         - if workshop.passed?
           span.badge = t(".passed")

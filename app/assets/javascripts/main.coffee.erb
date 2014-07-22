@@ -131,12 +131,14 @@ $ ->
     closeWorkshop()
 
   $workshopList.on 'click', ".workshopWrapper", (e) ->
+    e.preventDefault()
     id = $(e.currentTarget).data('id')
+    link = $(e.currentTarget).prop('href')
     title = $(e.currentTarget).find('.title').text()
 
     openWorkshop(id, title)
 
-    history.pushState({workshopId: id, title: title}, "", "/workshops/#{id}")
+    history.pushState({workshopId: id, title: title}, "", link)
 
   $window.on "popstate", (e) ->
     state = e.originalEvent.state || {}

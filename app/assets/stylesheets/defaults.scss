@@ -31,5 +31,7 @@ input {
 
 a {
   color: $color-black;
-  &:hover { color: $color-red; }
+  &:hover { 
+    color: $color-red;
+  }
 }

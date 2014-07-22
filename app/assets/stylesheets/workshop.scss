@@ -306,7 +306,10 @@
   left: auto;
   z-index: 2;
   background: white;
+
   .workshopWrapper {
+    display: block;
+    text-decoration: none;
     @include transition(all 0.6s);
     overflow: hidden;
     position: relative;
@@ -317,22 +320,29 @@
     @include respond-to(iphone) {
       padding: $padding/2 0;
     }
+
     &:hover { 
       background: $color-green;
-      .date { 
+      color: $color-black;
+
+      .date {
         color: white;
+
         .badge { 
           background: white;
           color: $color-green;
         }
       }
+
     }
+
     .badge {
       background: #21d1bf;
       color: white;
       padding: 2px 5px;
       margin-left: 5px;
     }
+
     &:last-child { border-bottom: 0; }
     &:first-child { border-top: 4px solid $color-black; }
     .workshop {
@@ -340,6 +350,7 @@
       width: 100%;
       margin: 0 auto;
     }
+
     .title {
       width: 50%;
       display: inline-block;

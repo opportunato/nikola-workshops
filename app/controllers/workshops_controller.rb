@@ -9,7 +9,7 @@ class WorkshopsController < ApplicationController
   end
 
   def show
-    @workshop = Workshop.find_by(id: params[:id]).decorate
+    @workshop = Workshop.friendly.find(params[:id]).decorate
 
     @has_close_button = (request.format == "js")
 
