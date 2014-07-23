@@ -75,7 +75,6 @@ $ ->
         $overlay.html(data)
         initWorkshop()
 
-        addFacebookButton()
       , 'html'
 
   addFacebookButton = ->
@@ -83,7 +82,9 @@ $ ->
     catch e
 
   addVKButton = ->
-    VK.Widgets.Like("vk-like", {type: "mini"});
+    debugger
+
+    VK.Widgets.Like("vk-like", { type: "mini", pageUrl: window.location.href });
 
   adaptCarousel = ->
     vpw = $window.width()
