@@ -2,7 +2,7 @@
 /*global $*/
 
 $(function() {
-// detect if IE : from http://stackoverflow.com/a/16657946    
+// detect if IE : from http://stackoverflow.com/a/16657946
 var ie = (function() {
   var rv = -1; // Return value assumes failure.
   var ua = window.navigator.userAgent;
@@ -21,7 +21,7 @@ var ie = (function() {
   return ((rv > -1) ? rv : undefined);
 }());
 
-var keys = [32, 37, 38, 39, 40], 
+var keys = [32, 37, 38, 39, 40],
   wheelIter = 0,
   oriental,
   $w = $(window);
@@ -60,8 +60,8 @@ function enable_scroll() {
 
 var docElem = window.document.documentElement,
   scrollVal,
-  isRevealed = false, 
-  noscroll, 
+  isRevealed = false,
+  noscroll,
   isAnimating,
   touchDevices = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent),
   $container = $( '#container' ),
@@ -75,7 +75,7 @@ function scrollPage(e) {
       window.scrollTo( 0, 0 );
     }
   }
-    
+
   if( $container.hasClass('notrans' ) ) {
     $container.removeClass('notrans');
     e.preventDefault();
@@ -126,7 +126,7 @@ $w
   .on("scroll", scrollPage )
   .on("orientationchange", orientationPervert);
 
-$trigger.on( 'click', function() { 
+$trigger.on( 'click', function() {
   toggle( 'reveal' );
 });
 

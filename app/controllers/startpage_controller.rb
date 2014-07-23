@@ -7,5 +7,6 @@ class StartpageController < ApplicationController
 	end
 
   def terms
+  	render layout: 'additional'
   end
 end

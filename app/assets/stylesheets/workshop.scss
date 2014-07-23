@@ -207,10 +207,11 @@
         margin-bottom: $margin/6;
       }
       &.big {
-        font-size: 2em;
+        font-size: 1.8em;
+        margin-bottom: $margin;
         text-align: center;
-        font-family: "HelveticaNeue-Bold", Helvetica, Arial, "Lucida Grande", sans-serif;
-        font-weight: 600;
+        // font-family: "HelveticaNeue-Bold", Helvetica, Arial, "Lucida Grande", sans-serif;
+        // font-weight: 600;
         margin-top: $margin;
       }
     }
