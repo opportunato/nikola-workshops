@@ -4,7 +4,23 @@
 }
 
 #container {
-  opacity: 0; 
+  opacity: 0;
+}
+
+.terms {
+  padding: $padding;
+  max-width: 812px;
+  margin: 0 auto;
+
+  h1, h2, .part {
+    margin-bottom: $margin;
+  }
+
+  p {
+    margin-bottom: $margin/3;
+    line-height: 1.4em;
+    font-size: 1.2em;
+  }
 }
 
 .fb, .tw, .vk, .in, .vm, .sc, .tum {
@@ -61,7 +77,7 @@
     z-index: 999;
     padding-bottom: $padding;
   }
-  h1 { 
+  h1 {
     margin-bottom: $margin;
     @include respond-to(iphone) {
       padding-left: $padding/2;
@@ -74,14 +90,14 @@
     font-size: 1.4em;
     margin-bottom: $margin;
     line-height: 1.4;
-    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
     font-weight: 300;
     @include respond-to(iphone) {
       padding-left: $padding/2;
       font-size: 1.2em;
       margin-bottom: $margin/2;
     }
-    .more { 
+    .more {
       margin-left: $margin/3;
     }
     .phone, .email {
@@ -94,23 +110,23 @@
   }
 }
 
-.social { 
+.social {
   position: relative;
   z-index: 999;
-  text-align: center; 
-  margin-bottom: 0; 
+  text-align: center;
+  margin-bottom: 0;
   .hashtag {
     padding-top: $padding/3*2;
     display: block;
   }
   .item {
-    font-family: "HelveticaNeue-Bold", Helvetica, Arial, "Lucida Grande", sans-serif; 
+    font-family: "HelveticaNeue-Bold", Helvetica, Arial, "Lucida Grande", sans-serif;
     font-weight: 600;
     display: block;
   }
   .message {
     display: block;
-    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
     font-weight: 300;
     padding-bottom: $padding/6;
   }
@@ -210,7 +226,7 @@
 }
 
 .intro {
-  background: no-repeat center center $color-green;     
+  background: no-repeat center center $color-green;
   @include background-size(cover);
   position: relative;
   width: 100%;

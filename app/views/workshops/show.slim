@@ -37,5 +37,10 @@
         .programme = @workshop.program.html_safe
       .floatRight
         = render partial: 'workshops/host', locals: { hosts: @workshop.hosts }
+    .date.big = @workshop.duration
+    .button.big
+      = link_to @workshop.buy_link, target: "_blank" do
+        .title = t(".buy_link")
+        .price = @workshop.formatted_price
   = render partial: 'shared/partners'
   = render partial: 'shared/footer'
