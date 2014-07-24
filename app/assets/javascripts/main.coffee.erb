@@ -65,7 +65,8 @@ $ ->
     $body.removeClass 'noscroll'
 
     setTimeout ->
-      $overlay.html("")
+      if !$overlay.hasClass('opened')
+        $overlay.html("")
     , 2000
 
   openWorkshop = (id, title) ->
