@@ -93,6 +93,8 @@ $ ->
   addVKGroup = (id) ->
     VK.Widgets.Group("vk-groups-#{id}", {mode: 0, width: "300", height: "241", color1: 'FFFFFF', color2: '2B587A', color3: '5B7FA6'}, 73689861);
 
+  adaptKazarma = ->
+
   adaptCarousel = ->
     vpw = $window.width()
     vph = $window.height()
@@ -107,8 +109,9 @@ $ ->
     else
       $carousel.height 360
 
+  adaptCarousel()
+
   if id = $(".workshop-wrapper").data('id')
-    adaptCarousel()
     initWorkshop(id)
 
   # typed.js
