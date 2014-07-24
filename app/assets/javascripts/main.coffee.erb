@@ -61,9 +61,12 @@ $ ->
         desktop_size: 1600
 
   closeWorkshop = ->
-    $overlay.html("")
     $overlay.removeClass 'opened'
     $body.removeClass 'noscroll'
+
+    setTimeout ->
+      $overlay.html("")
+    , 2000
 
   openWorkshop = (id, title) ->
     $overlay.addClass 'opened'
@@ -82,8 +85,6 @@ $ ->
     catch e
 
   addVKButton = ->
-    debugger
-
     VK.Widgets.Like("vk-like", { type: "mini", pageUrl: window.location.href });
 
   adaptCarousel = ->

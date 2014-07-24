@@ -22,6 +22,14 @@ class WorkshopDecorator < ApplicationDecorator
     model.description.html_safe
   end
 
+  def first_paragraph
+    first_paragraph = /<p>(.*?)<\/p>/.match(model.description)
+
+    if first_paragraph
+      first_paragraph[0].html_safe
+    end
+  end
+
   def program
     model.program.html_safe
   end

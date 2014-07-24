@@ -18,7 +18,7 @@ protected
   end
 
   def admin_login
-    if RAILS.env.production?
+    if Rails.env.production?
       if login = authenticate_or_request_with_http_basic { |u, p| u == ENV['ADMIN_USERNAME'] && Digest::SHA1.hexdigest(p) == ENV['ADMIN_PASSWORD_HASH'] }
         session[:admin] = true
       end
