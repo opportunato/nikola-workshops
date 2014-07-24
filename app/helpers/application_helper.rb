@@ -11,4 +11,12 @@ module ApplicationHelper
 
     image_path(images.sample)
   end
+
+  def startpage_action?
+    controller.controller_name == 'startpage' && controller.action_name == 'index'
+  end
+
+  def workshop_action?
+    controller.controller_name == 'workshops' && controller.action_name == 'show'
+  end
 end

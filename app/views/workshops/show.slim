@@ -1,6 +1,6 @@
 - set_meta_tags title: @workshop.title, description: @workshop.first_paragraph
 
-.wrapper
+.wrapper.workshop-wrapper[data-id="#{@workshop.id}"]
   nav.navigation
     .logoBlack
       = link_to image_tag('logo_black.svg'), root_path

@@ -18,6 +18,9 @@ span.hashtag
 - if show_like_boxes
   .like-boxes
     div class="fb-like-box" data-href="https://www.facebook.com/artkollektiv" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false" style="background-color: white;"
-    div id="vk-groups"
-  javascript:
-    VK.Widgets.Group("vk-groups", {mode: 0, width: "300", height: "241", color1: 'FFFFFF', color2: '2B587A', color3: '5B7FA6'}, 73689861);
+    - if startpage_action?
+      div id="vk-groups"
+      javascript:
+        VK.Widgets.Group("vk-groups", {mode: 0, width: "300", height: "241", color1: 'FFFFFF', color2: '2B587A', color3: '5B7FA6'}, 73689861);
+    - if workshop_action?
+      div id="vk-groups-#{@workshop.id}"

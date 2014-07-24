@@ -16,12 +16,12 @@ $ ->
     if e.keyCode == TILDE_CODE
       e.preventDefault()
 
-      if workshopIds = window.location.pathname.match(/workshops\/(\d+)/)
+      if workshopIds = window.location.pathname.match(/workshops\/([\w-]+)/)
         document.location = "/admin/workshops/#{workshopIds[1]}/edit"
       else
         document.location = '<%= admin_path %>'
 
-  initWorkshop = ->
+  initWorkshop = (id) ->
     $carousel = $(".carousel")
 
     if $carousel.length > 0
@@ -55,6 +55,8 @@ $ ->
       addFacebookButton()
       addVKButton()
 
+      addVKGroup(id)
+
       $(".carousel-image").responsive_images 
         mobile_size: 640,
         tablet_size: 1024,
@@ -77,7 +79,7 @@ $ ->
     $.get "/workshops/#{id}.js",
       (data) ->
         $overlay.html(data)
-        initWorkshop()
+        initWorkshop(id)
 
       , 'html'
 
@@ -87,6 +89,9 @@ $ ->
 
   addVKButton = ->
     VK.Widgets.Like("vk-like", { type: "mini", pageUrl: window.location.href });
+
+  addVKGroup = (id) ->
+    VK.Widgets.Group("vk-groups-#{id}", {mode: 0, width: "300", height: "241", color1: 'FFFFFF', color2: '2B587A', color3: '5B7FA6'}, 73689861);
 
   adaptCarousel = ->
     vpw = $window.width()
@@ -102,9 +107,9 @@ $ ->
     else
       $carousel.height 360
 
-  adaptCarousel()
-
-  initWorkshop()
+  if id = $(".workshop-wrapper").data('id')
+    adaptCarousel()
+    initWorkshop(id)
 
   # typed.js
   setTimeout ->
