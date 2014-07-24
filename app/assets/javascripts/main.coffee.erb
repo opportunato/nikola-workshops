@@ -16,8 +16,8 @@ $ ->
     if e.keyCode == TILDE_CODE
       e.preventDefault()
 
-      if workshopIds = window.location.pathname.match(/workshops\/([\w-]+)/)
-        document.location = "/admin/workshops/#{workshopIds[1]}/edit"
+      if id = $(".workshop-wrapper").data('id')
+        document.location = "/admin/workshops/#{id}/edit"
       else
         document.location = '<%= admin_path %>'
 
