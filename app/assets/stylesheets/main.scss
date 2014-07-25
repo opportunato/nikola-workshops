@@ -139,12 +139,26 @@
   z-index: 999;
   position: relative;
 
+  @include respond-to(iphone) {
+    width: 300px;
+  }
+
   .fb-like-box {
     margin-right: 40px;
+
+    @include respond-to(iphone) {
+      margin-right: 0;
+    }
   }
 
   > div {
     display: inline-block;
+    @include respond-to(iphone) {
+      width: 300px;
+      margin: 0 auto;
+      display: block;
+      margin-bottom: 40px;
+    }
   }
 }
 
