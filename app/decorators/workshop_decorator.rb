@@ -18,6 +18,12 @@ class WorkshopDecorator < ApplicationDecorator
     end
   end
 
+  def cover_image
+    if model.images.count > 0
+      model.images.first.image.url(:mobile)
+    end
+  end
+
   def description
     model.description.html_safe
   end
@@ -26,7 +32,7 @@ class WorkshopDecorator < ApplicationDecorator
     first_paragraph = /<p>(.*?)<\/p>/.match(model.description)
 
     if first_paragraph
-      first_paragraph[0].html_safe
+      first_paragraph[1].html_safe
     end
   end
 

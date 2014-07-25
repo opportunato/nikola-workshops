@@ -1,4 +1,5 @@
 - set_meta_tags title: @workshop.title, description: @workshop.first_paragraph
+- set_meta_tags og: { title: @workshop.title, image: @workshop.cover_image }
 
 .wrapper.workshop-wrapper[data-id="#{@workshop.id}"]
   nav.navigation
