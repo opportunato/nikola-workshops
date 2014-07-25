@@ -1,5 +1,7 @@
 - set_meta_tags title: @workshop.title, description: @workshop.first_paragraph
-- set_meta_tags og: { title: @workshop.title, image: @workshop.cover_image }
+- set_meta_tags fb: { app_id: ENV['FACEBOOK_APP_ID'] }
+- set_meta_tags og: { title: @workshop.title, image: @workshop.cover_image, description: @workshop.first_paragraph, url: workshop_url(@workshop) }
+- set_meta_tags twitter: { title: @workshop.title, image: @workshop.cover_image, description: @workshop.first_paragraph, url: workshop_url(@workshop) }
 
 .wrapper.workshop-wrapper[data-id="#{@workshop.id}"]
   nav.navigation

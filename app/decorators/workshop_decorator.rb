@@ -20,7 +20,7 @@ class WorkshopDecorator < ApplicationDecorator
 
   def cover_image
     if model.images.count > 0
-      model.images.first.image.url(:mobile)
+      model.images.first.image.url(:desktop)
     end
   end
 
