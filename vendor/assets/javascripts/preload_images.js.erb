@@ -1,30 +1,7 @@
-$('body').addClass('loaded').removeClass('noscroll')
+if (!$.cookie('preloaded')) {
 
-// // setTimeout(function() {
-// //   $('body').addClass('loaded').removeClass('noscroll');
-// // }, 3200);
-
-// function preloadImages(images, cb) {
-//   var count = images.length,
-//     check = function() {
-//       if(!--count) {
-//         cb();
-//       }
-//     };
-
-//   for (var i = images.length - 1; i >= 0; i--) {
-//     var img = new Image();
-//     img.onload = check;
-//     img.src = images[i];
-//   }
-// };
-
-// setTimeout(function() {
-//   preloadImages(["<%= asset_path('bg1.jpg') %>", 
-//                "<%= asset_path('bg2.jpg') %>",
-//                "<%= asset_path('bg3.jpg') %>",
-//                "<%= asset_path('bg4.jpg') %>",
-//                "<%= asset_path('bg5.jpg') %>" ], function() {
-//     $('body').addClass('loaded').removeClass('noscroll');
-//   });
-// }, 3200);
+  setTimeout(function() {
+    $('body').addClass('loaded').removeClass('noscroll');
+    $.cookie('preloaded', true)
+  }, 3200);
+}

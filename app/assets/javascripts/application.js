@@ -9,4 +9,5 @@
 //= require typed
 //= require main
 //= require responsive-images
+//= require jquery-cookie
 //= require preload_images
