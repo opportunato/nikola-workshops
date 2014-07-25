@@ -32,7 +32,7 @@ class WorkshopDecorator < ApplicationDecorator
     first_paragraph = /<p>(.*?)<\/p>/.match(model.description)
 
     if first_paragraph
-      first_paragraph[1].html_safe
+      first_paragraph[1]
     end
   end
 
