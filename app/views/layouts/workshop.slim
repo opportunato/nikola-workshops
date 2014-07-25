@@ -3,7 +3,7 @@ html
   head
     = render partial: "shared/head"
     = stylesheet_link_tag "application", media: :all
-  body
+  body class=("loaded" if cookies[:preloaded])
     = render partial: "shared/social_scripts"
     #container.container
       .overlay.opened
