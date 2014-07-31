@@ -12,6 +12,8 @@ Rails.application.configure do
   config.assets.paths << "#{Rails.root}/app/assets/fonts"
   config.assets.version = '1.0'
 
+  config.asset_host = 'http://k-o-l-l-e-k-t-i-v.ru'
+
   config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect'
   config.log_level = :info
   config.i18n.fallbacks = true
