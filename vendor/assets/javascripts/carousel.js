@@ -15,11 +15,15 @@ function Carousel(element)
 
     var current_pane = 0;
 
+    var arrowLeft = $(".arrowLeft")
+    var arrowRight = $(".arrowRight")
+
     /**
      * initial
      */
     this.init = function() {
         setPaneDimensions();
+        checkArrows();
 
         $(window).on("load resize orientationchange", function() {
             setPaneDimensions();
@@ -49,8 +53,20 @@ function Carousel(element)
 
         var offset = -((100/pane_count)*current_pane);
         setContainerOffset(offset, animate);
+
+        checkArrows();
     };
 
+    function checkArrows() {
+        if (current_pane === 0) {
+            arrowLeft.hide();
+        } else if (current_pane === pane_count-1) {
+            arrowRight.hide();
+        } else {
+            arrowLeft.show();
+            arrowRight.show();
+        }
+    }
 
     function setContainerOffset(percent, animate) {
         container.removeClass("animate");
