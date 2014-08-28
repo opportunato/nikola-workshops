@@ -132,9 +132,11 @@
         font-weight: 600;
       }
     }
-    .floatRight a {
+    .floatRight {
       float: right;
-      width: 25%;
+      width: 25%; 
+    }
+    .floatRight a {
       margin-bottom: $margin;
       text-decoration: none;
       display: block;
