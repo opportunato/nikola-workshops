@@ -114,12 +114,18 @@ $ ->
   if id = $(".workshop-wrapper").data('id')
     initWorkshop(id)
 
+
+  if !$.cookie('preloaded')
+    typedTimeout = 3200
+  else
+    typedTimeout = 300
+
   # typed.js
   setTimeout ->
     $("#typed").typed
       strings: ["Воркшопы с международными специалистами в уникальной среде Никола-Ленивца."]
       typeSpeed: 10
-  , 3200
+  , typedTimeout
 
   $window.resize ->
     adaptCarousel()
