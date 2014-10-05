@@ -42,7 +42,7 @@ private
         end
       end
 
-      max_id = u.pagination.next_max_tag_id
+      max_id = media.pagination.next_max_tag_id
     end
   end
 
