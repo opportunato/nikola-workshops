@@ -1,6 +1,8 @@
 angular.module("nikolaWorkshopsAdmin")
-.controller("adminCtrl", ['$scope', '$location', 'Workshop', 'workshopsUrl', 'workshopsUserUrl', ($scope, $location, Workshop, workshopsUrl, workshopsUserUrl) ->
+.controller("adminCtrl", ['$scope', '$location', 'Workshop', 'Tag', 'workshopsUrl', 'workshopsUserUrl', 'tagsUrl', 'feedUrl', ($scope, $location, Workshop, Tag, workshopsUrl, workshopsUserUrl, tagsUrl, feedUrl) ->
   $scope.workshopsUrl = workshopsUrl
+  $scope.tagsUrl = tagsUrl
+  $scope.feedUrl = feedUrl
   $scope.data = {}
 
   $scope.createWorkshop = (workshop) ->
@@ -8,11 +10,22 @@ angular.module("nikolaWorkshopsAdmin")
       $scope.data.workshops.push newWorkshop
       $location.path $scope.workshopsUrl
 
+  $scope.createTag = (tag) ->
+    new Tag(tag).create().then (newTag) ->
+      $scope.data.tags.push newTag
+      $location.path $scope.tagsUrl
+
   $scope.deleteWorkshop = (workshop) ->
     workshop.delete().then ->
       $scope.data.workshops.splice $scope.data.workshops.indexOf(workshop), 1
 
     $location.path $scope.workshopsUrl
+
+  $scope.deleteTag = (tag) ->
+    tag.delete().then ->
+      $scope.data.tags.splice $scope.data.tags.indexOf(tag), 1
+
+    $location.path $scope.tagsUrl
 
   $scope.getWorkshopUserLink = (id) ->
     "#{workshopsUserUrl}/#{id}"
@@ -25,6 +38,18 @@ angular.module("nikolaWorkshopsAdmin")
 
   $scope.startEdit = (workshop) ->
     $location.path "#{$scope.workshopsUrl}/#{workshop.id}/edit"
+])
+
+.controller("tagsTableCtrl", ['$scope', '$location', '$route', 'tags', ($scope, $location, $route, tags) ->
+  $scope.data.tags = tags
+])
+
+.controller("feedTableCtrl", ['$scope', '$location', '$route', 'feedImages', ($scope, $location, $route, feedImages) ->
+  $scope.data.feedImages = feedImages
+
+  $scope.deleteImage = (image) ->
+    image.delete().then ->
+      $scope.data.feedImages.splice $scope.data.feedImages.indexOf(image), 1
 ])
 
 .controller("workshopsEditCtrl", ['$scope', '$routeParams', '$location', 'workshops', 'Workshop', 'workshopsUserUrl', '$rootScope', ($scope, $routeParams, $location, workshops, Workshop, workshopsUserUrl, $rootScope) ->
@@ -161,5 +186,22 @@ angular.module("nikolaWorkshopsAdmin")
       ).success((data, status, headers, config) ->
         $scope.currentWorkshop.images.push data
       )
+])
+
+.controller("tagsEditCtrl", ['$scope', '$routeParams', '$location', 'tags', 'Tag', '$rootScope', ($scope, $routeParams, $location, tags, Tag, $rootScope) ->
+  $scope.data.tags = tags
+
+  $scope.$watch 'data.tags.length', ->
+    $scope.currentTag = new Tag
+
+  $scope.cancelEdit = ->
+    $location.path $scope.tagsUrl
+
+  $scope.saveTag = ->
+    $scope.createTag $scope.currentTag
+    $scope.currentTag = new Tag
+
+  $scope.openStartDate = ->
+    $scope.startDateOpened = true
 ])
 

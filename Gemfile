@@ -25,6 +25,12 @@ gem 'angular-rails-templates'
 
 gem 'responsive_images'
 
+gem 'redis'
+gem 'sidekiq'
+
+gem 'instagram'
+gem 'whenever', require: false
+
 gem 'meta-tags'
 gem 'redcarpet'
 gem 'figaro'
@@ -46,6 +52,7 @@ group :development do
   gem 'capistrano-rails'
   gem 'capistrano-bundler'
   gem 'capistrano-rbenv'
+  gem 'capistrano-sidekiq'
 end
 
 gem 'rails_12factor', group: :production

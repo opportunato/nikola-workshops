@@ -1,0 +1,6 @@
+a class="btn btn-primary create" href="{{workshopsUrl}}" = t("common.back")
+
+.images
+  div.image[ng-repeat="image in data.feedImages"]
+    img[ng-src="{{image.link}}"]
+    button[ng-click="deleteImage(image)"]

@@ -1,0 +1,13 @@
+a class="btn btn-primary create" href="{{workshopsUrl}}" = t("common.back")
+a class="btn btn-success create" href="{{tagsUrl}}/new" = t("tags.create")
+
+table.table.table-hover.tags
+  thead
+    tr
+      th = t("tag.name")
+      th
+  tbody
+    tr role="link" ng-repeat="tag in data.tags"
+      td ng-bind="'#' + tag.name" ng-click="startEdit(tag)"
+      td
+        button class="btn btn-danger" ng-click="deleteTag(tag)" = t("common.delete")

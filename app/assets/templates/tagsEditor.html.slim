@@ -1,0 +1,6 @@
+.panel-body
+  form novalidate=""
+    a class="back-link" ng-href="{{tagsUrl}}/" = t("common.back")
+    = angular_form_tag(t("tag.name"), "currentTag.name")
+  button.save[class="btn btn-success" ng-click="saveTag()"] = t("common.save")
+  button.cancel[class="btn btn-danger" ng-click="cancelEdit()"] = t("common.cancel")

@@ -9,4 +9,8 @@ class StartpageController < ApplicationController
   def terms
   	render layout: 'additional'
   end
+
+  def instagram
+    InstagramFetcher.new.fetch(3.weeks.ago)
+  end
 end

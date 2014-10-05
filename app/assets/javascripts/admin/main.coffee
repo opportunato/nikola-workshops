@@ -7,6 +7,8 @@ angular.module("nikolaWorkshopsAdmin", [
   "angularFileUpload"
 ])
 .constant("workshopsUrl", "/admin/workshops")
+.constant("tagsUrl", "/admin/tags")
+.constant("feedUrl", "/admin/feed")
 .constant("workshopsUserUrl", "/workshops")
 .constant("hostImageUrl", "/images/create_host")
 .constant("workshopImageUrl", "/images/create_workshop")
@@ -15,7 +17,17 @@ angular.module("nikolaWorkshopsAdmin", [
     url: "/workshops", 
     name: "workshop"
 ])
-.config(['$routeProvider', '$locationProvider', 'workshopsUrl', ($routeProvider, $locationProvider, workshopsUrl) ->
+.factory("Tag", ["railsResourceFactory", "tagsUrl", "$templateCache", (railsResourceFactory, tagsUrl, $templateCache) ->
+  railsResourceFactory 
+    url: "/tags", 
+    name: "tag"
+])
+.factory("FeedImage", ["railsResourceFactory", "feedUrl", "$templateCache", (railsResourceFactory, feedUrl, $templateCache) ->
+  railsResourceFactory 
+    url: "/feed_images", 
+    name: "feed_image"
+])
+.config(['$routeProvider', '$locationProvider', 'workshopsUrl', 'tagsUrl', 'feedUrl', ($routeProvider, $locationProvider, workshopsUrl, tagsUrl, feedUrl) ->
 
   $locationProvider.html5Mode true
 
@@ -35,6 +47,33 @@ angular.module("nikolaWorkshopsAdmin", [
     resolve:
       workshops: ['Workshop', (Workshop) ->
         Workshop.query()
+      ]
+
+  $routeProvider.when "#{tagsUrl}/new",
+    templateUrl: "tagsEditor.html"
+    controller: "tagsEditCtrl"
+    reloadOnSearch: false
+    resolve:
+      tags: ['Tag', (Tag) ->
+        Tag.query()
+      ]
+
+  $routeProvider.when "#{tagsUrl}",
+    templateUrl: "tagsTable.html"
+    controller: "tagsTableCtrl"
+    reloadOnSearch: false
+    resolve:
+      tags: ['Tag', (Tag) ->
+        Tag.query()
+      ]
+
+  $routeProvider.when "#{feedUrl}",
+    templateUrl: "feedTable.html"
+    controller: "feedTableCtrl"
+    reloadOnSearch: false
+    resolve:
+      feedImages: ['FeedImage', (FeedImage) ->
+        FeedImage.query()
       ]
 
   $routeProvider.otherwise

@@ -120,3 +120,11 @@ textarea.form-control {
 .save {
   margin-right: 20px;
 }
+
+.tags {
+  width: 400px;
+
+  td:last-child {
+    width: 70px;
+  }
+}

@@ -11,10 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140722125233) do
+ActiveRecord::Schema.define(version: 20140927112340) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "feed_images", force: true do |t|
+    t.string   "image"
+    t.string   "instagram_id"
+    t.string   "instagram_link"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "friendly_id_slugs", force: true do |t|
     t.string   "slug",                      null: false
@@ -46,6 +54,12 @@ ActiveRecord::Schema.define(version: 20140722125233) do
   end
 
   add_index "hosts", ["workshop_id"], name: "index_hosts_on_workshop_id", using: :btree
+
+  create_table "instagram_tags", force: true do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "workshop_images", force: true do |t|
     t.string   "image",       null: false
