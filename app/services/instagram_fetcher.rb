@@ -42,17 +42,23 @@ private
         end
       end
 
-      max_id = media.pagination.next_max_tag_id
+      max_id = media.pagination.next_max_id
+
+      if max_id.nil?
+        has_old_images = false
+      end
     end
   end
 
   def create_feed_image(media)
-    feed_image = FeedImage.new({
-      instagram_id: media.id,
-      instagram_link: media.link
-    })
+    if !(FeedImage.exists? instagram_id: media.id)
+      feed_image = FeedImage.new({
+        instagram_id: media.id,
+        instagram_link: media.link
+      })
 
-    feed_image.remote_image_url = media.images.standard_resolution.url
-    feed_image.save
+      feed_image.remote_image_url = media.images.standard_resolution.url
+      feed_image.save
+    end
   end
 end
