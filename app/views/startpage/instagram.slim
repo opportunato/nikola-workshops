@@ -1,0 +1,15 @@
+.wrapper.feed-wrapper
+  nav.navigation
+    .logoBlack
+      = link_to image_tag('logo_black.svg'), root_path
+    - if @has_close_button
+      .menuButtonPopup
+        span.menuButtonBar
+        span.menuButtonBar
+        span.menuButtonBar
+  header
+
+  section.feed
+    - @feed_images.each do |feed_image|
+      .feed-image
+        = image_tag feed_image.image_url

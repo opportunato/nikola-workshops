@@ -1,0 +1,10 @@
+section.process
+  header 
+    = link_to '«Коллектив» в процессе', process_path
+  .feed
+    .overlay
+    - @feed_images.each do |feed_image|
+      .feed-image
+        = image_tag feed_image.image_url
+
+  = render partial: 'shared/columns'

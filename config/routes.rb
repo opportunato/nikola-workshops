@@ -3,8 +3,7 @@ Rails.application.routes.draw do
 
   get "/admin", to: "admin/workshops#index"
   get "/terms", to: "startpage#terms"
-
-  get "/instagram", to: "startpage#instagram"
+  get "/process", to: "startpage#instagram"
 
   resources :workshops, except: [:edit]
   resources :tags, only: [:index, :create, :destroy], controller: "instagram_tags"

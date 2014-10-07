@@ -3,7 +3,7 @@ class FeedImagesController < ApplicationController
  before_filter :admin_login
 
   def index
-    @feed_images = FeedImage.all
+    @feed_images = FeedImage.all.order('created_at DESC')
 
     render layout: false
   end

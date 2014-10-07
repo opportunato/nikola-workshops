@@ -1,0 +1,58 @@
+.process {
+  margin: 0;
+  position: relative;
+  
+  header {
+    font-size: 28px;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+
+    a {
+      border-bottom: 6px solid $color-green;
+      color: white;
+      font-weight: 700;
+      height: 50px;
+      margin: auto;
+      padding: 10px 0;
+      text-decoration: none;
+
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+  }
+
+  .feed {
+    @include clearfix;
+
+    position: relative;
+  }
+
+  .feed-image {
+    float: left;
+    margin: 0;
+    width: 25%;
+
+
+    img {
+      margin: 0;
+      width: 100%;
+    }
+  }
+
+  .overlay {
+    background-color: black;
+
+    height: 100%;
+    position: absolute;
+    width: 100%;
+
+    opacity: 0.5;
+
+    left: 0;
+    top: 0;
+  }
+}
