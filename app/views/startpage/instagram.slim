@@ -1,4 +1,10 @@
-.wrapper.feed-wrapper
+- set_meta_tags title: "«Коллектив» в процессе"
+- set_meta_tags fb: { app_id: ENV['FACEBOOK_APP_ID'] }
+- set_meta_tags og: { title: "«Коллектив» в процессе", image: @feed_images.first.image_url }
+
+.wrapper.instagram-wrapper
+  = render partial: 'shared/columns'
+
   nav.navigation
     .logoBlack
       = link_to image_tag('logo_black.svg'), root_path
@@ -8,8 +14,9 @@
         span.menuButtonBar
         span.menuButtonBar
   header
-
+    h1 «Коллектив» в процессе
   section.feed
     - @feed_images.each do |feed_image|
-      .feed-image
-        = image_tag feed_image.image_url
+      article.feed-image
+        = link_to feed_image.instagram_link, target: "_blank" do
+          = image_tag feed_image.image_url

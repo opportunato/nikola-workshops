@@ -1,0 +1,42 @@
+.instagram-wrapper {
+  margin-bottom: 50px;
+
+  header {
+    background-color: $color-light-green;
+    height: 75px;
+    margin: 0 30px;
+    margin-top: 150px;
+    padding-top: 10px;
+    padding-left: 195px; 
+
+    h1 {
+      font-size: 2.4em;
+    }
+  }
+
+  .feed {
+    @include clearfix();
+
+    margin: 0 15px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .feed-image {
+    float: left;
+    width: 25%;
+
+    @include respond-to(iphone) {
+      width: 50%;
+    }
+
+    a {
+      display: block;
+    }
+
+    img {
+      vertical-align: top;
+      width: 100%;
+    }
+  }
+}

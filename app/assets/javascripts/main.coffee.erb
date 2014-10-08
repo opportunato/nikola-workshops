@@ -7,6 +7,7 @@ $ ->
   $workshopList = $(".workshopList")
   $overlay = $(".overlay")
   $intro = $(".intro")
+  $process = $('.process a')
   TILDE_CODE = 192
 
   if (window.location.pathname == "/")
@@ -62,7 +63,7 @@ $ ->
         tablet_size: 1024,
         desktop_size: 1600
 
-  closeWorkshop = ->
+  closePopup = ->
     $overlay.removeClass 'opened'
     $body.removeClass 'noscroll'
 
@@ -83,6 +84,17 @@ $ ->
 
       , 'html'
 
+  openInstagram = ->
+    $overlay.addClass 'opened'
+    $body.addClass 'noscroll'
+    document.title = title
+
+    $.get "/process.js",
+      (data) ->
+        $overlay.html(data)
+
+      , 'html'
+
   addFacebookButton = ->
     try FB.XFBML.parse()
     catch e
@@ -92,8 +104,6 @@ $ ->
 
   addVKGroup = (id) ->
     VK.Widgets.Group("vk-groups-#{id}", {mode: 0, width: "300", height: "241", color1: 'FFFFFF', color2: '2B587A', color3: '5B7FA6'}, 73689861);
-
-  adaptKazarma = ->
 
   adaptCarousel = ->
     vpw = $window.width()
@@ -139,12 +149,20 @@ $ ->
       $header.toggleClass 'opened'
     , 50
 
+  $process.on 'click', (e) ->
+    e.preventDefault()
+
+    title = $(e.target).data('title')
+    openInstagram(title)
+
+    history.pushState({process: true, title: title}, "", "/process")
+
   $overlay.on 'click', '.menuButtonPopup', ->
     history.pushState({}, "", "/")
 
     document.title = title
 
-    closeWorkshop()
+    closePopup()
 
   $workshopList.on 'click', ".workshopWrapper", (e) ->
     e.preventDefault()
@@ -159,9 +177,13 @@ $ ->
   $window.on "popstate", (e) ->
     state = e.originalEvent.state || {}
 
+    if state.process
+      openInstagram(state.title)
+
     if (state.workshopId)
       openWorkshop(state.workshopId, state.title)
-    else if (window.location.pathname == "/")
-      closeWorkshop()
+    
+    if (window.location.pathname == "/")
+      closePopup()
 
     document.title = state.title || title

@@ -43,6 +43,7 @@
     padding: $padding;
     z-index: 9999;
     position: absolute;
+    top: 0;
     left: 0;
     right: 0;
     @include respond-to(tablet) {
