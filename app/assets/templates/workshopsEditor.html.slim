@@ -2,6 +2,7 @@
   form novalidate=""
     a class="back-link" ng-href="{{workshopsUrl}}/" = t("common.back")
     a class="btn btn-primary" target="_blank" class="go-to-link" ng-if="workshopLink" ng-href="{{workshopLink}}" = t("workshop.go_to")
+    h2 ng-bind="currentWorkshop.title"
     tabset
       tab heading=t("workshop.data") select="selectTab('main')" active="editorTabs['main']"
         .info
@@ -66,5 +67,26 @@
             button[ng-click="deleteImage(image)"]
           .form-element
             input[type="file" ng-file-select="uploadImages($files)" multiple=""]
+      tab heading=t("workshop.reports") select="selectTab('reports')" active="editorTabs['reports']"
+        .reports ng-controller="reportsTableCtrl"
+          button ng-click="newReport(currentWorkshop)" class="btn btn-success" = t("workshop.create_report")
+          br
+          br
+
+          table.table.table-hover
+            thead
+              tr
+                th = t("report.title")
+                th = t("report.is_published")
+                th
+            tbody
+              tr ng-repeat="report in currentWorkshop.reports"
+                td ng-bind="'Отчет ' + report.number" ng-click="editReport(report)"
+                td ng-show="report.isPublished" ng-click="editReport(report)"
+                  = t("common.ya")
+                td ng-show="!report.isPublished" ng-click="editReport(report)"
+                  = t("common.nein")
+                td 
+                  button class="btn btn-danger" ng-click="deleteReport(report)" = t("common.delete")
   button.save[class="btn btn-success" ng-click="saveWorkshop()"] = t("common.save")
   button.cancel[class="btn btn-danger" ng-click="cancelEdit()"] = t("common.cancel")

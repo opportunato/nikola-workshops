@@ -217,7 +217,35 @@
         margin-top: $margin;
       }
     }
-    .button {
+    .report-links {
+      position: relative;
+      z-index: 1;
+
+      a.button,
+      span.button {
+        border: 4px solid $color-black;
+        display: block;
+        padding: $padding/2;
+        margin-right: 20px;
+        margin-top: 30px;
+        font-weight: 800;
+        float: left;
+        text-decoration: none;
+      }
+
+      span.button {
+        background: $color-black;
+        color: $color-green;
+      }
+
+      a.button {
+        &:hover {
+          background: $color-black;
+          color: $color-green;
+        }
+      }
+    }
+    .buy-button {
       @include transition(all 0.1s);
       text-align: center;
       float: right;

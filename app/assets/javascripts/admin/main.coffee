@@ -7,27 +7,33 @@ angular.module("nikolaWorkshopsAdmin", [
   "angularFileUpload"
 ])
 .constant("workshopsUrl", "/admin/workshops")
+.constant("reportsUrl", "/admin/reports")
 .constant("tagsUrl", "/admin/tags")
 .constant("feedUrl", "/admin/feed")
 .constant("workshopsUserUrl", "/workshops")
 .constant("hostImageUrl", "/images/create_host")
 .constant("workshopImageUrl", "/images/create_workshop")
-.factory("Workshop", ["railsResourceFactory", "workshopsUrl", "$templateCache", (railsResourceFactory, workshopsUrl, $templateCache) ->
-  railsResourceFactory 
+.factory("Report", ["railsResourceFactory", (railsResourceFactory) ->
+  railsResourceFactory
+    url: "/reports",
+    name: "report"
+])
+.factory("Workshop", ["railsResourceFactory", (railsResourceFactory) ->
+  railsResourceFactory
     url: "/workshops", 
     name: "workshop"
 ])
-.factory("Tag", ["railsResourceFactory", "tagsUrl", "$templateCache", (railsResourceFactory, tagsUrl, $templateCache) ->
+.factory("Tag", ["railsResourceFactory", (railsResourceFactory) ->
   railsResourceFactory 
     url: "/tags", 
     name: "tag"
 ])
-.factory("FeedImage", ["railsResourceFactory", "feedUrl", "$templateCache", (railsResourceFactory, feedUrl, $templateCache) ->
+.factory("FeedImage", ["railsResourceFactory", (railsResourceFactory) ->
   railsResourceFactory 
     url: "/feed_images", 
     name: "feed_image"
 ])
-.config(['$routeProvider', '$locationProvider', 'workshopsUrl', 'tagsUrl', 'feedUrl', ($routeProvider, $locationProvider, workshopsUrl, tagsUrl, feedUrl) ->
+.config(['$routeProvider', '$locationProvider', 'workshopsUrl', 'tagsUrl', 'feedUrl', 'reportsUrl', ($routeProvider, $locationProvider, workshopsUrl, tagsUrl, feedUrl, reportsUrl) ->
 
   $locationProvider.html5Mode true
 
@@ -43,6 +49,24 @@ angular.module("nikolaWorkshopsAdmin", [
   $routeProvider.when "#{workshopsUrl}/new",
     templateUrl: "workshopsEditor.html"
     controller: "workshopsEditCtrl"
+    reloadOnSearch: false
+    resolve:
+      workshops: ['Workshop', (Workshop) ->
+        Workshop.query()
+      ]
+
+  $routeProvider.when "#{workshopsUrl}/:workshop_id/report/new",
+    templateUrl: "reportsEditor.html"
+    controller: "reportsEditCtrl"
+    reloadOnSearch: false
+    resolve:
+      workshops: ['Workshop', (Workshop) ->
+        Workshop.query()
+      ]
+
+  $routeProvider.when "#{reportsUrl}/:report_id/edit",
+    templateUrl: "reportsEditor.html"
+    controller: "reportsEditCtrl"
     reloadOnSearch: false
     resolve:
       workshops: ['Workshop', (Workshop) ->

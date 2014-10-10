@@ -16,6 +16,8 @@ ru:
     clear: Очистить
     current: Сегодня
     main: На главную
+    published: Опубликован
+    unpublished: Неопубликован
   startpage:
     share:
       tweet: Твитнуть

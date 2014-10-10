@@ -1,0 +1,36 @@
+.panel-body
+  form novalidate=""
+    a class="back-link" ng-href="" ng-click="goBack()" = t("common.back")
+    tabset
+      tab heading="Описание" select="selectTab('main')" active="editorTabs['main']"
+        .info
+          = angular_form_tag(t("report.text"), "currentReport.text", "div", true, "text-angular" => "", "ta-toolbar" => "[['bold', 'insertLink'], ['ul', 'ol'], ['undo', 'redo']]")
+          .checkbox
+            label
+              input[type="checkbox" ng-model="currentReport.isPublished"]
+              = "Опубликован"
+      tab heading=t("report.author") select="selectTab('author')" active="editorTabs['author']"
+        .author ng-controller="hostsCtrl"
+          = angular_form_tag(t("author.name"), "currentReport.author.name")
+          = angular_form_tag(t("author.description"), "currentReport.author.description", "div", true, "text-angular" => "", "ta-toolbar" => "[['bold', 'insertLink'], ['ul', 'ol']]")
+          = angular_form_tag(t("currentReport.author.link"), "currentReport.author.link")
+          img[ng-src="{{currentReport.author.image}}"]
+          .form-element
+            input[type="file" ng-file-select="uploadImage($files, currentReport.author)"]
+      tab heading=t("report.videos") select="selectTab('videos')" active="editorTabs['videos']"
+        .videos ng-controller="videosCtrl"
+          div[ng-repeat="video in currentReport.videos"]
+            = angular_form_tag(t("video.link"), "video.link")
+            button[class="btn btn-danger" ng-click="deleteVideo(video)"] = t("common.delete")
+          div
+            = angular_form_tag(t("video.link"), "newVideo.link")
+            button[class="btn btn-primary" ng-click="addVideo()"] = t("common.add")
+      tab heading=t("report.images") select="selectTab('images')" active="editorTabs['images']"
+        .images ng-controller="imagesCtrl"
+          div.image[ng-repeat="image in currentReport.images"]
+            img[ng-src="{{image.url}}"]
+            button[ng-click="deleteImage(image)"]
+          .form-element
+            input[type="file" ng-file-select="uploadImages($files)" multiple=""]
+  button.save[class="btn btn-success" ng-click="saveReport()"] = t("common.save")
+  button.cancel[class="btn btn-danger" ng-click="cancelEdit()"] = t("common.cancel")

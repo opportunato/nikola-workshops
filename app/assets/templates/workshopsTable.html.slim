@@ -10,6 +10,7 @@ table.table.table-hover
       th = t("workshop.duration")
       th = t("workshop.is_published")
       th
+      th
   tbody
     tr role="link" ng-repeat="workshop in data.workshops"
       td ng-bind="workshop.title" ng-click="startEdit(workshop)"
