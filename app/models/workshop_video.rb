@@ -1,6 +1,6 @@
 class WorkshopVideo < ActiveRecord::Base
   before_validation :update_video_data
-  belongs_to :workshop
+  belongs_to :videoable, polymorphic: true
 
   validates :link, presence: true, format: { with: //}
   validates :video_id, numericality: true

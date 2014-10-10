@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140927112340) do
+ActiveRecord::Schema.define(version: 20141006071017) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,16 +44,20 @@ ActiveRecord::Schema.define(version: 20140927112340) do
     t.datetime "updated_at"
   end
 
+  add_index "host_images", ["host_id"], name: "index_host_images_on_host_id", using: :btree
+
   create_table "hosts", force: true do |t|
     t.string   "name"
     t.text     "description"
-    t.integer  "workshop_id", null: false
+    t.integer  "hostable_id",                        null: false
     t.string   "link"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "hostable_type", default: "Workshop"
   end
 
-  add_index "hosts", ["workshop_id"], name: "index_hosts_on_workshop_id", using: :btree
+  add_index "hosts", ["hostable_id", "hostable_type"], name: "index_hosts_on_hostable_id_and_hostable_type", using: :btree
+  add_index "hosts", ["hostable_id"], name: "index_hosts_on_hostable_id", using: :btree
 
   create_table "instagram_tags", force: true do |t|
     t.string   "name",       null: false
@@ -61,22 +65,40 @@ ActiveRecord::Schema.define(version: 20140927112340) do
     t.datetime "updated_at"
   end
 
-  create_table "workshop_images", force: true do |t|
-    t.string   "image",       null: false
+  create_table "reports", force: true do |t|
+    t.string   "slug"
+    t.integer  "number"
+    t.text     "text"
+    t.boolean  "is_published", default: false
     t.integer  "workshop_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "reports", ["workshop_id"], name: "index_reports_on_workshop_id", using: :btree
+
+  create_table "workshop_images", force: true do |t|
+    t.string   "image",                               null: false
+    t.integer  "imageable_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "imageable_type", default: "Workshop"
+  end
+
+  add_index "workshop_images", ["imageable_id", "imageable_type"], name: "index_workshop_images_on_imageable_id_and_imageable_type", using: :btree
+
   create_table "workshop_videos", force: true do |t|
-    t.string   "link",        null: false
-    t.integer  "workshop_id", null: false
+    t.string   "link",                                null: false
+    t.integer  "videoable_id",                        null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "video_id"
     t.string   "player_link"
     t.string   "video_type"
+    t.string   "videoable_type", default: "Workshop"
   end
+
+  add_index "workshop_videos", ["videoable_id", "videoable_type"], name: "index_workshop_videos_on_videoable_id_and_videoable_type", using: :btree
 
   create_table "workshops", force: true do |t|
     t.string   "title"

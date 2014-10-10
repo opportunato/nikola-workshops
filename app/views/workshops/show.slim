@@ -21,29 +21,44 @@
         - if @is_admin
           .admin-edit-link
             = link_to t("common.edit"), "/admin/workshops/#{@workshop.id}/edit"
-      .button
-        = link_to @workshop.buy_link, target: "_blank" do
-          .title = t(".buy_link")
-          .price = @workshop.formatted_price
+      - if @workshop.upcoming?
+        .buy-button
+          = link_to @workshop.buy_link, target: "_blank" do
+            .title = t(".buy_link")
+            .price = @workshop.formatted_price
+    - if @workshop.passed? && @workshop.has_reports?
+      section.report-links
+        = link_to_unless_current "Описание воркшопа", workshop_path(@workshop), class: "button" do
+          span.button = "Описание воркшопа"
+        - @workshop.reports.published.each do |report|
+          = link_to_unless_current "Отчет #{report.number}", report_workshop_path(@workshop, report.slug), class: "button" do
+            span.button = "Отчет #{report.number}"
   .carousel
-    = @workshop.media
+    = @object.media
     .arrowLeft = image_tag 'arrow.svg'
     .arrowRight = image_tag 'arrow.svg'
   .content.bottom
     = render partial: 'shared/columns'
     .wrapper
       .floatLeft
-        = render partial: 'workshops/share', locals: { workshop: @workshop }
-        h2.headline = @workshop.headline.html_safe
-        .description = @workshop.description.html_safe
-        h3 = t(".program")
-        .programme = @workshop.program.html_safe
+        - if is_workshop?(@object)
+          = render partial: 'workshops/share', locals: { workshop: @object }
+          h2.headline = @object.headline.html_safe
+          .description = @object.description.html_safe
+          h3 = t(".program")
+          .programme = @object.program.html_safe
+        - else
+          .description = @object.text.html_safe
       .floatRight
-        = render partial: 'workshops/host', locals: { hosts: @workshop.hosts }
-    .date.big = @workshop.duration
-    .button.big
-      = link_to @workshop.buy_link, target: "_blank" do
-        .title = t(".buy_link")
-        .price = @workshop.formatted_price
+        - if is_workshop?(@object)
+          = render partial: 'workshops/host', locals: { hosts: @object.hosts }
+        - elsif @object.has_author?
+          = render partial: 'workshops/host', locals: { hosts: [@object.author] }
+    - if @workshop.upcoming?
+      .date.big = @workshop.duration
+      .button.big
+        = link_to @workshop.buy_link, target: "_blank" do
+          .title = t(".buy_link")
+          .price = @workshop.formatted_price
   = render partial: 'shared/partners'
   = render partial: 'shared/footer'

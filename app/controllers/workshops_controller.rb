@@ -9,7 +9,8 @@ class WorkshopsController < ApplicationController
   end
 
   def show
-    @workshop = Workshop.friendly.find(params[:id]).decorate
+    @object = Workshop.friendly.find(params[:id]).decorate
+    @workshop = @object
 
     @has_close_button = (request.format == "js")
 
@@ -33,7 +34,7 @@ class WorkshopsController < ApplicationController
     @workshop = Workshop.find(params[:id])
 
     if @workshop.update(workshop_original_params) && update_workshop
-      render json: @workshop, status: :created
+      render json: @workshop, status: :ok
     else
       render json: @workshop.errors, status: :unprocessable_entity
     end

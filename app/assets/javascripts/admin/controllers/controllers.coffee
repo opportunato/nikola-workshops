@@ -1,6 +1,7 @@
 angular.module("nikolaWorkshopsAdmin")
-.controller("adminCtrl", ['$scope', '$location', 'Workshop', 'Tag', 'workshopsUrl', 'workshopsUserUrl', 'tagsUrl', 'feedUrl', ($scope, $location, Workshop, Tag, workshopsUrl, workshopsUserUrl, tagsUrl, feedUrl) ->
+.controller("adminCtrl", ['$scope', '$location', 'Workshop', 'Tag', 'Report', 'workshopsUrl', 'workshopsUserUrl', 'tagsUrl', 'feedUrl', 'reportsUrl', ($scope, $location, Workshop, Tag, Report, workshopsUrl, workshopsUserUrl, tagsUrl, feedUrl, reportsUrl) ->
   $scope.workshopsUrl = workshopsUrl
+  $scope.reportsUrl = reportsUrl
   $scope.tagsUrl = tagsUrl
   $scope.feedUrl = feedUrl
   $scope.data = {}
@@ -9,6 +10,23 @@ angular.module("nikolaWorkshopsAdmin")
     new Workshop(workshop).create().then (newWorkshop) ->
       $scope.data.workshops.push newWorkshop
       $location.path $scope.workshopsUrl
+
+  $scope.createReport = (report) ->
+    new Report(report).create().then (newReport) ->
+      $scope.data.workshops.filter((element) ->
+        element.id == parseInt(report.workshopId)
+      )[0].reports.push newReport
+
+      $location.path("#{workshopsUrl}/#{report.workshopId}/edit").search('tab', 'reports')
+
+  $scope.deleteReport = (report) ->
+    new Report(report).delete().then ->
+      workshop = $scope.data.workshops.filter((element) ->
+        element.id == parseInt(report.workshopId)
+      )[0]
+      workshop.reports.splice workshop.reports.indexOf(report), 1
+
+    $location.path("#{workshopsUrl}/#{report.workshopId}/edit").search('tab', 'reports')
 
   $scope.createTag = (tag) ->
     new Tag(tag).create().then (newTag) ->
@@ -52,6 +70,15 @@ angular.module("nikolaWorkshopsAdmin")
       $scope.data.feedImages.splice $scope.data.feedImages.indexOf(image), 1
 ])
 
+.controller("reportsTableCtrl", ['$scope', '$location', ($scope, $location) ->
+
+  $scope.editReport = (report) ->
+    $location.path "#{$scope.reportsUrl}/#{report.id}/edit"
+
+  $scope.newReport = (workshop) ->
+    $location.path "#{$scope.workshopsUrl}/#{workshop.id}/report/new"
+])
+
 .controller("workshopsEditCtrl", ['$scope', '$routeParams', '$location', 'workshops', 'Workshop', 'workshopsUserUrl', '$rootScope', ($scope, $routeParams, $location, workshops, Workshop, workshopsUserUrl, $rootScope) ->
   $scope.newHost = {}
   $scope.newVideo = {}
@@ -61,6 +88,7 @@ angular.module("nikolaWorkshopsAdmin")
     hosts: false
     videos: false
     images: false
+    reports: false
 
   currentTab = $location.search()['tab'] || "main"
 
@@ -105,6 +133,8 @@ angular.module("nikolaWorkshopsAdmin")
       $scope.currentWorkshop = new Workshop
       $scope.workshopLink = null
 
+    $scope.currentObject = $scope.currentWorkshop
+
   $scope.cancelEdit = ->
     $location.path $scope.workshopsUrl
 
@@ -134,6 +164,68 @@ angular.module("nikolaWorkshopsAdmin")
     $scope.startDateOpened = true
 ])
 
+.controller("reportsEditCtrl", ['$scope', '$routeParams', '$location', 'Report', 'workshops', 'workshopsUserUrl', '$rootScope', ($scope, $routeParams, $location, Report, workshops, workshopsUserUrl, $rootScope) ->
+  $scope.newVideo = {}
+
+  $scope.editorTabs =
+    main: false
+    author: false
+    videos: false
+    images: false
+
+  currentTab = $location.search()['tab'] || "main"
+  $scope.editorTabs[currentTab] = true
+
+  $scope.data.workshops = workshops
+
+  $scope.selectTab = (tabName) ->
+    $location.search 'tab', tabName
+
+  $scope.$watch 'data.workshops.length', ->
+    if id = $routeParams['workshop_id']
+      $scope.currentReport = new Report({workshopId: id})
+    else if id = $routeParams['report_id']
+      ($scope.data.workshops.reduce((reports, workshop) ->
+        reports.concat(workshop.reports)
+      , []).filter((report) ->
+        if report.id == parseInt(id)
+          $scope.currentReport = new Report(report)
+      ))
+
+    $scope.currentReport.author ||= {}
+
+    $scope.currentObject = $scope.currentReport
+
+  oldPath = ->
+    "#{$scope.workshopsUrl}/#{$scope.currentReport.workshopId}/edit"
+
+  $scope.goBack = ->
+    $location.path(oldPath()).search('tab', 'reports')
+
+  $scope.cancelEdit = ->
+    $location.path(oldPath()).search('tab', 'reports')
+
+  $scope.updateReport = (report) ->
+    report.update()
+    $location.path(oldPath()).search('tab', 'reports')
+
+  $scope.saveReport = ->
+    $scope.currentReport.images ||= []
+    $scope.currentReport.videos ||= []
+
+    if $scope.newVideo.link
+      $scope.currentReport.videos.push($scope.newVideo)
+      $scope.newVideo = {}
+
+    if angular.isDefined($scope.currentReport.id)
+      $scope.updateReport $scope.currentReport
+    else
+      $scope.createReport $scope.currentReport
+
+    $scope.currentReport = new Report
+    $scope.currentObject = $scope.currentReport
+])
+
 .controller("hostsCtrl", ['$scope', '$upload', 'hostImageUrl', ($scope, $upload, hostImageUrl) ->
   $scope.deleteHost = (host) ->
     hosts = $scope.currentWorkshop.hosts
@@ -160,23 +252,23 @@ angular.module("nikolaWorkshopsAdmin")
 
 .controller("videosCtrl", ['$scope', ($scope) ->
   $scope.deleteVideo = (video) ->
-    videos = $scope.currentWorkshop.videos
+    videos = $scope.currentObject.videos
     videos.splice videos.indexOf(video), 1
 
   $scope.addVideo = ->
-    $scope.currentWorkshop.videos ||= []
-    $scope.currentWorkshop.videos.push($scope.newVideo)
+    $scope.currentObject.videos ||= []
+    $scope.currentObject.videos.push($scope.newVideo)
     $scope.newVideo = {}
 ])
 
 .controller("imagesCtrl", ['$scope', 'workshopImageUrl', '$upload', ($scope, workshopImageUrl, $upload) ->
 
   $scope.deleteImage = (image) ->
-    images = $scope.currentWorkshop.images
+    images = $scope.currentObject.images
     images.splice images.indexOf(image), 1
 
   $scope.uploadImages = ($files, host) ->
-    $scope.currentWorkshop.images ||= []
+    $scope.currentObject.images ||= []
 
     for $file in $files
       $scope.upload = $upload.upload(
@@ -184,7 +276,7 @@ angular.module("nikolaWorkshopsAdmin")
         file: $file
         fileFormDataName: 'image'
       ).success((data, status, headers, config) ->
-        $scope.currentWorkshop.images.push data
+        $scope.currentObject.images.push data
       )
 ])
 

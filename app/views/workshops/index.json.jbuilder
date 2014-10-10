@@ -15,4 +15,8 @@ json.array! @workshops do |workshop|
     json.(image, :id)
     json.url image.image.url(:mobile)
   end
+
+  json.reports workshop.reports do |report|
+    json.partial! 'reports/report', report: report
+  end
 end

@@ -19,4 +19,12 @@ module ApplicationHelper
   def workshop_action?
     controller.controller_name == 'workshops' && controller.action_name == 'show'
   end
+
+  def is_report?(object)
+    object.class.name == "Report"
+  end
+
+  def is_workshop?(object)
+    object.class.name == "WorkshopDecorator"
+  end
 end
