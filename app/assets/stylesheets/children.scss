@@ -11,6 +11,15 @@
   max-width: 980px;
   position: relative;
   z-index: 1;
+
+  @include respond-to(iphone) {
+    padding: 0 $padding/2;
+    text-align: center;
+  }
+
+  &:hover {
+    color: $color-black;
+  }
 }
 
 .children-inner-wrapper {
@@ -20,13 +29,24 @@
 
 .children-logo {
   border-radius: 100%;
-  background: image_url('children.jpg') no-repeat no-repeat center;
   background-size: cover;
   float: left;
-  height: 460px;
-  margin-right: 30px;
+  margin-right: 3%;
   overflow: hidden;
-  width: 460px;
+  width: 47%;
+
+  @include respond-to(iphone) {
+    width: 50%;
+    display: inline-block;
+    float: none;
+    margin-bottom: $margin;
+    margin-right: 0;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+  }
 }
 
 .children-description {
@@ -34,14 +54,23 @@
   width: 50%;
   vertical-align: middle;
 
+  @include respond-to(iphone) {
+    display: inline-block;
+    float: none;
+    margin-bottom: $margin;
+  }
+
   header {
     border-bottom: 6px solid $color-green;
-    font-size: 2.5em;
     font-weight: 800;
     line-height: 1.2;
     margin-bottom: 20px;
     margin-top: 120px;
     padding-bottom: 7px;
+
+    @include respond-to(iphone) {
+      margin-top: 40px;
+    }
   }
 
   p {

@@ -1,8 +1,8 @@
 section.process
   = render partial: 'shared/columns'
 
-  header 
-    = link_to '«Коллектив» в процессе', process_path, "data-title" => '«Коллектив» в процессе'
+  header
+    h1= link_to '«Коллектив» в процессе', process_path, "data-title" => '«Коллектив» в процессе'
   .feed
     - @feed_images.each do |feed_image|
       .feed-image
