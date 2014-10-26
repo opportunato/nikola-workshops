@@ -11,8 +11,6 @@ Rails.application.configure do
   config.active_record.migration_error = :page_load
   config.assets.debug = true
 
-  config.asset_host = 'http://localhost:3000'
-
   config.assets.raise_runtime_errors = true
 
   config.after_initialize do
