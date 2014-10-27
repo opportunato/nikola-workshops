@@ -135,9 +135,9 @@
     }
     .floatRight {
       float: right;
-      width: 25%; 
+      width: 25%;
     }
-    .floatRight a {
+    .floatRight {
       margin-bottom: $margin;
       text-decoration: none;
       display: block;
@@ -221,6 +221,10 @@
     .report-links {
       position: relative;
       z-index: 1;
+
+      @include respond-to(iphone) {
+        margin-left: $margin/2;
+      }
 
       a.button,
       span.button {
