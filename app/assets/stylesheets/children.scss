@@ -13,12 +13,19 @@
   z-index: 1;
 
   @include respond-to(iphone) {
+    height: 540px;
     padding: 0 $padding/2;
-    text-align: center;
+    // text-align: center;
+  }
+
+  @include respond-to(iphonesmall) {
+    height: 300px;
   }
 
   &:hover {
     color: $color-black;
+
+    h1 { color: $color-green; }
   }
 }
 
@@ -36,11 +43,15 @@
   width: 47%;
 
   @include respond-to(iphone) {
-    width: 50%;
-    display: inline-block;
-    float: none;
+    // width: 50%;
+    // display: inline-block;
+    // float: none;
     margin-bottom: $margin;
-    margin-right: 0;
+    // margin-right: 0;
+  }
+
+  @include respond-to(iphonesmall) {
+    width: 27%;
   }
 
   img {
@@ -55,9 +66,14 @@
   vertical-align: middle;
 
   @include respond-to(iphone) {
-    display: inline-block;
-    float: none;
+    // display: inline-block;
+    // float: none;
     margin-bottom: $margin;
+    font-size: .8em;
+  }
+
+  @include respond-to(iphonesmall) {
+    width: 70%;
   }
 
   header {
@@ -68,8 +84,8 @@
     margin-top: 120px;
     padding-bottom: 7px;
 
-    @include respond-to(iphone) {
-      margin-top: 40px;
+    @include respond-to(iphonesmall) {
+      margin-top: 0px;
     }
   }
 

@@ -1,9 +1,14 @@
 .process {
   margin: 0;
   position: relative;
-  min-height: 200px;
   width: 100%;
   background: $color-black;
+
+  h1 {
+    @include respond-to(iphone) {
+      font-size: 1.6em;
+    }
+  }
 
   header {
     position: absolute;
@@ -12,7 +17,6 @@
     bottom: 0;
     left: 0;
     height: 50px;
-    width: 500px;
     margin: auto;
     text-align: center;
     z-index: 1;
@@ -40,11 +44,15 @@
   .feed-image {
     float: left;
     margin: 0;
-    width: 25%;
-    opacity: .4;
+    width: 20%;
+    opacity: .8;
 
     @include respond-to(iphone) {
       width: 50%;
+
+      &:nth-child(n+3) {
+        display: none;
+      }
     }
 
     img {

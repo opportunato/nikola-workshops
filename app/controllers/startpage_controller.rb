@@ -4,8 +4,8 @@ class StartpageController < ApplicationController
 
     @passed_workshops = @workshops.select { |workshop| workshop.passed? }
     @current_workshops = @workshops.select { |workshop| !workshop.passed? }
-	
-    @feed_images = FeedImage.latest.limit(4)
+
+    @feed_images = FeedImage.latest.limit(5)
   end
 
   def terms
