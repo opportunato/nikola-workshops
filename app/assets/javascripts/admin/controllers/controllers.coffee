@@ -62,12 +62,16 @@ angular.module("nikolaWorkshopsAdmin")
   $scope.data.tags = tags
 ])
 
-.controller("feedTableCtrl", ['$scope', '$location', '$route', 'feedImages', ($scope, $location, $route, feedImages) ->
+.controller("feedTableCtrl", ['$scope', '$location', '$route', 'feedImages', '$http', ($scope, $location, $route, feedImages, $http) ->
   $scope.data.feedImages = feedImages
 
   $scope.deleteImage = (image) ->
     image.delete().then ->
       $scope.data.feedImages.splice $scope.data.feedImages.indexOf(image), 1
+
+  $scope.syncPhotos = ->
+    $http.post '/feed_images/fetch'
+    .success -> $route.reload()
 ])
 
 .controller("reportsTableCtrl", ['$scope', '$location', ($scope, $location) ->

@@ -3,7 +3,7 @@ class FeedImagesController < ApplicationController
  before_filter :admin_login
 
   def index
-    @feed_images = FeedImage.all.order('created_at DESC')
+    @feed_images = FeedImage.all.order('origin_created_at DESC')
 
     render layout: false
   end
@@ -11,6 +11,12 @@ class FeedImagesController < ApplicationController
   def destroy
     @feed_image = FeedImage.find(params[:id])
     @feed_image.destroy
+
+    head :no_content
+  end
+
+  def fetch
+    FeedSyncer.new.perform
 
     head :no_content
   end

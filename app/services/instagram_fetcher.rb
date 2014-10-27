@@ -6,28 +6,30 @@ class InstagramFetcher
 
   def fetch(min_date)
     InstagramTag.all.each do |tag|
-      fetch_before_date(tag.name, min_date)
+      query = generate_media_query(:tag_recent_media, tag.name)
+      
+      fetch_before_date(query, min_date)
     end
 
     if ENV['INSTAGRAM_ACCOUNT_ID'].present?
-      media = @client.user_recent_media(ENV['INSTAGRAM_ACCOUNT_ID'], min_timestamp: min_date.to_time.to_i)
-    
-      media.each do |media|
-        if media.type == "image"
-          create_feed_image(media)
-        end
-      end
+      query = generate_media_query(:user_recent_media, ENV['INSTAGRAM_ACCOUNT_ID'])
+      
+      fetch_before_date(query, min_date)
     end
   end
 
-private 
+private
 
-  def fetch_before_date(tag, min_date)
+  def generate_media_query(query_type, query_param)
+    Proc.new { |max_id| @client.send(query_type, query_param, max_id) }
+  end
+
+  def fetch_before_date(query, min_date)
     has_old_images = true
     max_id = ''
 
     while has_old_images do
-      media = @client.tag_recent_media(tag, max_tag_id: max_id)
+      media = query.call(max_id: max_id)
 
       media.each do |media|
         if media.type == "image"
@@ -54,7 +56,8 @@ private
     if !(FeedImage.exists? instagram_id: media.id)
       feed_image = FeedImage.new({
         instagram_id: media.id,
-        instagram_link: media.link
+        instagram_link: media.link,
+        origin_created_at: Time.at(media.created_time.to_i)
       })
 
       feed_image.remote_image_url = media.images.standard_resolution.url

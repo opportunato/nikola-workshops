@@ -1,4 +1,6 @@
 a class="btn btn-primary create" href="{{workshopsUrl}}" = t("common.back")
+a class="btn btn-primary create" ng-click="syncPhotos()" = t("feed.sync")
+
 
 .images
   div.image[ng-repeat="image in data.feedImages"]

@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   end
   resources :reports, only: [:index, :create, :update, :destroy]
   resources :tags, only: [:index, :create, :destroy], controller: "instagram_tags"
-  resources :feed_images, only: [:index, :destroy]
+  resources :feed_images, only: [:index, :destroy] do
+    post :fetch, on: :collection
+  end
   match "/admin/*path" => "admin/workshops#index", via: [:get], constraints: { format: 'html' }
 
   match "images/create_host" => "images#create_for_host", via: [:post]
