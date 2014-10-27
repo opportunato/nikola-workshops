@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get "/process", to: "startpage#instagram"
 
   resources :workshops, except: [:edit] do
-    get "report/:slug", on: :member, to: "reports#show", as: :report
+    get "/:slug", on: :member, to: "reports#show", as: :report
   end
   resources :reports, only: [:index, :create, :update, :destroy]
   resources :tags, only: [:index, :create, :destroy], controller: "instagram_tags"

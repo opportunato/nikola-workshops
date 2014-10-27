@@ -12,6 +12,10 @@ class ReportsController < ApplicationController
     @workshop = Workshop.friendly.find(params[:id]).decorate
     @object = @workshop.reports.where(slug: params[:slug]).first.decorate
 
+    if !@object.is_published && Rails.env.production? && !session[:admin]
+      raise ActionController::RoutingError.new('Not Found')
+    end
+
     render template: "workshops/show"
   end
 

@@ -20,7 +20,7 @@ angular.module("nikolaWorkshopsAdmin", [
 ])
 .factory("Workshop", ["railsResourceFactory", (railsResourceFactory) ->
   railsResourceFactory
-    url: "/workshops", 
+    url: "/workshops",
     name: "workshop"
 ])
 .factory("Tag", ["railsResourceFactory", (railsResourceFactory) ->

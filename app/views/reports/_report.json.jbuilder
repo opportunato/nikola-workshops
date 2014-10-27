@@ -1,5 +1,7 @@
 json.(report, :id, :slug, :number, :text, :is_published, :workshop_id)
 
+json.workshop_slug report.workshop.slug
+
 if report.has_author?
   author = report.author
 

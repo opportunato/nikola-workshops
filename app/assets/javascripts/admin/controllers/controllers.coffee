@@ -188,13 +188,16 @@ angular.module("nikolaWorkshopsAdmin")
   $scope.$watch 'data.workshops.length', ->
     if id = $routeParams['workshop_id']
       $scope.currentReport = new Report({workshopId: id})
+      $scope.reportLink = null
     else if id = $routeParams['report_id']
       ($scope.data.workshops.reduce((reports, workshop) ->
         reports.concat(workshop.reports)
       , []).filter((report) ->
         if report.id == parseInt(id)
           $scope.currentReport = new Report(report)
+          $scope.reportLink = "#{workshopsUserUrl}/#{report.workshopSlug}/#{report.slug}"
       ))
+
 
     $scope.currentReport.author ||= {}
 

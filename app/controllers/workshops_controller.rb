@@ -12,6 +12,10 @@ class WorkshopsController < ApplicationController
     @object = Workshop.friendly.find(params[:id]).decorate
     @workshop = @object
 
+    if !@workshop.is_published && Rails.env.production? && !session[:admin]
+      raise ActionController::RoutingError.new('Not Found')
+    end
+
     @has_close_button = (request.format == "js")
 
     respond_to do |format|

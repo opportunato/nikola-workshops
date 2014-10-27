@@ -1,6 +1,7 @@
 .panel-body
   form novalidate=""
     a class="back-link" ng-href="" ng-click="goBack()" = t("common.back")
+    a class="btn btn-primary" target="_blank" class="go-to-link" ng-if="reportLink" ng-href="{{reportLink}}" = t("workshop.go_to")
     tabset
       tab heading="Описание" select="selectTab('main')" active="editorTabs['main']"
         .info
@@ -13,7 +14,7 @@
         .author ng-controller="hostsCtrl"
           = angular_form_tag(t("author.name"), "currentReport.author.name")
           = angular_form_tag(t("author.description"), "currentReport.author.description", "div", true, "text-angular" => "", "ta-toolbar" => "[['bold', 'insertLink'], ['ul', 'ol']]")
-          = angular_form_tag(t("currentReport.author.link"), "currentReport.author.link")
+          = angular_form_tag(t("author.link"), "currentReport.author.link")
           img[ng-src="{{currentReport.author.image}}"]
           .form-element
             input[type="file" ng-file-select="uploadImage($files, currentReport.author)"]
