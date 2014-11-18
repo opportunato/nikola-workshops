@@ -138,14 +138,17 @@
       width: 25%;
     }
     .floatRight {
-      margin-bottom: $margin;
-      text-decoration: none;
-      display: block;
-      overflow: hidden;
-      @include respond-to(iphone) {
-        margin-bottom: $margin/2;
+      > a {
+        margin-bottom: $margin;
+        text-decoration: none;
+        display: block;
+        overflow: hidden;
+        @include respond-to(iphone) {
+          margin-bottom: $margin/2;
+        }
+        &:hover { opacity: .8; color: $color-black; }        
       }
-      &:hover { opacity: .8; color: $color-black; }
+
       .name, .image, .description {
         margin-bottom: $margin/6;
         display: block;
